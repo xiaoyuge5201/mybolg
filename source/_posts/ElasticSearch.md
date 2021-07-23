@@ -1,6 +1,6 @@
 ---
 title: ElasticSearch安装
-tags: 'elasticSearch,kibana'
+tags: 'ELK'
 comments: false
 translate_title: elasticsearch-installation
 date: 2021-07-23 13:41:24
