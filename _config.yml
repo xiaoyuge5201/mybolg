@@ -12,7 +12,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://xiaoyuge.work/
+url: https://xiaoyuge5201.github.io/myblog
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -108,10 +108,16 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: geektutu
+
 social:
   enable: true
   links:
-    Github: https://github.com/xiaoyuge5201/blog
+    Github: https://github.com/xiaoyuge5201/myblog
+# Deployment
+deploy:
+  type: git
+  repo: https://github.com/xiaoyuge5201/xiaoyuge5201.github.io.git
+  branch: master
 
 feed:
   enable: true
@@ -123,8 +129,36 @@ feed:
 
 ba_auto_push: true # Baidu 自动推送，以下均为可选配置
 
+menu:
+  home: /
+  archives: /archives
+  about: /about
+  categories: /categories
+  tags: /tags
 
-deploy:
-  type: git
-  repo: https://github.com/xiaoyuge5201/xiaoyuge5201.github.io.git
-  branch: master
+# hexo-neat
+neat_enable: true
+neat_html:
+  enable: true
+  exclude:
+neat_css:
+  enable: true
+  exclude:
+    - '*.min.css'
+neat_js:
+  enable: true
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - '*.min.js'
+
+markdown_it_plus:
+  highlight: true
+  html: true
+  xhtmlOut: true
+  breaks: true
+  langPrefix:
+  linkify: true
+  typographer:
+  quotes: “”‘’
