@@ -31,8 +31,8 @@ site:
     width: 40
     height: 40
     url: ../images/logo.png
-  title: Hexo # 页面title
-  favicon: /favicon.png
+  title: 小余哥 # 页面title
+  favicon: /favicon.ico
   board: <p>欢迎交流与分享经验!</p> # 站点公告
   copyright: false # 底部版权信息
 
@@ -185,22 +185,22 @@ fb_app_id:
 # profile
 profile:
   enabled: true # Whether to show profile bar
-  avatar: images/avatar.jpg
+  avatar: images/avatar.png
   gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
-  author: 昵称
-  author_title: Web Developer & Designer
+  author: 小余哥
+  author_title: Never Give Up
   author_description: 个人简介。
-  location: Shenzhen, China
-  follow: https://github.com/cofess
+  location: Shanghai, China
+  follow: https://github.com/xiaoyuge5201
   # Social Links
   social:
     links:
-      github: https://github.com/cofess
-      weibo: http://weibo.com/cofess
-      twitter: https://twitter.com/iwebued
+      github: https://github.com/xiaoyuge5201
+      weibo: https://weibo.com/u/6391798158
+      #twitter: https://twitter.com/iwebued
       # facebook: /
       # dribbble: /
-      behance: https://www.behance.net/cofess
+      #behance: https://www.behance.net/cofess
       rss: atom.xml
     link_tooltip: true # enable the social link tooltip, options: true, false
   # My Skills 
@@ -214,11 +214,10 @@ profile:
     平面设计: ★★★☆☆
   # My Personal Links
   links:
-    Github: https://github.com/cofess
-    Blog: http://blog.cofess.com
-    微博: http://weibo.com/cofess
-    花瓣: http://huaban.com/cofess
-    Behance: https://www.behance.net/cofess
+    Github: https://github.com/xiaoyuge5201
+    Blog: https://www.cnblogs.com/yugb/
+    微博: https://weibo.com/u/6391798158/home
+    #  花瓣: http://huaban.com/cofess
   # My Personal Labels
   labels:
     - 前端
@@ -230,7 +229,7 @@ profile:
   works:
     name:
       link: http://www.example.com
-      date: 2016
+      date: 2021
   # My Personal Projects
   projects:
     cofess/gulp-startpro: https://github.com/cofess/gulp-startpro
