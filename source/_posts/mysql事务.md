@@ -1,8 +1,10 @@
 ---
 title: mysql事物
-date: 2021-07-23 16:00:57
 tags: mysql
+categories: mysql
 comments: false
+translate_title: mysql-things
+date: 2021-07-23 16:00:57
 ---
 ## 事务的定义
 

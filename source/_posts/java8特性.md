@@ -1,8 +1,10 @@
 ---
 title: Java 8学习
-date: 2020-04-23 14:04:02
 tags: Optional
+categories: java
 comments: false
+translate_title: java-8-learning
+date: 2020-04-23 14:04:02
 ---
 
 ## 1. Optional

@@ -168,6 +168,7 @@ markdown_it_plus:
 
 #搜索功能 npm install hexo-generator-searchdb --save
 search:
+  insight: true # 内置搜索功能,
   path: search.xml
   field: post
   content: true
@@ -181,3 +182,22 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+
+#开启评论
+comment:
+  type: gitalk  # 启用哪种评论系统
+
+# PV 开启文章字数，阅读时长，浏览量统计:
+pv: # 浏览量统计
+  busuanzi:
+    enable: false  # 不蒜子统计，一般使用不蒜子统计，使用true开启
+
+# Share
+# weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin
+share:
+  enable: true  # 是否启用分享
+  sites: weibo,qq,wechat,facebook,twitter  # PC端显示的分享图标
+  mobile_sites: weibo,qq,qzone  # 移动端显示的分享图标
+
+translate_title:
+  translate_way: google    #google | baidu | youdao

@@ -1,8 +1,10 @@
 ---
-title: mycat
-date: 2021-07-23 16:16:49
+title: mycat学习
 tags: mycat
+categories: 中间件
 comments: false
+translate_title: mycat-learning
+date: 2021-07-23 16:16:49
 ---
 # Mycat(分库分表中间件)
 

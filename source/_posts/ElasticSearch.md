@@ -1,8 +1,9 @@
 ---
 title: ElasticSearch安装
-date: 2021-07-23 13:41:24
-tags: elasticSearch,kibana
+tags: 'elasticSearch,kibana'
 comments: false
+translate_title: elasticsearch-installation
+date: 2021-07-23 13:41:24
 ---
 ## 1. JDK14安装
 

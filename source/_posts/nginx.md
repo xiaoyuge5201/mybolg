@@ -1,8 +1,12 @@
 ---
 title: nginx安装.md
-date: 2021-07-23 11:40:44
 tags: nginx
+categories: 
+- linux
+- nginx
 comments: false
+translate_title: nginx-installmd
+date: 2021-07-23 11:40:44
 ---
 # Nginx简介
 - 2000年地洞，c语言编写
