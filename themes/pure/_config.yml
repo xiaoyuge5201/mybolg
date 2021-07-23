@@ -206,12 +206,11 @@ profile:
   # My Skills 
   skills:
     Git: ★★★☆☆
-    Gulp: ★★★☆☆
-    Javascript: ★★★☆☆
+    VUE: ★★★☆☆
+    Javascript: ★★★★☆
     HTML+CSS: ★★★☆☆
-    Bootstrap: ★★★☆☆
-    ThinkPHP: ★★★☆☆
-    平面设计: ★★★☆☆
+    Springboot: ★★★★☆
+    UI: ★★★☆☆
   # My Personal Links
   links:
     Github: https://github.com/xiaoyuge5201
@@ -221,10 +220,14 @@ profile:
   # My Personal Labels
   labels:
     - 前端
-    - 前端开发
-    - 前端重构
-    - Web前端
-    - 网页重构
+    - JAVA
+    - 数据库
+    - Linux
+    - Git
+    - Spring
+    - Springboot
+    - POI
+    - python
   # My Personal Works
   works:
     name:
@@ -234,3 +237,11 @@ profile:
   projects:
     cofess/gulp-startpro: https://github.com/cofess/gulp-startpro
     cofess/hexo-theme-pure: https://github.com/cofess/hexo-theme-pure
+
+local_search:
+  enable: true
+  # if auto, trigger search by changing input
+  # if manual, trigger search by pressing enter key or search button
+  trigger: auto
+  # show top n results per article, show all results by setting to -1
+  top_n_per_article: 1

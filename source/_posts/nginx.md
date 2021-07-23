@@ -1,7 +1,7 @@
 ---
 title: nginx安装.md
 date: 2021-07-23 11:40:44
-tags:
+tags: Linux nginx
 ---
 
 
@@ -15,9 +15,7 @@ tags:
     #3、yum方法安装的，可以用 yum list installed 查找，如果是查找指定包，用 yum list installed | grep "软件名或者包名"
     yum list installed | grep "gcc"
     ```
-
-    <img src="source/_posts/nginx/image-20201210100736952.png" alt="image-20201210100736952" style="zoom:70%;" />
-
+   ![image-20201210103251475](./nginx/image-20201210100736952.png)
 2. 安装依赖包
 
     ```shell
@@ -52,7 +50,7 @@ tags:
     ./sbin/nginx -t
     ```
 
-    <img src="source/_posts/nginx/image-20201210101238462.png" alt="image-20201210101238462" style="zoom: 67%;float:right;" />
+    <img src="./nginx/image-20201210101238462.png" alt="image-20201210101238462" style="zoom: 67%;float:right;" />
 
 6. 配置nginx.conf
 
@@ -80,64 +78,57 @@ tags:
     ```
 
 7. 启动
+   ```shell
+       #启动nginx
+       cd /usr/local/nginx/sbin
+       ./nginx 
+     ```
 
-    ```shell
-    #启动nginx
-    cd /usr/local/nginx/sbin
-    ./nginx 
-    ```
-
-**常用命令：**
-
-- ```shell
-    #修改配置后重新启动
-    ./nginx -s reload
-    #如果出现：nginx: [error] open() ＂/usr/local/nginx/logs/nginx.pid＂ failed
-    /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
-    #再次启动即可
-    ```
-
-- ```shell
-    #查看nginx进程是否启动
-    ps -ef|grep nginx
-    ```
-
-- ```shell
-    #平滑启动nginx
-    kill -HUP
-    #主进程号或进程号文件路径 或者使用
-    
-    /usr/nginx/sbin/nginx -s reload
-    
-    #注意，修改了配置文件后最好先检查一下修改过的配置文件是否正 确，以免重启后Nginx出现错误影响服务器稳定运行。
-    #判断Nginx配置是否正确命令如下：
-    nginx -t -c /usr/nginx/conf/nginx.conf
-    #或者使用
-    /usr/nginx/sbin/nginx -t
-    
-    #重启
-    nginx reload
-    /usr/local/nginx/sbin/nginx -s reload 
-    service nginx restart
-    
-    #启动
-    ./nginx
-    #关闭
-    ./nginx -s stop
-    ```
-
-- ```shell
-    #配置nginx开机自启动
-    vim /etc/rc.d/rc.local
-    
-    #再文件中添加nginx启动地址
-     
-    touch /var/lock/subsys/local
-    /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf
-    
-    #设置开机自启动nginx
-    /usr/local/nginx/sb/nginx
-    
+   **常用命令：**
+   
+   ```shell
+       #修改配置后重新启动
+       ./nginx -s reload
+       #如果出现：nginx: [error] open() ＂/usr/local/nginx/logs/nginx.pid＂ failed
+       /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+       #再次启动即可
+       
+       #查看nginx进程是否启动
+       ps -ef|grep nginx
+       
+       #平滑启动nginx
+       kill -HUP
+       #主进程号或进程号文件路径 或者使用
+       
+       /usr/nginx/sbin/nginx -s reload
+       
+       #注意，修改了配置文件后最好先检查一下修改过的配置文件是否正 确，以免重启后Nginx出现错误影响服务器稳定运行。
+       #判断Nginx配置是否正确命令如下：
+       nginx -t -c /usr/nginx/conf/nginx.conf
+       #或者使用
+       /usr/nginx/sbin/nginx -t
+       
+       #重启
+       nginx reload
+       /usr/local/nginx/sbin/nginx -s reload 
+       service nginx restart
+       
+       #启动
+       ./nginx
+       #关闭
+       ./nginx -s stop
+       
+       
+       #配置nginx开机自启动
+       vim /etc/rc.d/rc.local
+       
+       #再文件中添加nginx启动地址
+        
+       touch /var/lock/subsys/local
+       /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf
+       
+       #设置开机自启动nginx
+       /usr/local/nginx/sb/nginx
     ```
 
 ![image-20201210103251475](./nginx/image-20201210103251475.png)
