@@ -1,6 +1,6 @@
 ---
 title: 关于
-description: 个人简介
+description: 致力于分享一些技术教程和有趣的技术实践，以及日常踩坑记录
 layout: about
 comments: false
 sidebar: custom

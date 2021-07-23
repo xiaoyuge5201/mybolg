@@ -1,7 +1,8 @@
 ---
 title: ElasticSearch安装
 date: 2021-07-23 13:41:24
-tags: Linux elasticSearch
+tags: elasticSearch,kibana
+comments: false
 ---
 ## 1. JDK14安装
 
@@ -218,22 +219,22 @@ tags: Linux elasticSearch
 
 **常见异常：**
 
-- ```shell
-   #java.lang.RuntimeException: can not run elasticsearch as root
-   #切换为elastic search用户，不能用root项目启动
+```shell
+    #java.lang.RuntimeException: can not run elasticsearch as root
+    #切换为elastic search用户，不能用root项目启动
   
    su elastic
-  ```
+```
 
-- ```shell
+```shell
    #Exception in thread "main" java.nio.file.AccessDeniedException: /usr/lib/tools/elasticsearch-7.8.0/config/elasticsearch.keystore
    #elastic search用户没有操作该文件夹的权限
   
    su root
    chown -R elastic:elastic /usr/lib/tools/elasticsearch-7.8.0/*
-    ```
+   ```
 
-- ```shell
+```shell
     ERROR: [2] bootstrap checks failed
     [1]: max file descriptors [4096] for elasticsearch process is too low, increase to at least [65535]
     [2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
@@ -252,7 +253,7 @@ tags: Linux elasticSearch
     vm.max_map_count=262144
     #3. 配置重新生效
     sysctl -p
-    ```
+```
   
 **效果如下：**
 

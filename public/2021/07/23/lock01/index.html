@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>锁优化 | 小余哥</title>
+  <meta name="description" content="1. 优化思路以及方法 减少锁持有时间 减小锁粒度 锁分离 锁粗化 锁消除  1.1 减少锁持有时间12345public synchronized void syncMethod()&amp;#123;    othercode1();    mutextMethod();    othercode2();&amp;#125;  像上述代码，在进入方法前就要得到锁，其他线程就要在外面等待。 分析：锁里面的资源在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="锁优化">
+<meta property="og:url" content="https://xiaoyuge5201.github.io/2021/07/23/lock01/index.html">
+<meta property="og:site_name" content="小余哥">
+<meta property="og:description" content="1. 优化思路以及方法 减少锁持有时间 减小锁粒度 锁分离 锁粗化 锁消除  1.1 减少锁持有时间12345public synchronized void syncMethod()&amp;#123;    othercode1();    mutextMethod();    othercode2();&amp;#125;  像上述代码，在进入方法前就要得到锁，其他线程就要在外面等待。 分析：锁里面的资源在">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiaoyuge5201.github.io/2021/07/23/lock01/images/read_writer_Lock1.png">
+<meta property="article:published_time" content="2021-07-23T06:04:02.000Z">
+<meta property="article:modified_time" content="2021-07-23T07:18:16.845Z">
+<meta property="article:author" content="小余哥">
+<meta property="article:tag" content="lock">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiaoyuge5201.github.io/2021/07/23/lock01/images/read_writer_Lock1.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://xiaoyuge5201.github.io/2021/07/23/lock01/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="小余哥" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/xiaoyuge5201" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">小余哥</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Never Give Up</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/xiaoyuge5201" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/6391798158" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optional/" rel="tag">Optional</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticSearch-kibana/" rel="tag">elasticSearch,kibana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lock/" rel="tag">lock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Optional/" style="font-size: 13px;">Optional</a> <a href="/tags/elasticSearch-kibana/" style="font-size: 13px;">elasticSearch,kibana</a> <a href="/tags/lock/" style="font-size: 13px;">lock</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/vue/" style="font-size: 13px;">vue</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/23/lock01/" class="title">锁优化</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-23T06:04:02.000Z" itemprop="datePublished">2021-07-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/23/ElasticSearch/" class="title">ElasticSearch安装</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-23T05:41:24.000Z" itemprop="datePublished">2021-07-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/23/nginx/" class="title">nginx安装.md</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-23T03:40:44.000Z" itemprop="datePublished">2021-07-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/07/23/vue/" class="title">vue学习</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-07-23T03:40:44.000Z" itemprop="datePublished">2021-07-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/23/java8%E7%89%B9%E6%80%A7/" class="title">Java 8学习</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-23T06:04:02.000Z" itemprop="datePublished">2020-04-23</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-lock01" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      锁优化
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/07/23/lock01/" class="article-date">
+	  <time datetime="2021-07-23T06:04:02.000Z" itemprop="datePublished">2021-07-23</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/lock/" rel="tag">lock</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/07/23/lock01/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="1-优化思路以及方法"><a href="#1-优化思路以及方法" class="headerlink" title="1. 优化思路以及方法"></a>1. 优化思路以及方法</h2><ul>
+<li>减少锁持有时间</li>
+<li>减小锁粒度</li>
+<li>锁分离</li>
+<li>锁粗化</li>
+<li>锁消除</li>
+</ul>
+<h3 id="1-1-减少锁持有时间"><a href="#1-1-减少锁持有时间" class="headerlink" title="1.1 减少锁持有时间"></a>1.1 减少锁持有时间</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">syncMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    othercode1();</span><br><span class="line">    mutextMethod();</span><br><span class="line">    othercode2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>像上述代码，在进入方法前就要得到锁，其他线程就要在外面等待。</p>
+<p>分析：锁里面的资源在同一时间只允许一个线程执行，我们不仅要减少其他线程等待的时间，也要尽力减少线程在锁里面的执行时间，所以，尽量只有在有线程安全要求的程序代码上加锁。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">syncMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    othercode1();</span><br><span class="line">    <span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123;</span><br><span class="line">        metextMethod();</span><br><span class="line">    &#125;</span><br><span class="line">    othercode2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-减小锁粒度"><a href="#1-2-减小锁粒度" class="headerlink" title="1.2 减小锁粒度"></a>1.2 减小锁粒度</h3><p>将大对象（这个对象可能会被很多线程访问）拆成小对象，大大增加并行度。</p>
+<p>降低锁竞争，那么偏向锁、轻量级锁成功率才会提高。</p>
+<p>最最典型的减小锁粒度的案例就是ConcurrentHashMap。在HashMap的基础上进行优化，使用了cas与synchronized来确保安全性，在保证安全性的基础上为了充分利用线程资源，更是巧妙的设计了多线程同扩容的模式。</p>
+<h3 id="1-3-锁分离"><a href="#1-3-锁分离" class="headerlink" title="1.3 锁分离"></a>1.3 锁分离</h3><p>最常见的锁分离就是读写锁ReadWriteLock，根据功能进行分离成读锁和写锁。这样读读不互斥，读写互斥，写写互斥。既保证了线程安全，又提高了性能。</p>
+<p>分析：读写分离这种思想可以延伸到我们其他的设计中，只要操作上互不影响，那锁就可以进行分离，比如：LinkedBlockingQueue</p>
+<img src="/2021/07/23/lock01/images/read_writer_Lock1.png" alt="read_writer_Lock1" style="zoom: 67%;">
+
+<p>从头部获取数据，从尾部放入数据，使用两把锁。</p>
+<h3 id="1-4-锁粗化"><a href="#1-4-锁粗化" class="headerlink" title="1.4 锁粗化"></a>1.4 锁粗化</h3><p>通常情况下，为了保证多线程间的有效并发，会要求每个线程持有锁的时间尽量短，即在使用完公共资源后，应该立即释放锁，只有这样，等待在这个锁上的其他线程才能尽早的获取资源执行任务；但是凡事都有一个度，如果对同一个锁不停的进行请求、同步和释放，其本身也会消耗系统宝贵的资源，反而不利于性能的优化。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demoMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>&#123;</span><br><span class="line">    	<span class="comment">//dow sth.</span></span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//....做其他不需要同步的工作，但能很快执行完毕</span></span><br><span class="line">    <span class="keyword">synchronized</span>&#123;</span><br><span class="line">        <span class="comment">//do sth.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种情况，根据锁粗化的思想，应该合并：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demoMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//整合成一次锁请求,前提时中间哪些不需要同步的工作很快就执行完成</span></span><br><span class="line">    <span class="keyword">synchronized</span>(lock)&#123;</span><br><span class="line">        <span class="comment">//do sth.</span></span><br><span class="line">        <span class="comment">//....做其他不需要同步的工作，但能很快执行完毕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再举一个极端的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i &lt; circle; i++)&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(lock)&#123;</span><br><span class="line">        <span class="comment">//.....</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在一个循环内不同得获得锁。虽然JDK内部会对这个代码做些优化，但是还不如直接写成：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(lock)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i &lt; circle; i++)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当然如果有需求说，这样的循环太久，需要给其他线程不要等待太久，那只能写成上面那种。如果没有这样类似的需求，还是直接写成后者那种比较好。<br><strong>分析</strong>: 锁粗化是JVM默认启动的一种机制，锁粗化针对的是对连续的区域进行分段加锁这种场景，JVM会自发进行优化。但作为开发者而言在满足业务的情况下，应该减少锁的使用。</p>
+<h3 id="1-5-锁消除"><a href="#1-5-锁消除" class="headerlink" title="1.5 锁消除"></a>1.5 锁消除</h3><p>锁消除是在编译器级别的事情。在即时编译器(JIT)时，如果发现不可能被共享的对象，则可以消除这些对象的锁操作。也许你会觉得奇怪，既然有些对象不可能被多线程访问，那为什么要加锁呢？写代码时直接不加锁不就好了。<br>但是有时，这些锁并不是程序员所写的，有的是JDK实现中就有锁的，比如Vector和StringBuffer这样的类，它们中的很多方法都是有锁的。当我们在一些不会有线程安全的情况下使用这些类的方法时，达到某些条件时，编译器会将锁消除来提高性能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> InterrruptedException</span>&#123;</span><br><span class="line">    <span class="keyword">long</span> start = System.currentTimeTimeMillis();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">20000</span>; i++)&#123;</span><br><span class="line">        createStringBuffer(<span class="string">&quot;JVM&quot;</span>,<span class="string">&quot;asdfasdfasdf&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> bufferCost = System.currentTimeTimeMillis() - start;</span><br><span class="line">    System.out.println(<span class="string">&quot;createStringBuffer:&quot;</span>+bufferCost+<span class="string">&quot;ms&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">createStringBuffer</span><span class="params">(String s1, String s2)</span></span>&#123;</span><br><span class="line">    StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">    sb.append(s1);</span><br><span class="line">    sb.append(s2);</span><br><span class="line">    <span class="keyword">return</span> sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中的StringBuffer.append是一个同步操作，但是StringBuffer却是一个局部变量，并且方法也并没有把StringBuffer返回，所以不可能会有多线程去访问它。那么此时StringBuffer中的同步操作就是没有意义的。<br>开启锁消除是在JVM参数上设置的，当然需要在server模式下：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-server -XX:+DoEscapeAnalysis -XX:+EliminateLocks</span><br></pre></td></tr></table></figure>
+
+<p>并且要开启逃逸分析。 逃逸分析的作用呢，就是看看变量是否有可能逃出作用域的范围。<br>比如上述的StringBuffer，上述代码中craeteStringBuffer的返回是一个String，所以这个局部变量StringBuffer在其他地方都不会被使用。如果将craeteStringBuffer改成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> StringBuffer <span class="title">createStringBuffer</span><span class="params">(String s1, String s2)</span></span>&#123;</span><br><span class="line">    StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">    sb.append(s1);</span><br><span class="line">    sb.append(s2);</span><br><span class="line">    <span class="keyword">return</span> sb;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么这个 StringBuffer被返回后，是有可能被任何其他地方所使用的（譬如被主函数将返回结果put进map啊等等）。那么JVM的逃逸分析可以分析出，这个局部变量 StringBuffer逃出了它的作用域。<br>所以基于逃逸分析，JVM可以判断，如果这个局部变量StringBuffer并没有逃出它的作用域，那么可以确定这个StringBuffer并不会被多线程所访问，那么就可以把这些多余的锁给去掉来提高性能。<br>当JVM参数为：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-server -XX:+DoEscapeAnalysis -XX:+EliminateLocks</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createStringBuffer: 302ms</span><br></pre></td></tr></table></figure>
+
+<p>JVM参数为：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-server -XX:+DoEscapeAnalysis -XX:-EliminateLocks</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createStringBuffer: 660ms</span><br></pre></td></tr></table></figure>
+
+<p>显然，锁消除的效果还是很明显的。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://xiaoyuge5201.github.io/2021/07/23/lock01/" title="锁优化" target="_blank" rel="external">https://xiaoyuge5201.github.io/2021/07/23/lock01/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/xiaoyuge5201" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/xiaoyuge5201" target="_blank"><span class="text-dark">小余哥</span><small class="ml-1x">Never Give Up</small></a></h3>
+        <div>致力于分享一些技术教程和有趣的技术实践，以及日常踩坑记录。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/07/23/ElasticSearch/" title="ElasticSearch安装"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/xiaoyuge5201" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/6391798158" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+</body>
+</html>

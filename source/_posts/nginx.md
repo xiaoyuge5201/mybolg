@@ -1,7 +1,8 @@
 ---
 title: nginx安装.md
 date: 2021-07-23 11:40:44
-tags: Linux nginx
+tags: nginx
+comments: false
 ---
 
 

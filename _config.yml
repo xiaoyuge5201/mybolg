@@ -136,6 +136,8 @@ menu:
   about: /about
   categories: /categories
   tags: /tags
+  books: /books
+
 
 # hexo-neat
 neat_enable: true
@@ -168,5 +170,14 @@ markdown_it_plus:
 search:
   path: search.xml
   field: post
-  format: html
-  limit: 10000
+  content: true
+  #template: ./search.xml
+
+#谷歌和百度的插件
+#npm install hexo-generator-sitemap --save
+#npm install hexo-generator-baidu-sitemap --save
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
