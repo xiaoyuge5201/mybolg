@@ -4,7 +4,20 @@ date: 2021-07-23 11:40:44
 tags: nginx
 comments: false
 ---
+# Nginx简介
+- 2000年地洞，c语言编写
+- 2004年开源
+- 2011年成立商业公司
+- 2013 发布商业版本Nginx plus
+- 2019.5月F5 networks收购nginx
+- 2019.12被Rambler集团起诉
 
+##Nginx与其他web服务器对比
+   1. Nginx与A pace HTTP server project区别
+   2. Nginx 和tomcat区别
+      - Nginx是HTTP Server，主要是用于访问一些静态资源，可以用做代理服务器
+      - tomcat是Application Server应用服务器
+   3. HTTP Server 和Application Server区别与联系
 
 # Nginx安装
 
@@ -131,6 +144,30 @@ comments: false
        #设置开机自启动nginx
        /usr/local/nginx/sb/nginx
     ```
+![image-20201210103251475](./nginx/image-20210606160947369.png)
 
+启动后访问localhost 效果如下：
 ![image-20201210103251475](./nginx/image-20201210103251475.png)
+
+# Nginx配置
+```shell
+...... 全局块
+events {
+	//events 块
+}
+http{
+  ....  http全局块
+	server+{
+		location +[]
+	}
+}
+```
+### 配置内容规则
+- 用#表示注释
+- 每行配置的结尾需要加上分号
+- 如果配置项值中包括语法符号，比如空格符，那么需要使用单引号或者双引号行括住配置项值，否则ngin x会报语法错误
+- 单位简写：
+   - K或者k千字节（kilo byte, KB）
+   - M或者m兆字节（megabyte MB）
+   - ms(毫秒)，s(秒)， m(分)， h(小时) ， d (天)， w（周）， M（月，包含30天），y（年）
 
