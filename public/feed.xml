@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>小余哥</title>
+    <link>https://xiaoyuge5201.github.io/</link>
+    
+    <image>
+      <url>https://xiaoyuge5201.github.io/img/icon.png</url>
+      <title>小余哥</title>
+      <link>https://xiaoyuge5201.github.io/</link>
+    </image>
+    
+    <atom:link href="https://xiaoyuge5201.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>小余哥个人博客，致力于分享一些技术教程和有趣的技术实践，以及日常踩坑记录。</description>
+    <pubDate>Fri, 23 Jul 2021 08:43:38 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>mycat学习</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/23/mycat/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/23/mycat/</guid>
+      <pubDate>Fri, 23 Jul 2021 08:16:49 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;mycat分库分表中间件&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#mycat分库分表中间件&quot;&gt;&lt;/a&gt; Mycat(分库分表中间件)&lt;/h1&gt;
+&lt;h2 id=&quot;1-数据库优化策略&quot;&gt;&lt;a class=&quot;markdownIt-Anc</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/mycat/">mycat</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>mysql知识总结</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/23/mysql/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/23/mysql/</guid>
+      <pubDate>Fri, 23 Jul 2021 08:00:57 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;mysql-初识&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#mysql-初识&quot;&gt;&lt;/a&gt; mysql 初识&lt;/h1&gt;
+&lt;h2 id=&quot;1-版本历史&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-版本历</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/mysql/">mysql</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/mysql/">mysql</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>mysql事物</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/23/mysql%E4%BA%8B%E5%8A%A1/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/23/mysql%E4%BA%8B%E5%8A%A1/</guid>
+      <pubDate>Fri, 23 Jul 2021 08:00:57 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;事务的定义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#事务的定义&quot;&gt;&lt;/a&gt; 事务的定义&lt;/h2&gt;
+&lt;p&gt;事务是数据管理系统DBMS执行过程中的一个&lt;strong&gt;逻辑单位&lt;/strong&gt;，有一个有限的数据库&lt;strong&gt;操作序</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/mysql/">mysql</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/mysql/">mysql</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>锁优化</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/23/lock01/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/23/lock01/</guid>
+      <pubDate>Fri, 23 Jul 2021 06:04:02 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;1-优化思路以及方法&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-优化思路以及方法&quot;&gt;&lt;/a&gt; 1. 优化思路以及方法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;减少锁持有时间&lt;/li&gt;
+&lt;li&gt;减小锁粒度&lt;/li&gt;
+&lt;li&gt;锁分离&lt;/li&gt;
+</description>
+        
+      
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/lock/">lock</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>ElasticSearch安装</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/23/ElasticSearch/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/23/ElasticSearch/</guid>
+      <pubDate>Fri, 23 Jul 2021 05:41:24 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;1-jdk14安装&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-jdk14安装&quot;&gt;&lt;/a&gt; 1. JDK14安装&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;下载jdk14：  &lt;a href=&quot;https://jdk.java.net/</description>
+        
+      
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/elasticSearch-kibana/">elasticSearch,kibana</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>nginx安装.md</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/23/nginx/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/23/nginx/</guid>
+      <pubDate>Fri, 23 Jul 2021 03:40:44 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;nginx简介&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#nginx简介&quot;&gt;&lt;/a&gt; Nginx简介&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;2000年地洞，c语言编写&lt;/li&gt;
+&lt;li&gt;2004年开源&lt;/li&gt;
+&lt;li&gt;2011年成立商业公司</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/linux/">linux</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/linux/nginx/">nginx</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/nginx/">nginx</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>vue学习</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/23/vue/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/23/vue/</guid>
+      <pubDate>Fri, 23 Jul 2021 03:40:44 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;Object.freeze()，这会阻止修改现有的 property，也意味着响应系统无法再追踪变化。&lt;/p&gt;
+&lt;h3 id=&quot;1-export&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-export&quot;&gt;&lt;/a&gt; 1. export&lt;/h</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/vue/">vue</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>Java 8学习</title>
+      <link>https://xiaoyuge5201.github.io/2020/04/23/java8%E7%89%B9%E6%80%A7/</link>
+      <guid>https://xiaoyuge5201.github.io/2020/04/23/java8%E7%89%B9%E6%80%A7/</guid>
+      <pubDate>Thu, 23 Apr 2020 06:04:02 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;1-optional&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-optional&quot;&gt;&lt;/a&gt; 1. Optional&lt;/h2&gt;
+&lt;h3 id=&quot;11-optional构造方式&quot;&gt;&lt;a class=&quot;markdownIt-Anch</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/">java</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/Optional/">Optional</category>
+      
+      
+    </item>
+    
+  </channel>
+</rss>

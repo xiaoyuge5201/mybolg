@@ -239,8 +239,8 @@ profile:
       date: 2021
   # My Personal Projects
   projects:
-    cofess/gulp-startpro: https://github.com/cofess/gulp-startpro
-    cofess/hexo-theme-pure: https://github.com/cofess/hexo-theme-pure
+    xiaoyuge5201/utils-spring-boot-starter: https://github.com/xiaoyuge5201/utils-spring-boot-starter
+    xiaoyuge5201/static-file-modify-online: https://github.com/xiaoyuge5201/static-file-modify-online
 
 local_search:
   enable: true

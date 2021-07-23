@@ -210,7 +210,7 @@ profile:
     HTML+CSS: ★★★☆☆
     Bootstrap: ★★★☆☆
     ThinkPHP: ★★★☆☆
-    平面设计: ★★★☆☆
+    UI: ★★★☆☆
   # My Personal Links
   links:
     Github: https://github.com/cofess
@@ -225,12 +225,7 @@ profile:
     - 前端重构
     - Web前端
     - 网页重构
-  # My Personal Works
-  works:
-    name:
-      link: http://www.example.com
-      date: 2016
   # My Personal Projects
   projects:
-    cofess/gulp-startpro: https://github.com/cofess/gulp-startpro
-    cofess/hexo-theme-pure: https://github.com/cofess/hexo-theme-pure
+    xiaoyuge5201/utils-spring-boot-starter: https://github.com/xiaoyuge5201/utils-spring-boot-starter
+    xiaoyuge5201/static-file-modify-online: https://github.com/xiaoyuge5201/static-file-modify-online
