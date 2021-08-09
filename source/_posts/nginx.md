@@ -1,11 +1,11 @@
 ---
-title: nginx安装.md
+title: nginx安装
 tags: nginx
-categories: 
-- linux
-- nginx
+categories:
+  - linux
+  - nginx
 comments: false
-translate_title: nginx-installmd
+translate_title: nginx-installation
 date: 2021-07-23 11:40:44
 ---
 # Nginx简介
