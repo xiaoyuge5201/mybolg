@@ -1,7 +1,9 @@
 ---
 title: mysql事物
 tags: mysql
-categories: mysql
+categories:
+- 数据库
+- mysql
 comments: false
 translate_title: mysql-things
 date: 2021-07-23 16:00:57

@@ -8,7 +8,8 @@ date: 2020-04-23 14:04:02
 ---
 
 ## 1. Optional
-
+Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException)。
+本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空
 ### 1.1. optional构造方式
 
 - Optional.of(T)

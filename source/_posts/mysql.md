@@ -1,8 +1,10 @@
 ---
 title: mysql知识总结
 tags: mysql
+categories:
+- 数据库
+- mysql
 comments: false
-categories: mysql
 translate_title: mysql-knowledge-summary
 date: 2021-07-23 16:00:57
 ---

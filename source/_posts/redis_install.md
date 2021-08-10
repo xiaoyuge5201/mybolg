@@ -2,7 +2,7 @@
 title: Linux环境下安装Redis
 tags: redis
 categories:
-  - linux
+  - 中间件
   - redis
 comments: false
 translate_title: install-redis-in-linux
