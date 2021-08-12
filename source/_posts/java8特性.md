@@ -1,6 +1,6 @@
 ---
 title: Java 8学习
-tags: Optional
+tags: java
 categories: java
 comments: false
 translate_title: java-8-learning

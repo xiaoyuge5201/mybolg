@@ -42,44 +42,44 @@ commit;
 数据并发的三大问题其实都是数据库读一致性问题，必须有数据库提供一定的事务隔离机制来解决。
 
 ### 脏读
-![image-20200727224117281](./mysql/image-20201202210510525.png)
+![image-20200727224117281](./mysql-transcation/image-20201202210510525.png)
 
 ### 不可重复读
-![image-20200727224117281](./mysql/image-20201202210235089.png)
+![image-20200727224117281](./mysql-transcation/image-20201202210235089.png)
 
 
 
 ### 幻读
-![image-20200727224117281](./mysql/image-20201202210357906.png)
+![image-20200727224117281](./mysql-transcation/image-20201202210357906.png)
 
 
 ## 事务隔离级别
 
 http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt
-![image-20200727224117281](./mysql/image-20201202210817094.png)
-![image-20200727224117281](./mysql/image-20201202211406282.png)
+![image-20200727224117281](./mysql-transcation/image-20201202210817094.png)
+![image-20200727224117281](./mysql-transcation/image-20201202211406282.png)
 
-![image-20201202211752764](./mysql/image-20201202211752764.png)
+![image-20201202211752764](./mysql-transcation/image-20201202211752764.png)
 
 ### MVCC思想
 
-![image-20201202212103393](./mysql/image-20201202212103393.png)
+![image-20201202212103393](./mysql-transcation/image-20201202212103393.png)
 
 #### Read View（一致性试图）
 
 存储内容
 
-![image-20201202213520136](./mysql/image-20201202213520136.png)
+![image-20201202213520136](./mysql-transcation/image-20201202213520136.png)
 
 
 
 #### Read View判断规则
 
-![image-20201202213757692](./mysql/image-20201202213757692.png)
+![image-20201202213757692](./mysql-transcation/image-20201202213757692.png)
 
 #### RC与RR read View 的区别
 
-![image-20201202214418001](./mysql/image-20201202214418001.png)
+![image-20201202214418001](./mysql-transcation/image-20201202214418001.png)
 
 所以RC解决不了脏读的问题
 
@@ -98,7 +98,7 @@ MyiSAM支持行锁
 
 ## 表锁
 
-![image-20201202214957559](./mysql/image-20201202214957559.png)
+![image-20201202214957559](./mysql-transcation/image-20201202214957559.png)
 
 一个事务能够给一张表加上锁的前提是：没有其他任何一个事务锁定了这张表的任意一行数据。如果没有意向锁的话，那么加表锁需要扫描表中的每行数据，大大的浪费时间；
 
@@ -108,13 +108,13 @@ MyiSAM支持行锁
 
 ### 共享锁shared locks
 
-![image-20201202215350319](./mysql/image-20201202215350319.png)
+![image-20201202215350319](./mysql-transcation/image-20201202215350319.png)
 
 
 
 ### 排它锁Exclusive locks
 
-![image-20201202215717524](./mysql/image-20201202215717524.png)
+![image-20201202215717524](./mysql-transcation/image-20201202215717524.png)
 
 
 
@@ -126,30 +126,30 @@ MyiSAM支持行锁
 
 加锁一定要加上条件，不然会锁表
 
-![image-20201202222250939](./mysql/image-20201202222250939.png)
+![image-20201202222250939](./mysql-transcation/image-20201202222250939.png)
 
 ### 记录锁Rcord Lock 锁定记录
 
-![image-20201202222823984](./mysql/image-20201202222823984.png)
+![image-20201202222823984](./mysql-transcation/image-20201202222823984.png)
 
 ### 间隙锁Gap Lock 锁定范围
 
 专门用于阻塞插入，间隙锁如果没有命中的话，会锁定最后一个值到正无穷，那么在最后一个值和正无穷之间的插入都不能成功。
 
-![image-20201202222914087](./mysql/image-20201202222914087.png)
+![image-20201202222914087](./mysql-transcation/image-20201202222914087.png)
 
 ### 临健锁Next-key Lock ：锁定范围加记录
 
-![image-20201202223655445](./mysql/image-20201202223655445.png)
+![image-20201202223655445](./mysql-transcation/image-20201202223655445.png)
 
 **为了解决幻读的问题**
 
 ### 事务隔离级别的实现
 
-![image-20201202224136052](./mysql/image-20201202224136052.png)
+![image-20201202224136052](./mysql-transcation/image-20201202224136052.png)
 
 ### 事务隔离级别的选择
 
-![image-20201202224412832](./mysql/image-20201202224412832.png)
+![image-20201202224412832](./mysql-transcation/image-20201202224412832.png)
 
 
