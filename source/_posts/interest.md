@@ -5,10 +5,10 @@ comments: false
 translate_title: common-interesting-questions-in-interviews
 date: 2021-06-14 10:09:15
 ---
-###8升、5升、3升水桶各一个,如何分成两个4升
+### 8升、5升、3升水桶各一个,如何分成两个4升
 ![分成两个4升](./interest/3_5_8.png)
 
-###以面向对象的思想设计长方形和正方形
+### 以面向对象的思想设计长方形和正方形
 - 方式1：设计接口，然后长方形和正方形各自实现这个接口
 ```java
 //形状类：结算面积和周长
@@ -72,7 +72,7 @@ public class Square extends Rectangle{
 }
 ```
 
-###java使用递归计算1+2+3+...+n之间的和
+### java使用递归计算1+2+3+...+n之间的和
 ```java
 public class SumNumber {
 
@@ -90,7 +90,7 @@ public class SumNumber {
 }
 ```
 
-###java读取一篇英文文章，并输出其中出现单词次数最多的3个单词以及次数
+### java读取一篇英文文章，并输出其中出现单词次数最多的3个单词以及次数
 文件文章中存在,.以及空格
 - 读取文件内容
 - 对文件进行内容匹配
