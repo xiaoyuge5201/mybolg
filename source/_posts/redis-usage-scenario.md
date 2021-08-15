@@ -1,12 +1,12 @@
 ---
 title: redis常见使用场景
-date: 2021-08-14 17:51:30
 tags: redis
 categories:
-    - 中间件
-    - redis
+  - 中间件
+  - redis
 comments: false
-translate_title: redis usage scenario
+translate_title: common-usage-scenarios-of-redis
+date: 2021-08-14 17:51:30
 ---
 ##1. 缓存
 String类型

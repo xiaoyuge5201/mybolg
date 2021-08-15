@@ -1,12 +1,12 @@
 ---
 title: MVCC多版本并发控制
-date: 2021-08-14 11:03:40
 tags: mysql
 categories:
-- 数据库
-- mvcc
-comments: false 
-translate_title: mysql-knowledge-summary
+  - 数据库
+  - mvcc
+comments: false
+translate_title: mvcc-multiversion-concurrency-control
+date: 2021-08-14 11:03:40
 ---
 ###1. MVCC
 全称Multi-Version Concurrency Control即多版本并发控制。MVCC是一种并发控制的方法，一般在数据库管理系统中，实现对数据库的并发访问，在编程语言中是心啊事务内存。

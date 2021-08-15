@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xiaoyuge5201.github.io/2021/08/11/cache-consistency/</loc>
+    <lastmod>2021-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://xiaoyuge5201.github.io/2021/08/14/redis-usage-scenario/</loc>
+    <lastmod>2021-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://xiaoyuge5201.github.io/2021/08/14/mvcc/</loc>
+    <lastmod>2021-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://xiaoyuge5201.github.io/2021/06/14/interest/</loc>
+    <lastmod>2021-08-14</lastmod>
+  </url>
+  <url>
     <loc>https://xiaoyuge5201.github.io/2021/07/24/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%81/</loc>
     <lastmod>2021-08-12</lastmod>
   </url>
