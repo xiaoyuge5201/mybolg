@@ -117,7 +117,7 @@ social:
 # Deployment
 deploy:
   type: git
-  repo: https://github.com/xiaoyuge5201/xiaoyuge5201.github.io.git
+  repo: git@github.com:xiaoyuge5201/xiaoyuge5201.github.io.git
   branch: master
 
 feed:
