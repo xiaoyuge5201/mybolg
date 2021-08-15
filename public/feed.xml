@@ -15,8 +15,207 @@
     <atom:link href="https://xiaoyuge5201.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     
     <description>小余哥个人博客，致力于分享一些技术教程和有趣的技术实践，以及日常踩坑记录。</description>
-    <pubDate>Fri, 23 Jul 2021 08:43:38 GMT</pubDate>
+    <pubDate>Sun, 15 Aug 2021 07:41:26 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Java守护线程和非守护线程</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/15/thread-01/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/15/thread-01/</guid>
+      <pubDate>Sun, 15 Aug 2021 06:14:56 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;用户线程：我们平常创建的普通线程。&lt;/p&gt;
+&lt;p&gt;守护线程：用来服务于用户线程；不需要上层逻辑介入&lt;/p&gt;
+&lt;p&gt;java线程分为守护线程和非守护线程，当java jvm检测主线程或其他子线程执行完之后，守护线程也会马上停止执行，我们可以使用Thread.setDaemon</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/">java</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/Thread/">Thread</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/java/">java</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>redis常见使用场景</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/14/redis-usage-scenario/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/14/redis-usage-scenario/</guid>
+      <pubDate>Sat, 14 Aug 2021 09:51:30 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;1-缓存&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-缓存&quot;&gt;&lt;/a&gt; 1. 缓存&lt;/h2&gt;
+&lt;p&gt;String类型&lt;br&gt;
+例如：热点数据缓存、对象缓存、全页缓存可以提升热点数据的访问效率&lt;/p&gt;
+&lt;h2 id=&quot;2-数据共享分</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/">redis</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/redis/">redis</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>MVCC多版本并发控制</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/14/mvcc/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/14/mvcc/</guid>
+      <pubDate>Sat, 14 Aug 2021 03:03:40 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h3 id=&quot;1-mvcc&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-mvcc&quot;&gt;&lt;/a&gt; 1. MVCC&lt;/h3&gt;
+&lt;p&gt;全称Multi-Version Concurrency Control即多版本并发控制。MVCC是一种并发控制的方法，</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mvcc/">mvcc</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/mysql/">mysql</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>java缓存一致性问题</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/11/cache-consistency/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/11/cache-consistency/</guid>
+      <pubDate>Wed, 11 Aug 2021 05:31:52 GMT</pubDate>
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/">redis</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/redis/">redis</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>volatile关键字</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/02/volatile/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/02/volatile/</guid>
+      <pubDate>Mon, 02 Aug 2021 10:20:38 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;1volatile作用&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1volatile作用&quot;&gt;&lt;/a&gt; 1.volatile作用&lt;/h2&gt;
+&lt;p&gt;volatile保证有序性，可见性，不能保证原子性&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;禁止指令重</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/">java</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/%E9%9D%A2%E8%AF%95/">面试</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/%E9%9D%A2%E8%AF%95/">面试</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>JAVA内存泄漏排查</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/01/outOfMemoryError/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/01/outOfMemoryError/</guid>
+      <pubDate>Sun, 01 Aug 2021 11:25:57 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;1内存溢出&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1内存溢出&quot;&gt;&lt;/a&gt; 1.内存溢出&lt;/h2&gt;
+&lt;p&gt;java.lang.OutOfMemoryError：是指程序在申请内存是，没有足够的内存克难攻坚供其使用，出现OutOfM</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/">java</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/%E9%9D%A2%E8%AF%95/">面试</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/">内存溢出</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>JAVA类加载过程</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/31/classLoad/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/31/classLoad/</guid>
+      <pubDate>Sat, 31 Jul 2021 03:04:02 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;1类加载机制&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1类加载机制&quot;&gt;&lt;/a&gt; 1.类加载机制&lt;/h2&gt;
+&lt;p&gt;JVM将类描述数据从.class文件中加载到内存，并对数据进行解析、初始化，最终形成被JVM直接使用的Java类型；类</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/">java</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/ClassLoader/">ClassLoader</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>mysql数据库锁</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/24/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%81/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/24/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%94%81/</guid>
+      <pubDate>Sat, 24 Jul 2021 08:57:10 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;当数据库有事物的时候，可能会产生数据的不一致，这时就需要一些机制来保证访问的次序，这就是锁的机制；&lt;br&gt;
+&lt;strong&gt;锁的作用&lt;/strong&gt;：用于挂你对共享资源的并发访问，保证数据库的完整性和一致性。&lt;br&gt;
+##1. 不同引擎的锁以及锁分类&lt;br&gt;
+&lt;stron</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/mysql/">mysql</category>
+      
+      
+    </item>
     
     <item>
       <title>mycat学习</title>
@@ -42,6 +241,31 @@
     </item>
     
     <item>
+      <title>mysql事物</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/23/mysql-transcation/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/23/mysql-transcation/</guid>
+      <pubDate>Fri, 23 Jul 2021 08:00:57 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;事务的定义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#事务的定义&quot;&gt;&lt;/a&gt; 事务的定义&lt;/h2&gt;
+&lt;p&gt;事务是数据管理系统DBMS执行过程中的一个&lt;strong&gt;逻辑单位&lt;/strong&gt;，有一个有限的数据库&lt;strong&gt;操作序</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/mysql/">mysql</category>
+      
+      
+    </item>
+    
+    <item>
       <title>mysql知识总结</title>
       <link>https://xiaoyuge5201.github.io/2021/07/23/mysql/</link>
       <guid>https://xiaoyuge5201.github.io/2021/07/23/mysql/</guid>
@@ -56,30 +280,9 @@
       
       
       
-      <category domain="https://xiaoyuge5201.github.io/categories/mysql/">mysql</category>
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
       
-      
-      <category domain="https://xiaoyuge5201.github.io/tags/mysql/">mysql</category>
-      
-      
-    </item>
-    
-    <item>
-      <title>mysql事物</title>
-      <link>https://xiaoyuge5201.github.io/2021/07/23/mysql%E4%BA%8B%E5%8A%A1/</link>
-      <guid>https://xiaoyuge5201.github.io/2021/07/23/mysql%E4%BA%8B%E5%8A%A1/</guid>
-      <pubDate>Fri, 23 Jul 2021 08:00:57 GMT</pubDate>
-      
-        
-        
-      <description>&lt;h2 id=&quot;事务的定义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#事务的定义&quot;&gt;&lt;/a&gt; 事务的定义&lt;/h2&gt;
-&lt;p&gt;事务是数据管理系统DBMS执行过程中的一个&lt;strong&gt;逻辑单位&lt;/strong&gt;，有一个有限的数据库&lt;strong&gt;操作序</description>
-        
-      
-      
-      
-      
-      <category domain="https://xiaoyuge5201.github.io/categories/mysql/">mysql</category>
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</category>
       
       
       <category domain="https://xiaoyuge5201.github.io/tags/mysql/">mysql</category>
@@ -130,13 +333,13 @@
       
       
       
-      <category domain="https://xiaoyuge5201.github.io/tags/elasticSearch-kibana/">elasticSearch,kibana</category>
+      <category domain="https://xiaoyuge5201.github.io/tags/ELK/">ELK</category>
       
       
     </item>
     
     <item>
-      <title>nginx安装.md</title>
+      <title>nginx安装</title>
       <link>https://xiaoyuge5201.github.io/2021/07/23/nginx/</link>
       <guid>https://xiaoyuge5201.github.io/2021/07/23/nginx/</guid>
       <pubDate>Fri, 23 Jul 2021 03:40:44 GMT</pubDate>
@@ -189,15 +392,117 @@
     </item>
     
     <item>
-      <title>Java 8学习</title>
-      <link>https://xiaoyuge5201.github.io/2020/04/23/java8%E7%89%B9%E6%80%A7/</link>
-      <guid>https://xiaoyuge5201.github.io/2020/04/23/java8%E7%89%B9%E6%80%A7/</guid>
-      <pubDate>Thu, 23 Apr 2020 06:04:02 GMT</pubDate>
+      <title>springCloud之FeignClient访问微服务接口缓慢</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/03/bug-sprigCloud/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/03/bug-sprigCloud/</guid>
+      <pubDate>Sat, 03 Jul 2021 09:08:10 GMT</pubDate>
       
         
         
-      <description>&lt;h2 id=&quot;1-optional&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-optional&quot;&gt;&lt;/a&gt; 1. Optional&lt;/h2&gt;
-&lt;h3 id=&quot;11-optional构造方式&quot;&gt;&lt;a class=&quot;markdownIt-Anch</description>
+      <description>&lt;h3 id=&quot;问题描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#问题描述&quot;&gt;&lt;/a&gt; 问题描述&lt;/h3&gt;
+&lt;p&gt;逻辑是A服务调用B服务(AB在同一个局域网内)。 经过反复测试，有一个访问缓慢的现象，具体表现为：&lt;br&gt;
+程序启动第一次访问初始化</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E9%97%AE%E9%A2%98%E7%82%B9/">问题点</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E9%97%AE%E9%A2%98%E7%82%B9/sprigCloud/">sprigCloud</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/%E9%97%AE%E9%A2%98%E7%82%B9/">问题点</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>ConcurrentHashMap线程安全</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/02/ConcurrentHashMap/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/02/ConcurrentHashMap/</guid>
+      <pubDate>Fri, 02 Jul 2021 08:17:29 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;##1. jdk1.7 ConcurrentHashMap&lt;br&gt;
+jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成&lt;br&gt;
+&lt;img src=&quot;/2021/07/02/ConcurrentHashMap/01.pn</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/">java</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/%E9%9D%A2%E8%AF%95/">面试</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/%E9%9D%A2%E8%AF%95/">面试</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>常见sql优化方式</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/01/sql-01/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/01/sql-01/</guid>
+      <pubDate>Thu, 01 Jul 2021 08:00:57 GMT</pubDate>
+      
+        
+        
+      <description>&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：&lt;/</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/mysql/">mysql</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>面试常见的趣味题</title>
+      <link>https://xiaoyuge5201.github.io/2021/06/14/interest/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/06/14/interest/</guid>
+      <pubDate>Mon, 14 Jun 2021 02:09:15 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h3 id=&quot;8升-5升-3升水桶各一个如何分成两个4升&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#8升-5升-3升水桶各一个如何分成两个4升&quot;&gt;&lt;/a&gt; 8升、5升、3升水桶各一个,如何分成两个4升&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/202</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E8%B6%A3%E5%91%B3/">趣味</category>
+      
+      
+      
+    </item>
+    
+    <item>
+      <title>Java内部类初始化</title>
+      <link>https://xiaoyuge5201.github.io/2021/06/01/java-inner-class-01/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/06/01/java-inner-class-01/</guid>
+      <pubDate>Mon, 31 May 2021 16:00:00 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h3 id=&quot;1-在同个java文件中但不是内部类&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-在同个java文件中但不是内部类&quot;&gt;&lt;/a&gt; 1. 在同个java文件中，但不是内部类&lt;/h3&gt;
+&lt;figure class=&quot;highlight </description>
         
       
       
@@ -206,7 +511,108 @@
       <category domain="https://xiaoyuge5201.github.io/categories/java/">java</category>
       
       
-      <category domain="https://xiaoyuge5201.github.io/tags/Optional/">Optional</category>
+      <category domain="https://xiaoyuge5201.github.io/tags/java/">java</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>Linux环境下安装Redis</title>
+      <link>https://xiaoyuge5201.github.io/2021/05/13/redis_install/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/05/13/redis_install/</guid>
+      <pubDate>Thu, 13 May 2021 05:40:44 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h5 id=&quot;1-安装gcc&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-安装gcc&quot;&gt;&lt;/a&gt; 1. 安装gcc&lt;/h5&gt;
+   &lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gu</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/">redis</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/redis/">redis</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>在线修改静态文件</title>
+      <link>https://xiaoyuge5201.github.io/2021/05/13/%E5%9C%A8%E7%BA%BF%E4%BF%AE%E6%94%B9%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/05/13/%E5%9C%A8%E7%BA%BF%E4%BF%AE%E6%94%B9%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6/</guid>
+      <pubDate>Thu, 13 May 2021 05:40:44 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;项目运行时，如果需要修改某个css、js、html等文件的时候，需要自己连接到服务器然后修改，更有甚者需要连接vpn、堡垒机等等，特别烦！！！！于是弄了一个在线修改静态文件的工具，在此记录一下。&lt;/p&gt;
+&lt;h4 id=&quot;1-引入pom&quot;&gt;&lt;a class=&quot;markdown</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/">自定义工具</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>Java线程的声明周期状态</title>
+      <link>https://xiaoyuge5201.github.io/2020/06/02/thread-status/</link>
+      <guid>https://xiaoyuge5201.github.io/2020/06/02/thread-status/</guid>
+      <pubDate>Tue, 02 Jun 2020 08:04:02 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;&lt;img src=&quot;/2020/06/02/thread-status/01.jpg&quot; alt=&quot;线程的状态&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;新建(NEW)&lt;/strong&gt;：新创建了一个线程对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/">java</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/Thread/">Thread</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/java/">java</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>Java 8学习</title>
+      <link>https://xiaoyuge5201.github.io/2020/04/23/java8%E7%89%B9%E6%80%A7/</link>
+      <guid>https://xiaoyuge5201.github.io/2020/04/23/java8%E7%89%B9%E6%80%A7/</guid>
+      <pubDate>Thu, 23 Apr 2020 06:04:02 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;1-optional&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-optional&quot;&gt;&lt;/a&gt; 1. Optional&lt;/h2&gt;
+&lt;p&gt;Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerExcepti</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/">java</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/java/">java</category>
       
       
     </item>
