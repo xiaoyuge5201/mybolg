@@ -1,5 +1,5 @@
 ---
-title: mysql事物
+title: mysql事务
 tags: mysql
 categories:
 - 数据库
@@ -14,9 +14,9 @@ date: 2021-07-23 16:00:57
 
 ## 事务四大特性
 
-1.  原子性atomicity：依赖undolog做到全部失败
-2.  隔离性lsolation：实现方式LBCC 和 MVCC
-3.  持久性durability ：实现方式redolog和double write
+1.  原子性atomicity：依赖undo log做到全部失败
+2.  隔离性isolation：实现方式LBCC 和 MVCC
+3.  持久性durability ：实现方式redo log和double write
 4.  一致性consistency：通过上面的三种方式实现
 
 数据恢复：

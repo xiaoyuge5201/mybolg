@@ -141,4 +141,18 @@ public class WordCount {
 }
 ```
 
+### java 获取字符串第一次出现重复的字符
+```java
+public static int findDuplicate(String str){
+    char[] chars = str.toCharArray();
+    Set<Character> uniqueChars = new HashSet(chars.length,1);
+    for (int i = 0; i < chars.length; i++) {
+        if (!uniqueChars.add(chars[i])){
+            return i;
+        }
+    }
+    return -1;
+}
+```
+
 
