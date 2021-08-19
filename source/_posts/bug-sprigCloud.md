@@ -1,6 +1,6 @@
 ---
 title: springCloud之FeignClient访问微服务接口缓慢
-translate_title: springclouds-feignclient-is-slow-to-access-the-microservice-interface
+translate_title: feignclient-of-springcloud-is-slow-to-access-the-microservice-interface
 tags: 问题点
 categories:
   - 问题点

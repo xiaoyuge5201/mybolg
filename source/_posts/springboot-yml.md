@@ -1,12 +1,12 @@
 ---
 title: springboot读取yml配置的方式
-date: 2021-08-18 21:41:24
 tags: springboot
 categories:
-    - 微服务
-    - springboot
+  - 微服务
+  - springboot
 comments: false
-translate_title: install-redis
+translate_title: how-springboot-reads-yml-configuration
+date: 2021-08-18 21:41:24
 ---
 springboot项目中默认的配置文件是application.properties；
 ### 1.yml文件规则

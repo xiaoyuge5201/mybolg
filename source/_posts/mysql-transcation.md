@@ -2,10 +2,10 @@
 title: mysql事务
 tags: mysql
 categories:
-- 数据库
-- mysql
+  - 数据库
+  - mysql
 comments: false
-translate_title: mysql-things
+translate_title: mysql-transaction
 date: 2021-07-23 16:00:57
 ---
 ## 事务的定义
