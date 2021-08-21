@@ -14,7 +14,7 @@ springboot项目中默认的配置文件是application.properties；
 - 不支持tab缩进
 - 可以使用"_"或"-"消协字母代替大写字母；如userName 与user-name， user_name含义是一样的（宽松绑定原则 relaxed binding）; key: value格式书写，value前面有个空格
 
-###2. 数据格式
+### 2. 数据格式
 - 普通的值（数字，字符串，布尔）如：
     ```yaml
     port: 123      
