@@ -15,8 +15,81 @@
     <atom:link href="https://xiaoyuge5201.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     
     <description>小余哥个人博客，致力于分享一些技术教程和有趣的技术实践，以及日常踩坑记录。</description>
-    <pubDate>Sun, 15 Aug 2021 07:41:26 GMT</pubDate>
+    <pubDate>Sat, 21 Aug 2021 08:38:01 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>mysql索引</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/20/mysql-index/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/20/mysql-index/</guid>
+      <pubDate>Fri, 20 Aug 2021 07:12:00 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;拿汉语字典的目录页（索引）打比方，我们可以按拼音、笔画、偏旁部首等排序的目录（索引）快速查找到需要的字。&lt;br&gt;
+索引分单列索引和组合索引。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单列索引，即一个索引只包含单个列，一个表可以有多个单列索引，但这不是组合索引。&lt;/li&gt;
+&lt;li&gt;组合索引</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/mysql/">mysql</category>
+      
+      
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://xiaoyuge5201.github.io/2021/08/19/algorithm/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/19/algorithm/</guid>
+      <pubDate>Thu, 19 Aug 2021 14:54:43 GMT</pubDate>
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/algorithm/">algorithm</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>springboot读取yml配置的方式</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/18/springboot-yml/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/18/springboot-yml/</guid>
+      <pubDate>Wed, 18 Aug 2021 13:41:24 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;springboot项目中默认的配置文件是application.properties；&lt;/p&gt;
+&lt;h3 id=&quot;1yml文件规则&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1yml文件规则&quot;&gt;&lt;/a&gt; 1.yml文件规则&lt;/h3&gt;
+&lt;ul&gt;</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/springboot/">springboot</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/springboot/">springboot</category>
+      
+      
+    </item>
     
     <item>
       <title>Java守护线程和非守护线程</title>
@@ -241,7 +314,7 @@
     </item>
     
     <item>
-      <title>mysql事物</title>
+      <title>mysql事务</title>
       <link>https://xiaoyuge5201.github.io/2021/07/23/mysql-transcation/</link>
       <guid>https://xiaoyuge5201.github.io/2021/07/23/mysql-transcation/</guid>
       <pubDate>Fri, 23 Jul 2021 08:00:57 GMT</pubDate>

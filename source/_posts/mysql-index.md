@@ -126,7 +126,7 @@ EXPLAIN SELECT * FROM test_a WHERE name = '1#'
 EXPLAIN SELECT * FROM test_a WHERE num = '001'
 ```
 
-### 3.2 创建联合索引选择规则
+### 3.2 创建组合索引选择规则
 - 经常用的列优先（最左匹配原则）
 - 离散度高的列优先（离散度高原则）
 - 宽度小的列优先（最少空间原则）
