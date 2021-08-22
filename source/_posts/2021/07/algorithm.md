@@ -1,9 +1,9 @@
 ---
-title: 每日一算--二分查找
+title: 二分查找
 tags: algorithm
 categories: 算法
 comments: false
-translate_title: ''
+translate_title: binary-search
 date: 2021-08-19 22:54:43
 ---
 二分法查找是一种基于比较目标值和数组中间元素的算法

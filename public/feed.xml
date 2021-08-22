@@ -15,8 +15,23 @@
     <atom:link href="https://xiaoyuge5201.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     
     <description>小余哥个人博客，致力于分享一些技术教程和有趣的技术实践，以及日常踩坑记录。</description>
-    <pubDate>Sat, 21 Aug 2021 08:38:01 GMT</pubDate>
+    <pubDate>Sun, 22 Aug 2021 05:15:12 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>algoright_2</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/22/algoright-2/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/22/algoright-2/</guid>
+      <pubDate>Sun, 22 Aug 2021 05:15:12 GMT</pubDate>
+      
+      
+      
+      
+      
+      
+      <comments>https://xiaoyuge5201.github.io/2021/08/22/algoright-2/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>mysql索引</title>
@@ -47,17 +62,25 @@
     </item>
     
     <item>
-      <title></title>
+      <title>每日一算--二分查找</title>
       <link>https://xiaoyuge5201.github.io/2021/08/19/algorithm/</link>
       <guid>https://xiaoyuge5201.github.io/2021/08/19/algorithm/</guid>
       <pubDate>Thu, 19 Aug 2021 14:54:43 GMT</pubDate>
       
+        
+        
+      <description>&lt;p&gt;二分法查找是一种基于比较目标值和数组中间元素的算法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果目标值 = 中间值，则找到目标值&lt;/li&gt;
+&lt;li&gt;如果目标值 &amp;lt; 中间值，则在左侧继续搜索&lt;/li&gt;
+&lt;li&gt;如果目标值 &amp;gt; 中间值，则在右侧继续搜索&lt;br&gt;
+&lt;img src=</description>
+        
       
       
       
-      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
       
-      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</category>
+      <category domain="https://xiaoyuge5201.github.io/categories/%E7%AE%97%E6%B3%95/">算法</category>
       
       
       <category domain="https://xiaoyuge5201.github.io/tags/algorithm/">algorithm</category>

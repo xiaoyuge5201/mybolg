@@ -68,7 +68,7 @@ date: 2021-07-23 11:40:44
     ./sbin/nginx -t
     ```
 
-    <img src="./nginx/image-20201210101238462.png" alt="image-20201210101238462" style="zoom: 67%;float:right;" />
+    <img src="source/_posts/2021/07/nginx/image-20201210101238462.png" alt="image-20201210101238462" style="zoom: 67%;float:right;" />
 
 6. 配置nginx.conf
 
