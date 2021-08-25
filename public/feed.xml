@@ -69,6 +69,31 @@
     </item>
     
     <item>
+      <title>mysqldumpslow分析慢查询日志</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/21/mysqldumpslow%E5%88%86%E6%9E%90%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/21/mysqldumpslow%E5%88%86%E6%9E%90%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97/</guid>
+      <pubDate>Sat, 21 Aug 2021 08:16:02 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;按照平均查询输出5行慢查询记录&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td clas</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/mysql/">mysql</category>
+      
+      
+    </item>
+    
+    <item>
       <title>mysql索引</title>
       <link>https://xiaoyuge5201.github.io/2021/08/20/mysql-index/</link>
       <guid>https://xiaoyuge5201.github.io/2021/08/20/mysql-index/</guid>
@@ -372,15 +397,15 @@
     </item>
     
     <item>
-      <title>mysql知识总结</title>
-      <link>https://xiaoyuge5201.github.io/2021/07/23/mysql/</link>
-      <guid>https://xiaoyuge5201.github.io/2021/07/23/mysql/</guid>
+      <title>mysql事务</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/23/mysql-transcation/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/23/mysql-transcation/</guid>
       <pubDate>Fri, 23 Jul 2021 08:00:57 GMT</pubDate>
       
         
         
-      <description>&lt;h1 id=&quot;mysql-初识&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#mysql-初识&quot;&gt;&lt;/a&gt; mysql 初识&lt;/h1&gt;
-&lt;h2 id=&quot;1-版本历史&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-版本历</description>
+      <description>&lt;h2 id=&quot;事务的定义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#事务的定义&quot;&gt;&lt;/a&gt; 事务的定义&lt;/h2&gt;
+&lt;p&gt;事务是数据管理系统DBMS执行过程中的一个&lt;strong&gt;逻辑单位&lt;/strong&gt;，有一个有限的数据库&lt;strong&gt;操作序</description>
         
       
       
@@ -397,15 +422,15 @@
     </item>
     
     <item>
-      <title>mysql事务</title>
-      <link>https://xiaoyuge5201.github.io/2021/07/23/mysql-transcation/</link>
-      <guid>https://xiaoyuge5201.github.io/2021/07/23/mysql-transcation/</guid>
+      <title>mysql知识总结</title>
+      <link>https://xiaoyuge5201.github.io/2021/07/23/mysql/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/07/23/mysql/</guid>
       <pubDate>Fri, 23 Jul 2021 08:00:57 GMT</pubDate>
       
         
         
-      <description>&lt;h2 id=&quot;事务的定义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#事务的定义&quot;&gt;&lt;/a&gt; 事务的定义&lt;/h2&gt;
-&lt;p&gt;事务是数据管理系统DBMS执行过程中的一个&lt;strong&gt;逻辑单位&lt;/strong&gt;，有一个有限的数据库&lt;strong&gt;操作序</description>
+      <description>&lt;h1 id=&quot;mysql-初识&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#mysql-初识&quot;&gt;&lt;/a&gt; mysql 初识&lt;/h1&gt;
+&lt;h2 id=&quot;1-版本历史&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-版本历</description>
         
       
       
