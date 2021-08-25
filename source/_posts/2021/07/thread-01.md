@@ -1,6 +1,6 @@
 ---
 title: Java守护线程和非守护线程
-translate_title: java-daemon-and-nondaemon-threads
+translate_title: java-daemon-thread-and-nondaemon
 tags: java
 categories:
   - java

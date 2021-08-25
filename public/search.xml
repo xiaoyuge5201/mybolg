@@ -1,110 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>algoright_2</title>
+    <title>转换成小写字母</title>
     <url>/2021/08/22/algoright-2/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>ConcurrentHashMap线程安全</title>
-    <url>/2021/07/02/ConcurrentHashMap/</url>
-    <content><![CDATA[<p>##1. jdk1.7 ConcurrentHashMap<br>
-jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成<br>
-<img src="/2021/07/02/ConcurrentHashMap/01.png" alt="image-20201210103251475"><br>
-其实就是将HashMap分为多个小HashMap,每个Segment元素维护一个小HashMap,目的是锁分离，本来实现同步，直接可以是对整个HashMap加锁，但是加锁粒度太大，影响并发性能，所以变换成此结构，仅仅对Segment元素加锁，降低锁粒度，提高并发性能</p>
-<p>###1.1 初始化过程<br>
-由于变换成<strong>Segment数组+HashEntry数组</strong>，所以初始化时，需要依次对Segment数组和HashEntry数组初始化</p>
-<ol>
-<li>
-<p>Segment数组初始化</p>
-<p>初始化时，使用右移一位，乘以2的计算方式，保证ssize是2的幂次方，小于指定参数concurrencyLevel的最大2的幂次方</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> sshift = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//记录Segment数组大小</span></span><br><span class="line"><span class="keyword">int</span> ssize = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (ssize &lt; concurrencyLevel) &#123;</span><br><span class="line">    ++sshift;</span><br><span class="line">    ssize &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>HashEntry数组初始化</p>
-<p>跟Segment数组初始化方式相同</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> cap = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(cap &lt; c)&#123;</span><br><span class="line">    cap &lt;&lt;=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="12-put操作"><a class="markdownIt-Anchor" href="#12-put操作"></a> 1.2 put操作</h3>
-<p>对于插入操作，需要两次Hash映射去定位数据存储位置</p>
-<ol>
-<li>首先通过第一次hash过程，定位Segment位置</li>
-<li>然后通过第二次hash过程定位HashEntry位置</li>
-</ol>
-<p>Segment继承ReentrantLock,在数据插入指定HashEntry过程的时候会尝试调用ReentrantLock的tryLock方法获取锁，如果获取成功就直接插入相应位置，如果有线程获取该Segment的锁，当前线程就会以自旋方式去继续调用tryLock方法去获取锁，超过指定次数就挂起，等待唤醒。</p>
-<h3 id="13-get操作"><a class="markdownIt-Anchor" href="#13-get操作"></a> 1.3 get操作</h3>
-<p>也是两次Hash映射，相对于put操作，少了加锁过程</p>
-<h3 id="14-size操作"><a class="markdownIt-Anchor" href="#14-size操作"></a> 1.4 size操作</h3>
-<p>size操作就是计算ConcurrentHashMap的大小，有两种方案</p>
+    <content><![CDATA[<p>实现函数 ToLowerCase()，该函数接收一个字符串参数 str，并将该字符串中的大写字母转换成小写字母，之后返回新的字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例 1：</span><br><span class="line">输入: &quot;Hello&quot;</span><br><span class="line">输出: &quot;hello&quot;</span><br><span class="line"></span><br><span class="line">示例2：</span><br><span class="line">输入: &quot;LOVELY&quot;</span><br><span class="line">输出: &quot;lovely&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="方法一-asccii码"><a class="markdownIt-Anchor" href="#方法一-asccii码"></a> 方法一： ASCCII码</h3>
+<p><strong>解题思路：通过ascii码表操作字符串即可,a和A相差32；</strong></p>
 <ul>
-<li>给每个Segment都加上锁(相当于给整个Map加上锁)，然后计算size返回</li>
-<li>不加锁的模式，尝试多次计算ConcurrentHashMap的size,最多三次，比较前后计算的结果，结果一致就认为当前没有元素加入，计算结果是准确的。(查看计算出size的前后modCount的数值有没有发生变化，modCount的值用于记录元素变化的操作。如put，remove，clear)</li>
+<li>a-z: 97 - 122</li>
+<li>A-Z: 65 - 90</li>
+<li>0-9: 48 - 57</li>
 </ul>
-<h2 id="2-jdk18-concurrenthashmap"><a class="markdownIt-Anchor" href="#2-jdk18-concurrenthashmap"></a> 2. jdk1.8 ConcurrentHashMap</h2>
-<p>jdk1.8ConcurrentHashMap是数组+链表，或者数组+红黑树结构,并发控制使用Synchronized关键字和CAS操作<br>
-<img src="/2021/07/02/ConcurrentHashMap/02.png" alt="jdk1.8 ConcurrentHashMap"></p>
-<h3 id="21关键概念点"><a class="markdownIt-Anchor" href="#21关键概念点"></a> 2.1关键概念点</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">toLowerCase</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (str == <span class="keyword">null</span> || str.length() == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> ch : str.toCharArray()) &#123;</span><br><span class="line">        <span class="comment">// a-z：97-122  A-Z：65-90  0-9：48-57</span></span><br><span class="line">        <span class="keyword">if</span> (ch &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; ch &lt;= <span class="string">&#x27;Z&#x27;</span>) &#123;</span><br><span class="line">            sb.append((<span class="keyword">char</span>)(ch + <span class="number">32</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            sb.append(ch);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">toLowerCase</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (str == <span class="keyword">null</span> || str.length() == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">char</span>[] ch = str.toCharArray();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch[i] &gt;= <span class="string">&#x27;A&#x27;</span> &amp;&amp; ch[i] &lt;= <span class="string">&#x27;Z&#x27;</span>) &#123;</span><br><span class="line">            ch[i] += <span class="number">32</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> String.valueOf(ch);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="方法二-位运算"><a class="markdownIt-Anchor" href="#方法二-位运算"></a> 方法二： 位运算</h3>
+<p><strong>解题思路：</strong></p>
 <ul>
-<li>sizeCtl变量(volatile修饰)<br>
-通过CAS操作+volatile, 控制数组初始化和扩容操作
-<ul>
-<li>-1 代表正在初始化</li>
-<li>-N 前16位记录数组容量，后16位记录扩容线程大小+1，是个负数</li>
-<li>正数0，表示未初始化</li>
-<li>正数，0.75*当前数组大小</li>
+<li>大写变小写、小写变大写：字符 ^= 32;</li>
+<li>大写变小写、小写变小写：字符 |= 32;</li>
+<li>大写变大写、小写变大写：字符 &amp;= 33;</li>
 </ul>
-</li>
-<li>&lt;key,value&gt;键值对，封装为Node对象</li>
-<li>table变量(volatile)：也就是所说的数组，默认为null，默认大小为16的数组，每次扩容时大小总是2的幂次方</li>
-<li>nextTable(volatile):扩容时新生成的数组，大小为table的两倍</li>
-</ul>
-<h3 id="22put函数"><a class="markdownIt-Anchor" href="#22put函数"></a> 2.2put函数</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> putVal(key, value, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>1.putValue函数</strong><br>
-首先调用spread函数，计算hash值，之后进入一个自旋循环过程，直到插入或替换成功，才会返回。如果table未被初始化，则调用initTable进行初始化。之后判断hash映射的位置是否为null,如果为null,直接通过CAS自旋操作，插入元素成功，则直接返回，如果映射的位置值为MOVED(-1),则直接去协助扩容，排除以上条件后，尝试对链头Node节点f加锁，加锁成功后，链表通过尾插遍历，进行插入或替换。红黑树通过查询遍历，进行插入或替换。之后如果当前链表节点数量大于阈值，则调用treeifyBin函数，转换为红黑树最后通过调用addCount,执行CAS操作，更新数组大小，并且判断是否需要进行扩容</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(K key, V value, <span class="keyword">boolean</span> onlyIfAbsent)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (key == <span class="keyword">null</span> || value == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    <span class="comment">//spread函数计算hash值</span></span><br><span class="line">    <span class="keyword">int</span> hash = spread(key.hashCode());</span><br><span class="line">    <span class="keyword">int</span> binCount = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//自旋过程</span></span><br><span class="line">    <span class="keyword">for</span> (Node&lt;K,V&gt;[] tab = table;;) &#123;</span><br><span class="line">        Node&lt;K,V&gt; f; <span class="keyword">int</span> n, i, fh;</span><br><span class="line">        <span class="keyword">if</span> (tab == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            tab = initTable();</span><br><span class="line">        <span class="comment">//判断映射位置节点是否为空</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((f = tabAt(tab, i = (n - <span class="number">1</span>) &amp; hash)) == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (casTabAt(tab, i, <span class="keyword">null</span>,</span><br><span class="line">                         <span class="keyword">new</span> Node&lt;K,V&gt;(hash, key, value, <span class="keyword">null</span>)))</span><br><span class="line">                <span class="keyword">break</span>;                  </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果映射位置节点value==MOVED，说明正在进行扩容操作</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((fh = f.hash) == MOVED)</span><br><span class="line">            tab = helpTransfer(tab, f);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            V oldVal = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">synchronized</span> (f) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tabAt(tab, i) == f) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (fh &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                        binCount = <span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">for</span> (Node&lt;K,V&gt; e = f;; ++binCount) &#123;</span><br><span class="line">                            K ek;</span><br><span class="line">                            <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                                ((ek = e.key) == key ||</span><br><span class="line">                                 (ek != <span class="keyword">null</span> &amp;&amp; key.equals(ek)))) &#123;</span><br><span class="line">                                oldVal = e.val;</span><br><span class="line">                                <span class="keyword">if</span> (!onlyIfAbsent)</span><br><span class="line">                                    e.val = value;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                            Node&lt;K,V&gt; pred = e;</span><br><span class="line">                            <span class="keyword">if</span> ((e = e.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                                pred.next = <span class="keyword">new</span> Node&lt;K,V&gt;(hash, key,</span><br><span class="line">                                                          value, <span class="keyword">null</span>);</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//红黑树结构</span></span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (f <span class="keyword">instanceof</span> TreeBin) &#123;</span><br><span class="line">                        Node&lt;K,V&gt; p;</span><br><span class="line">                        binCount = <span class="number">2</span>;</span><br><span class="line">                        <span class="keyword">if</span> ((p = ((TreeBin&lt;K,V&gt;)f).putTreeVal(hash, key,</span><br><span class="line">                                                       value)) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            oldVal = p.val;</span><br><span class="line">                            <span class="keyword">if</span> (!onlyIfAbsent)</span><br><span class="line">                                p.val = value;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//链表节点数量超过阈值，转为红黑树</span></span><br><span class="line">            <span class="keyword">if</span> (binCount != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD)</span><br><span class="line">                    treeifyBin(tab, i);</span><br><span class="line">                <span class="keyword">if</span> (oldVal != <span class="keyword">null</span>)</span><br><span class="line">                    <span class="keyword">return</span> oldVal;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    addCount(<span class="number">1L</span>, binCount);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>2. spread函数</strong><br>
-spread函数，计算hash值。key的hash值与其高16位相异或，然后与HASH_BITS将最高位置0</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">spread</span><span class="params">(<span class="keyword">int</span> h)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (h ^ (h &gt;&gt;&gt; <span class="number">16</span>)) &amp; HASH_BITS;</span><br><span class="line">    <span class="comment">//HASH_BITS=0x7fffffff</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>3. tableAt函数</strong><br>
-获取最新的tab[i]</p>
-<p><strong>4. casTabAt函数</strong><br>
-通过CAS操作，将值赋值进tab中对应位置</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> &lt;K,V&gt; <span class="function">Node&lt;K,V&gt; <span class="title">tabAt</span><span class="params">(Node&lt;K,V&gt;[] tab, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (Node&lt;K,V&gt;)U.getObjectVolatile(tab, ((<span class="keyword">long</span>)i &lt;&lt; ASHIFT) + ABASE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> &lt;K,V&gt; <span class="function"><span class="keyword">boolean</span> <span class="title">casTabAt</span><span class="params">(Node&lt;K,V&gt;[] tab, <span class="keyword">int</span> i,</span></span></span><br><span class="line"><span class="params"><span class="function">                                        Node&lt;K,V&gt; c, Node&lt;K,V&gt; v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> U.compareAndSwapObject(tab, ((<span class="keyword">long</span>)i &lt;&lt; ASHIFT) + ABASE, c, v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>5. addCount函数</strong><br>
-尝试使用CAS操作，将BASECOUNT加1，操作失败，则说明有其他线程在进行加一操作,发生冲突。之后判断是否需要扩容</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">addCount</span><span class="params">(<span class="keyword">long</span> x, <span class="keyword">int</span> check)</span> </span>&#123;</span><br><span class="line">    CounterCell[] as; <span class="keyword">long</span> b, s;</span><br><span class="line">    <span class="comment">//使用CAS操作，将BASECOUNT加1</span></span><br><span class="line">    <span class="keyword">if</span> ((as = counterCells) != <span class="keyword">null</span> ||</span><br><span class="line">        !U.compareAndSwapLong(<span class="keyword">this</span>, BASECOUNT, b = baseCount, s = b + x)) &#123;</span><br><span class="line">        CounterCell a; <span class="keyword">long</span> v; <span class="keyword">int</span> m;</span><br><span class="line">        <span class="comment">//发生冲突</span></span><br><span class="line">        <span class="keyword">boolean</span> uncontended = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (as == <span class="keyword">null</span> || (m = as.length - <span class="number">1</span>) &lt; <span class="number">0</span> ||</span><br><span class="line">            (a = as[ThreadLocalRandom.getProbe() &amp; m]) == <span class="keyword">null</span> ||</span><br><span class="line">            !(uncontended =</span><br><span class="line">              U.compareAndSwapLong(a, CELLVALUE, v = a.value, v + x))) &#123;</span><br><span class="line">            <span class="comment">//多线程冲突执行</span></span><br><span class="line">            fullAddCount(x, uncontended);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (check &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        s = sumCount();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (check &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        Node&lt;K,V&gt;[] tab, nt; <span class="keyword">int</span> n, sc;</span><br><span class="line">        <span class="comment">//判断是否需要扩容  大于0.75当前数组大小</span></span><br><span class="line">        <span class="keyword">while</span> (s &gt;= (<span class="keyword">long</span>)(sc = sizeCtl) &amp;&amp; (tab = table) != <span class="keyword">null</span> &amp;&amp;</span><br><span class="line">               (n = tab.length) &lt; MAXIMUM_CAPACITY) &#123;</span><br><span class="line">            <span class="keyword">int</span> rs = resizeStamp(n);</span><br><span class="line">            <span class="keyword">if</span> (sc &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">//判断是否需要帮助扩容</span></span><br><span class="line">                <span class="comment">//扩容完成，或者扩容线程达到阈值不需要进行扩容，直接break</span></span><br><span class="line">                <span class="keyword">if</span> ((sc &gt;&gt;&gt; RESIZE_STAMP_SHIFT) != rs || sc == rs + <span class="number">1</span> ||</span><br><span class="line">                    sc == rs + MAX_RESIZERS || (nt = nextTable) == <span class="keyword">null</span> ||</span><br><span class="line">                    transferIndex &lt;= <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="comment">//帮助扩容，扩容线程数+1</span></span><br><span class="line">                <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc, sc + <span class="number">1</span>))</span><br><span class="line">                    transfer(tab, nt);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//进行扩容操作</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc,</span><br><span class="line">                                         (rs &lt;&lt; RESIZE_STAMP_SHIFT) + <span class="number">2</span>))</span><br><span class="line">                transfer(tab, <span class="keyword">null</span>);</span><br><span class="line">            s = sumCount();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="23-inittable函数"><a class="markdownIt-Anchor" href="#23-inittable函数"></a> 2.3 initTable函数</h3>
-<p>进入一个自旋过程，一旦有线程扩容成功，才break</p>
-<ul>
-<li>如果sizeCtl &lt; 0,说明已经有线程正在扩容，所以直接让出线程。</li>
-<li>如果sizeCtl&gt;=0,说明当前没有线程扩容，尝试CAS操作，设置sizeCtl为-1</li>
-<li>设置sizeCtl为-1成功的线程，进行扩容操作，并且将sc更新为数组负载阈值0.75*n</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Node&lt;K,V&gt;[] initTable() &#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; <span class="keyword">int</span> sc;</span><br><span class="line">    <span class="comment">//自旋过程</span></span><br><span class="line">    <span class="keyword">while</span> ((tab = table) == <span class="keyword">null</span> || tab.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((sc = sizeCtl) &lt; <span class="number">0</span>)</span><br><span class="line">            Thread.yield(); </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc, -<span class="number">1</span>)) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || tab.length == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">int</span> n = (sc &gt; <span class="number">0</span>) ? sc : DEFAULT_CAPACITY;</span><br><span class="line">                    <span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">                    Node&lt;K,V&gt;[] nt = (Node&lt;K,V&gt;[])<span class="keyword">new</span> Node&lt;?,?&gt;[n];</span><br><span class="line">                    table = tab = nt;</span><br><span class="line">                    <span class="comment">//0.75*n</span></span><br><span class="line">                    sc = n - (n &gt;&gt;&gt; <span class="number">2</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                sizeCtl = sc;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tab;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="24-统计concurrenthashmap中的元素个数"><a class="markdownIt-Anchor" href="#24-统计concurrenthashmap中的元素个数"></a> 2.4 统计ConCurrentHashMap中的元素个数</h3>
-<p><strong>1. mappingCount函数</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//调用sumCount,获得元素数量</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">mappingCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">long</span> n = sumCount();</span><br><span class="line"><span class="keyword">return</span> (n &lt; <span class="number">0L</span>) ? <span class="number">0L</span> : n; <span class="comment">// ignore transient negative values</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>2. sumCount函数</strong></p>
-<p>baseCount+ counterCells各个元素值，就是元素数量<br>
-其实baseCount就是记录容器数量的，直接放回baseCount不就可以了吗？为什么sumCount()方法中还要遍历counterCells数组，累加对象的值呢？<br>
-其中：counterCells是个全局的变量，表示的是CounterCell类数组。CounterCell是ConcurrentHashmap的内部类，它就是存储一个值。<br>
-JDK1.8中使用一个volatile类型的变量baseCount记录元素的个数，当插入新数据put()或则删除数据remove()时，会通过addCount()方法更新baseCount<br>
-初始化时counterCells为空，在并发量很高时，如果存在两个线程同时执行CAS修改baseCount值，则失败的线程会继续执行方法体中的逻辑，执行fullAddCount(x, uncontended)方法，这个方法其实就是初始化counterCells，并将x的值插入到counterCell类中，而x值一般也就是1或-1，这可以从put()方法中得知。<br>
-这些对象是因为在CAS更新baseCount值时，由于高并发而导致失败，最终将值保存到CounterCell中，放到counterCells里。这也就是为什么sumCount()中需要遍历counterCells数组，sum累加CounterCell.value值了。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">long</span> <span class="title">sumCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    CounterCell[] as = counterCells; CounterCell a;</span><br><span class="line">    <span class="keyword">long</span> sum = baseCount;</span><br><span class="line">        <span class="keyword">if</span> (as != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; as.length; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((a = as[i]) != <span class="keyword">null</span>)</span><br><span class="line">                sum += a.value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>3. CounterCell类</strong><br>
-只存储一个值</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CounterCell</span></span>&#123;</span><br><span class="line">   <span class="keyword">volatile</span> <span class="keyword">long</span> value;</span><br><span class="line">   CountCell(<span class="keyword">long</span> x) &#123;value = x;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>原文链接：<a href="https://blog.csdn.net/zycxnanwang/article/details/105424734">https://blog.csdn.net/zycxnanwang/article/details/105424734</a></p>
+<p>ASCII码表中大写的A是65，小写的a是97，它们的差是32<br>
+65 | 32 转为二进制（按8位来算）可以得到 0100 0001 | 0010 0000 = 0110 0001 = 97 = a</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toLowerCase</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (str == <span class="keyword">null</span> || str.length() == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">char</span>[] ch = str.toCharArray();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">        ch[i] |= <span class="number">32</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> String.valueOf(ch);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>java</category>
-        <category>面试</category>
+        <category>算法</category>
       </categories>
       <tags>
-        <tag>面试</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql行列转置</title>
+    <url>/2021/08/25/mysql%E8%A1%8C%E5%88%97%E8%BD%AC%E7%BD%AE/</url>
+    <content><![CDATA[<p>数据表：<br>
+<img src="/2021/08/25/mysql%E8%A1%8C%E5%88%97%E8%BD%AC%E7%BD%AE/01.png" alt="原始数据"></p>
+<p>行转列结果为：<br>
+<img src="/2021/08/25/mysql%E8%A1%8C%E5%88%97%E8%BD%AC%E7%BD%AE/02.png" alt="转置后结果"><br>
+数据库表语句：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_score(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="keyword">null</span>,  #名字</span><br><span class="line">    Subject <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">not</span> <span class="keyword">null</span>, #科目</span><br><span class="line">    Fraction <span class="keyword">double</span> <span class="keyword">default</span> <span class="number">0</span>  #分数</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `t_score`(name,Subject,Fraction) <span class="keyword">VALUES</span></span><br><span class="line">     (<span class="string">&#x27;王海&#x27;</span>, <span class="string">&#x27;语文&#x27;</span>, <span class="number">86</span>),</span><br><span class="line">     (<span class="string">&#x27;王海&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="number">83</span>),</span><br><span class="line">     (<span class="string">&#x27;王海&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="number">93</span>),</span><br><span class="line">     (<span class="string">&#x27;陶俊&#x27;</span>, <span class="string">&#x27;语文&#x27;</span>, <span class="number">88</span>),</span><br><span class="line">     (<span class="string">&#x27;陶俊&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="number">84</span>),</span><br><span class="line">     (<span class="string">&#x27;陶俊&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="number">94</span>),</span><br><span class="line">     (<span class="string">&#x27;刘可&#x27;</span>, <span class="string">&#x27;语文&#x27;</span>, <span class="number">80</span>),</span><br><span class="line">     (<span class="string">&#x27;刘可&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="number">86</span>),</span><br><span class="line">     (<span class="string">&#x27;刘可&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="number">88</span>),</span><br><span class="line">     (<span class="string">&#x27;李春&#x27;</span>, <span class="string">&#x27;语文&#x27;</span>, <span class="number">89</span>),</span><br><span class="line">     (<span class="string">&#x27;李春&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="number">80</span>),</span><br><span class="line">     (<span class="string">&#x27;李春&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="number">87</span>);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>方法一：使用if <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    name <span class="keyword">as</span> 名字 ,</span><br><span class="line">    <span class="built_in">sum</span>(if(Subject<span class="operator">=</span><span class="string">&#x27;语文&#x27;</span>,Fraction,<span class="number">0</span>)) <span class="keyword">as</span> 语文,</span><br><span class="line">    <span class="built_in">sum</span>(if(Subject<span class="operator">=</span><span class="string">&#x27;数学&#x27;</span>,Fraction,<span class="number">0</span>))<span class="keyword">as</span> 数学, </span><br><span class="line">    <span class="built_in">sum</span>(if(Subject<span class="operator">=</span><span class="string">&#x27;英语&#x27;</span>,Fraction,<span class="number">0</span>))<span class="keyword">as</span> 英语,</span><br><span class="line">    round(<span class="built_in">AVG</span>(Fraction),<span class="number">2</span>) <span class="keyword">as</span> 平均分,</span><br><span class="line">    <span class="built_in">SUM</span>(Fraction) <span class="keyword">as</span> 总分</span><br><span class="line"><span class="keyword">from</span> t_score <span class="keyword">group</span> <span class="keyword">by</span> name</span><br><span class="line"><span class="comment">-- 如果不用求总分的话，不需要下面的union</span></span><br><span class="line"><span class="keyword">union</span>(</span><br><span class="line">    <span class="keyword">select</span> name <span class="keyword">as</span> 名字 , <span class="built_in">sum</span>(语文) Chinese,<span class="built_in">sum</span>(数学) Math,<span class="built_in">sum</span>(英语) English,round(<span class="built_in">AVG</span>(总分),<span class="number">2</span>)<span class="keyword">as</span> 平均分,<span class="built_in">sum</span>(总分) score  <span class="keyword">from</span>(</span><br><span class="line">        <span class="keyword">select</span> <span class="string">&#x27;TOTAL&#x27;</span> <span class="keyword">as</span> name,</span><br><span class="line">        <span class="built_in">sum</span>(if(Subject<span class="operator">=</span><span class="string">&#x27;语文&#x27;</span>,Fraction,<span class="number">0</span>)) <span class="keyword">as</span> 语文,</span><br><span class="line">        <span class="built_in">sum</span>(if(Subject<span class="operator">=</span><span class="string">&#x27;数学&#x27;</span>,Fraction,<span class="number">0</span>))<span class="keyword">as</span> 数学, </span><br><span class="line">        <span class="built_in">sum</span>(if(Subject<span class="operator">=</span><span class="string">&#x27;英语&#x27;</span>,Fraction,<span class="number">0</span>))<span class="keyword">as</span> 英语,</span><br><span class="line">        <span class="built_in">SUM</span>(Fraction) <span class="keyword">as</span> 总分</span><br><span class="line">        <span class="keyword">from</span> t_score <span class="keyword">group</span> <span class="keyword">by</span> Subject </span><br><span class="line">    )t <span class="keyword">GROUP</span> <span class="keyword">BY</span> t.`name`</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li>方法二：使用case <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> name <span class="keyword">as</span> name,</span><br><span class="line"><span class="built_in">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> Subject <span class="operator">=</span> <span class="string">&#x27;语文&#x27;</span> <span class="keyword">then</span> Fraction <span class="keyword">end</span>) <span class="keyword">as</span> Chinese,</span><br><span class="line"><span class="built_in">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> Subject <span class="operator">=</span> <span class="string">&#x27;数学&#x27;</span> <span class="keyword">then</span> Fraction <span class="keyword">end</span>) <span class="keyword">as</span> Math,</span><br><span class="line"><span class="built_in">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> Subject <span class="operator">=</span> <span class="string">&#x27;英语&#x27;</span> <span class="keyword">then</span> Fraction <span class="keyword">end</span>) <span class="keyword">as</span> English,</span><br><span class="line"><span class="built_in">sum</span>(fraction)<span class="keyword">as</span> score</span><br><span class="line"><span class="keyword">from</span> t_score <span class="keyword">group</span> <span class="keyword">by</span> name</span><br><span class="line"><span class="comment">-- 如果不用求总分的话，不需要下面的union</span></span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> name <span class="keyword">as</span> Name,<span class="built_in">sum</span>(Chinese) <span class="keyword">as</span> Chinese,<span class="built_in">sum</span>(Math) <span class="keyword">as</span> Math,<span class="built_in">sum</span>(English) <span class="keyword">as</span> English,<span class="built_in">sum</span>(score) <span class="keyword">as</span> score <span class="keyword">from</span>(</span><br><span class="line">    <span class="keyword">select</span> <span class="string">&#x27;TOTAL&#x27;</span> <span class="keyword">as</span> name,</span><br><span class="line">    <span class="built_in">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> Subject <span class="operator">=</span> <span class="string">&#x27;语文&#x27;</span> <span class="keyword">then</span> Fraction <span class="keyword">end</span>) <span class="keyword">as</span> Chinese,</span><br><span class="line">    <span class="built_in">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> Subject <span class="operator">=</span> <span class="string">&#x27;数学&#x27;</span> <span class="keyword">then</span> Fraction <span class="keyword">end</span>) <span class="keyword">as</span> Math,</span><br><span class="line">    <span class="built_in">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> Subject <span class="operator">=</span> <span class="string">&#x27;英语&#x27;</span> <span class="keyword">then</span> Fraction <span class="keyword">end</span>) <span class="keyword">as</span> English,</span><br><span class="line">    <span class="built_in">sum</span>(fraction)<span class="keyword">as</span> score</span><br><span class="line">    <span class="keyword">from</span> t_score <span class="keyword">group</span> <span class="keyword">by</span> Subject,name)t <span class="keyword">GROUP</span> <span class="keyword">BY</span> t.`name`</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li>方法三：使用with rollup<br>
+在group分组字段的基础上在进行统计数据； <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    <span class="comment">-- coalesce(name,&#x27;TOTAL&#x27;) name,</span></span><br><span class="line">    ifnull(name,<span class="string">&#x27;TOTAL&#x27;</span>) name,</span><br><span class="line">    <span class="built_in">sum</span>(if(Subject<span class="operator">=</span><span class="string">&#x27;语文&#x27;</span>,Fraction,<span class="number">0</span>)) <span class="keyword">as</span> 语文,</span><br><span class="line">    <span class="built_in">sum</span>(if(Subject<span class="operator">=</span><span class="string">&#x27;英语&#x27;</span>,Fraction,<span class="number">0</span>)) <span class="keyword">as</span> 英语,</span><br><span class="line">    <span class="built_in">sum</span>(if(Subject<span class="operator">=</span><span class="string">&#x27;数学&#x27;</span>,Fraction,<span class="number">0</span>))<span class="keyword">as</span> 数学,</span><br><span class="line">    <span class="built_in">sum</span>(Fraction) 总分</span><br><span class="line"><span class="keyword">from</span> t_score <span class="keyword">group</span> <span class="keyword">by</span> name <span class="keyword">with</span> <span class="keyword">rollup</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据库</category>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -212,7 +165,109 @@ JDK1.8中使用一个volatile类型的变量baseCount记录元素的个数，当
       </tags>
   </entry>
   <entry>
-    <title>每日一算--二分查找</title>
+    <title>ConcurrentHashMap线程安全</title>
+    <url>/2021/07/02/ConcurrentHashMap/</url>
+    <content><![CDATA[<p>##1. jdk1.7 ConcurrentHashMap<br>
+jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成<br>
+<img src="/2021/07/02/ConcurrentHashMap/01.png" alt="image-20201210103251475"><br>
+其实就是将HashMap分为多个小HashMap,每个Segment元素维护一个小HashMap,目的是锁分离，本来实现同步，直接可以是对整个HashMap加锁，但是加锁粒度太大，影响并发性能，所以变换成此结构，仅仅对Segment元素加锁，降低锁粒度，提高并发性能</p>
+<p>###1.1 初始化过程<br>
+由于变换成<strong>Segment数组+HashEntry数组</strong>，所以初始化时，需要依次对Segment数组和HashEntry数组初始化</p>
+<ol>
+<li>
+<p>Segment数组初始化</p>
+<p>初始化时，使用右移一位，乘以2的计算方式，保证ssize是2的幂次方，小于指定参数concurrencyLevel的最大2的幂次方</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> sshift = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//记录Segment数组大小</span></span><br><span class="line"><span class="keyword">int</span> ssize = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (ssize &lt; concurrencyLevel) &#123;</span><br><span class="line">    ++sshift;</span><br><span class="line">    ssize &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>HashEntry数组初始化</p>
+<p>跟Segment数组初始化方式相同</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> cap = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>(cap &lt; c)&#123;</span><br><span class="line">    cap &lt;&lt;=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="12-put操作"><a class="markdownIt-Anchor" href="#12-put操作"></a> 1.2 put操作</h3>
+<p>对于插入操作，需要两次Hash映射去定位数据存储位置</p>
+<ol>
+<li>首先通过第一次hash过程，定位Segment位置</li>
+<li>然后通过第二次hash过程定位HashEntry位置</li>
+</ol>
+<p>Segment继承ReentrantLock,在数据插入指定HashEntry过程的时候会尝试调用ReentrantLock的tryLock方法获取锁，如果获取成功就直接插入相应位置，如果有线程获取该Segment的锁，当前线程就会以自旋方式去继续调用tryLock方法去获取锁，超过指定次数就挂起，等待唤醒。</p>
+<h3 id="13-get操作"><a class="markdownIt-Anchor" href="#13-get操作"></a> 1.3 get操作</h3>
+<p>也是两次Hash映射，相对于put操作，少了加锁过程</p>
+<h3 id="14-size操作"><a class="markdownIt-Anchor" href="#14-size操作"></a> 1.4 size操作</h3>
+<p>size操作就是计算ConcurrentHashMap的大小，有两种方案</p>
+<ul>
+<li>给每个Segment都加上锁(相当于给整个Map加上锁)，然后计算size返回</li>
+<li>不加锁的模式，尝试多次计算ConcurrentHashMap的size,最多三次，比较前后计算的结果，结果一致就认为当前没有元素加入，计算结果是准确的。(查看计算出size的前后modCount的数值有没有发生变化，modCount的值用于记录元素变化的操作。如put，remove，clear)</li>
+</ul>
+<h2 id="2-jdk18-concurrenthashmap"><a class="markdownIt-Anchor" href="#2-jdk18-concurrenthashmap"></a> 2. jdk1.8 ConcurrentHashMap</h2>
+<p>jdk1.8ConcurrentHashMap是数组+链表，或者数组+红黑树结构,并发控制使用Synchronized关键字和CAS操作<br>
+<img src="/2021/07/02/ConcurrentHashMap/02.png" alt="jdk1.8 ConcurrentHashMap"></p>
+<h3 id="21关键概念点"><a class="markdownIt-Anchor" href="#21关键概念点"></a> 2.1关键概念点</h3>
+<ul>
+<li>sizeCtl变量(volatile修饰)<br>
+通过CAS操作+volatile, 控制数组初始化和扩容操作
+<ul>
+<li>-1 代表正在初始化</li>
+<li>-N 前16位记录数组容量，后16位记录扩容线程大小+1，是个负数</li>
+<li>正数0，表示未初始化</li>
+<li>正数，0.75*当前数组大小</li>
+</ul>
+</li>
+<li>&lt;key,value&gt;键值对，封装为Node对象</li>
+<li>table变量(volatile)：也就是所说的数组，默认为null，默认大小为16的数组，每次扩容时大小总是2的幂次方</li>
+<li>nextTable(volatile):扩容时新生成的数组，大小为table的两倍</li>
+</ul>
+<h3 id="22put函数"><a class="markdownIt-Anchor" href="#22put函数"></a> 2.2put函数</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> putVal(key, value, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>1.putValue函数</strong><br>
+首先调用spread函数，计算hash值，之后进入一个自旋循环过程，直到插入或替换成功，才会返回。如果table未被初始化，则调用initTable进行初始化。之后判断hash映射的位置是否为null,如果为null,直接通过CAS自旋操作，插入元素成功，则直接返回，如果映射的位置值为MOVED(-1),则直接去协助扩容，排除以上条件后，尝试对链头Node节点f加锁，加锁成功后，链表通过尾插遍历，进行插入或替换。红黑树通过查询遍历，进行插入或替换。之后如果当前链表节点数量大于阈值，则调用treeifyBin函数，转换为红黑树最后通过调用addCount,执行CAS操作，更新数组大小，并且判断是否需要进行扩容</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(K key, V value, <span class="keyword">boolean</span> onlyIfAbsent)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (key == <span class="keyword">null</span> || value == <span class="keyword">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    <span class="comment">//spread函数计算hash值</span></span><br><span class="line">    <span class="keyword">int</span> hash = spread(key.hashCode());</span><br><span class="line">    <span class="keyword">int</span> binCount = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//自旋过程</span></span><br><span class="line">    <span class="keyword">for</span> (Node&lt;K,V&gt;[] tab = table;;) &#123;</span><br><span class="line">        Node&lt;K,V&gt; f; <span class="keyword">int</span> n, i, fh;</span><br><span class="line">        <span class="keyword">if</span> (tab == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            tab = initTable();</span><br><span class="line">        <span class="comment">//判断映射位置节点是否为空</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((f = tabAt(tab, i = (n - <span class="number">1</span>) &amp; hash)) == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (casTabAt(tab, i, <span class="keyword">null</span>,</span><br><span class="line">                         <span class="keyword">new</span> Node&lt;K,V&gt;(hash, key, value, <span class="keyword">null</span>)))</span><br><span class="line">                <span class="keyword">break</span>;                  </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果映射位置节点value==MOVED，说明正在进行扩容操作</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((fh = f.hash) == MOVED)</span><br><span class="line">            tab = helpTransfer(tab, f);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            V oldVal = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">synchronized</span> (f) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tabAt(tab, i) == f) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (fh &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                        binCount = <span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">for</span> (Node&lt;K,V&gt; e = f;; ++binCount) &#123;</span><br><span class="line">                            K ek;</span><br><span class="line">                            <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                                ((ek = e.key) == key ||</span><br><span class="line">                                 (ek != <span class="keyword">null</span> &amp;&amp; key.equals(ek)))) &#123;</span><br><span class="line">                                oldVal = e.val;</span><br><span class="line">                                <span class="keyword">if</span> (!onlyIfAbsent)</span><br><span class="line">                                    e.val = value;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                            Node&lt;K,V&gt; pred = e;</span><br><span class="line">                            <span class="keyword">if</span> ((e = e.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                                pred.next = <span class="keyword">new</span> Node&lt;K,V&gt;(hash, key,</span><br><span class="line">                                                          value, <span class="keyword">null</span>);</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//红黑树结构</span></span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (f <span class="keyword">instanceof</span> TreeBin) &#123;</span><br><span class="line">                        Node&lt;K,V&gt; p;</span><br><span class="line">                        binCount = <span class="number">2</span>;</span><br><span class="line">                        <span class="keyword">if</span> ((p = ((TreeBin&lt;K,V&gt;)f).putTreeVal(hash, key,</span><br><span class="line">                                                       value)) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            oldVal = p.val;</span><br><span class="line">                            <span class="keyword">if</span> (!onlyIfAbsent)</span><br><span class="line">                                p.val = value;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//链表节点数量超过阈值，转为红黑树</span></span><br><span class="line">            <span class="keyword">if</span> (binCount != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD)</span><br><span class="line">                    treeifyBin(tab, i);</span><br><span class="line">                <span class="keyword">if</span> (oldVal != <span class="keyword">null</span>)</span><br><span class="line">                    <span class="keyword">return</span> oldVal;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    addCount(<span class="number">1L</span>, binCount);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2. spread函数</strong><br>
+spread函数，计算hash值。key的hash值与其高16位相异或，然后与HASH_BITS将最高位置0</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">spread</span><span class="params">(<span class="keyword">int</span> h)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (h ^ (h &gt;&gt;&gt; <span class="number">16</span>)) &amp; HASH_BITS;</span><br><span class="line">    <span class="comment">//HASH_BITS=0x7fffffff</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3. tableAt函数</strong><br>
+获取最新的tab[i]</p>
+<p><strong>4. casTabAt函数</strong><br>
+通过CAS操作，将值赋值进tab中对应位置</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> &lt;K,V&gt; <span class="function">Node&lt;K,V&gt; <span class="title">tabAt</span><span class="params">(Node&lt;K,V&gt;[] tab, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (Node&lt;K,V&gt;)U.getObjectVolatile(tab, ((<span class="keyword">long</span>)i &lt;&lt; ASHIFT) + ABASE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> &lt;K,V&gt; <span class="function"><span class="keyword">boolean</span> <span class="title">casTabAt</span><span class="params">(Node&lt;K,V&gt;[] tab, <span class="keyword">int</span> i,</span></span></span><br><span class="line"><span class="params"><span class="function">                                        Node&lt;K,V&gt; c, Node&lt;K,V&gt; v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> U.compareAndSwapObject(tab, ((<span class="keyword">long</span>)i &lt;&lt; ASHIFT) + ABASE, c, v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>5. addCount函数</strong><br>
+尝试使用CAS操作，将BASECOUNT加1，操作失败，则说明有其他线程在进行加一操作,发生冲突。之后判断是否需要扩容</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">addCount</span><span class="params">(<span class="keyword">long</span> x, <span class="keyword">int</span> check)</span> </span>&#123;</span><br><span class="line">    CounterCell[] as; <span class="keyword">long</span> b, s;</span><br><span class="line">    <span class="comment">//使用CAS操作，将BASECOUNT加1</span></span><br><span class="line">    <span class="keyword">if</span> ((as = counterCells) != <span class="keyword">null</span> ||</span><br><span class="line">        !U.compareAndSwapLong(<span class="keyword">this</span>, BASECOUNT, b = baseCount, s = b + x)) &#123;</span><br><span class="line">        CounterCell a; <span class="keyword">long</span> v; <span class="keyword">int</span> m;</span><br><span class="line">        <span class="comment">//发生冲突</span></span><br><span class="line">        <span class="keyword">boolean</span> uncontended = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (as == <span class="keyword">null</span> || (m = as.length - <span class="number">1</span>) &lt; <span class="number">0</span> ||</span><br><span class="line">            (a = as[ThreadLocalRandom.getProbe() &amp; m]) == <span class="keyword">null</span> ||</span><br><span class="line">            !(uncontended =</span><br><span class="line">              U.compareAndSwapLong(a, CELLVALUE, v = a.value, v + x))) &#123;</span><br><span class="line">            <span class="comment">//多线程冲突执行</span></span><br><span class="line">            fullAddCount(x, uncontended);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (check &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        s = sumCount();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (check &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        Node&lt;K,V&gt;[] tab, nt; <span class="keyword">int</span> n, sc;</span><br><span class="line">        <span class="comment">//判断是否需要扩容  大于0.75当前数组大小</span></span><br><span class="line">        <span class="keyword">while</span> (s &gt;= (<span class="keyword">long</span>)(sc = sizeCtl) &amp;&amp; (tab = table) != <span class="keyword">null</span> &amp;&amp;</span><br><span class="line">               (n = tab.length) &lt; MAXIMUM_CAPACITY) &#123;</span><br><span class="line">            <span class="keyword">int</span> rs = resizeStamp(n);</span><br><span class="line">            <span class="keyword">if</span> (sc &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">//判断是否需要帮助扩容</span></span><br><span class="line">                <span class="comment">//扩容完成，或者扩容线程达到阈值不需要进行扩容，直接break</span></span><br><span class="line">                <span class="keyword">if</span> ((sc &gt;&gt;&gt; RESIZE_STAMP_SHIFT) != rs || sc == rs + <span class="number">1</span> ||</span><br><span class="line">                    sc == rs + MAX_RESIZERS || (nt = nextTable) == <span class="keyword">null</span> ||</span><br><span class="line">                    transferIndex &lt;= <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="comment">//帮助扩容，扩容线程数+1</span></span><br><span class="line">                <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc, sc + <span class="number">1</span>))</span><br><span class="line">                    transfer(tab, nt);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//进行扩容操作</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc,</span><br><span class="line">                                         (rs &lt;&lt; RESIZE_STAMP_SHIFT) + <span class="number">2</span>))</span><br><span class="line">                transfer(tab, <span class="keyword">null</span>);</span><br><span class="line">            s = sumCount();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="23-inittable函数"><a class="markdownIt-Anchor" href="#23-inittable函数"></a> 2.3 initTable函数</h3>
+<p>进入一个自旋过程，一旦有线程扩容成功，才break</p>
+<ul>
+<li>如果sizeCtl &lt; 0,说明已经有线程正在扩容，所以直接让出线程。</li>
+<li>如果sizeCtl&gt;=0,说明当前没有线程扩容，尝试CAS操作，设置sizeCtl为-1</li>
+<li>设置sizeCtl为-1成功的线程，进行扩容操作，并且将sc更新为数组负载阈值0.75*n</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Node&lt;K,V&gt;[] initTable() &#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; <span class="keyword">int</span> sc;</span><br><span class="line">    <span class="comment">//自旋过程</span></span><br><span class="line">    <span class="keyword">while</span> ((tab = table) == <span class="keyword">null</span> || tab.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((sc = sizeCtl) &lt; <span class="number">0</span>)</span><br><span class="line">            Thread.yield(); </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (U.compareAndSwapInt(<span class="keyword">this</span>, SIZECTL, sc, -<span class="number">1</span>)) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || tab.length == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">int</span> n = (sc &gt; <span class="number">0</span>) ? sc : DEFAULT_CAPACITY;</span><br><span class="line">                    <span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">                    Node&lt;K,V&gt;[] nt = (Node&lt;K,V&gt;[])<span class="keyword">new</span> Node&lt;?,?&gt;[n];</span><br><span class="line">                    table = tab = nt;</span><br><span class="line">                    <span class="comment">//0.75*n</span></span><br><span class="line">                    sc = n - (n &gt;&gt;&gt; <span class="number">2</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                sizeCtl = sc;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tab;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="24-统计concurrenthashmap中的元素个数"><a class="markdownIt-Anchor" href="#24-统计concurrenthashmap中的元素个数"></a> 2.4 统计ConCurrentHashMap中的元素个数</h3>
+<p><strong>1. mappingCount函数</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//调用sumCount,获得元素数量</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">mappingCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">long</span> n = sumCount();</span><br><span class="line"><span class="keyword">return</span> (n &lt; <span class="number">0L</span>) ? <span class="number">0L</span> : n; <span class="comment">// ignore transient negative values</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2. sumCount函数</strong></p>
+<p>baseCount+ counterCells各个元素值，就是元素数量<br>
+其实baseCount就是记录容器数量的，直接放回baseCount不就可以了吗？为什么sumCount()方法中还要遍历counterCells数组，累加对象的值呢？<br>
+其中：counterCells是个全局的变量，表示的是CounterCell类数组。CounterCell是ConcurrentHashmap的内部类，它就是存储一个值。<br>
+JDK1.8中使用一个volatile类型的变量baseCount记录元素的个数，当插入新数据put()或则删除数据remove()时，会通过addCount()方法更新baseCount<br>
+初始化时counterCells为空，在并发量很高时，如果存在两个线程同时执行CAS修改baseCount值，则失败的线程会继续执行方法体中的逻辑，执行fullAddCount(x, uncontended)方法，这个方法其实就是初始化counterCells，并将x的值插入到counterCell类中，而x值一般也就是1或-1，这可以从put()方法中得知。<br>
+这些对象是因为在CAS更新baseCount值时，由于高并发而导致失败，最终将值保存到CounterCell中，放到counterCells里。这也就是为什么sumCount()中需要遍历counterCells数组，sum累加CounterCell.value值了。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">long</span> <span class="title">sumCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    CounterCell[] as = counterCells; CounterCell a;</span><br><span class="line">    <span class="keyword">long</span> sum = baseCount;</span><br><span class="line">        <span class="keyword">if</span> (as != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; as.length; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((a = as[i]) != <span class="keyword">null</span>)</span><br><span class="line">                sum += a.value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3. CounterCell类</strong><br>
+只存储一个值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CounterCell</span></span>&#123;</span><br><span class="line">   <span class="keyword">volatile</span> <span class="keyword">long</span> value;</span><br><span class="line">   CountCell(<span class="keyword">long</span> x) &#123;value = x;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原文链接：<a href="https://blog.csdn.net/zycxnanwang/article/details/105424734">https://blog.csdn.net/zycxnanwang/article/details/105424734</a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二分查找</title>
     <url>/2021/08/19/algorithm/</url>
     <content><![CDATA[<p>二分法查找是一种基于比较目标值和数组中间元素的算法</p>
 <ul>
@@ -785,93 +840,6 @@ ReadView中主要就是有个列表来存储我们系统中当前活跃着的读
       </tags>
   </entry>
   <entry>
-    <title>mysql事务</title>
-    <url>/2021/07/23/mysql-transcation/</url>
-    <content><![CDATA[<h2 id="事务的定义"><a class="markdownIt-Anchor" href="#事务的定义"></a> 事务的定义</h2>
-<p>事务是数据管理系统DBMS执行过程中的一个<strong>逻辑单位</strong>，有一个有限的数据库<strong>操作序列</strong>构成</p>
-<h2 id="事务四大特性"><a class="markdownIt-Anchor" href="#事务四大特性"></a> 事务四大特性</h2>
-<ol>
-<li>原子性atomicity：依赖undo log做到全部失败</li>
-<li>隔离性isolation：实现方式LBCC 和 MVCC</li>
-<li>持久性durability ：实现方式redo log和double write</li>
-<li>一致性consistency：通过上面的三种方式实现</li>
-</ol>
-<p>数据恢复：</p>
-<ul>
-<li>redo log 崩溃恢复</li>
-<li>双写缓冲（double write）</li>
-</ul>
-<p>Mysql中insert、delete、update 自带事务</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">show</span> veriables <span class="keyword">like</span> ‘autocommit’;</span><br><span class="line"><span class="keyword">set</span> session autocommit <span class="operator">=</span> <span class="keyword">on</span>;</span><br><span class="line">update xxx <span class="keyword">where</span> <span class="keyword">set</span> xx <span class="operator">=</span><span class="number">1</span> ;</span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
-<p>结束事务两种方式：rollback     commit</p>
-<h2 id="事务并发的三大问题"><a class="markdownIt-Anchor" href="#事务并发的三大问题"></a> 事务并发的三大问题</h2>
-<p>数据并发的三大问题其实都是数据库读一致性问题，必须有数据库提供一定的事务隔离机制来解决。</p>
-<h3 id="脏读"><a class="markdownIt-Anchor" href="#脏读"></a> 脏读</h3>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202210510525.png" alt="image-20200727224117281"></p>
-<h3 id="不可重复读"><a class="markdownIt-Anchor" href="#不可重复读"></a> 不可重复读</h3>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202210235089.png" alt="image-20200727224117281"></p>
-<h3 id="幻读"><a class="markdownIt-Anchor" href="#幻读"></a> 幻读</h3>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202210357906.png" alt="image-20200727224117281"></p>
-<h2 id="事务隔离级别"><a class="markdownIt-Anchor" href="#事务隔离级别"></a> 事务隔离级别</h2>
-<p><a href="http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt">http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt</a><br>
-<img src="/2021/07/23/mysql-transcation/image-20201202210817094.png" alt="image-20200727224117281"><br>
-<img src="/2021/07/23/mysql-transcation/image-20201202211406282.png" alt="image-20200727224117281"></p>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202211752764.png" alt="image-20201202211752764"></p>
-<h3 id="mvcc思想"><a class="markdownIt-Anchor" href="#mvcc思想"></a> MVCC思想</h3>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202212103393.png" alt="image-20201202212103393"></p>
-<h4 id="read-view一致性试图"><a class="markdownIt-Anchor" href="#read-view一致性试图"></a> Read View（一致性试图）</h4>
-<p>存储内容</p>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202213520136.png" alt="image-20201202213520136"></p>
-<h4 id="read-view判断规则"><a class="markdownIt-Anchor" href="#read-view判断规则"></a> Read View判断规则</h4>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202213757692.png" alt="image-20201202213757692"></p>
-<h4 id="rc与rr-read-view-的区别"><a class="markdownIt-Anchor" href="#rc与rr-read-view-的区别"></a> RC与RR read View 的区别</h4>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202214418001.png" alt="image-20201202214418001"></p>
-<p>所以RC解决不了脏读的问题</p>
-<h1 id="mysql-innodb所得基本类型"><a class="markdownIt-Anchor" href="#mysql-innodb所得基本类型"></a> Mysql InnoDb所得基本类型</h1>
-<p>InnoDB支持行锁</p>
-<p>MyiSAM支持行锁</p>
-<p>表锁和行锁的区别</p>
-<ul>
-<li>锁力度：表锁 &gt; 行锁</li>
-<li>加锁效率：表锁 &gt; 行锁</li>
-<li>冲突概率：表锁 &gt; 行锁</li>
-<li>并发性能：表锁 &lt; 行锁</li>
-</ul>
-<h2 id="表锁"><a class="markdownIt-Anchor" href="#表锁"></a> 表锁</h2>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202214957559.png" alt="image-20201202214957559"></p>
-<p>一个事务能够给一张表加上锁的前提是：没有其他任何一个事务锁定了这张表的任意一行数据。如果没有意向锁的话，那么加表锁需要扫描表中的每行数据，大大的浪费时间；</p>
-<p>如果在添加行锁的时候，会在表上添加意向锁，那么在添加表锁的时候就不需要去扫描所有表数据了，只需要看下表上是否由意向锁就可；</p>
-<h2 id="行锁"><a class="markdownIt-Anchor" href="#行锁"></a> 行锁</h2>
-<h3 id="共享锁shared-locks"><a class="markdownIt-Anchor" href="#共享锁shared-locks"></a> 共享锁shared locks</h3>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202215350319.png" alt="image-20201202215350319"></p>
-<h3 id="排它锁exclusive-locks"><a class="markdownIt-Anchor" href="#排它锁exclusive-locks"></a> 排它锁Exclusive locks</h3>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202215717524.png" alt="image-20201202215717524"></p>
-<h3 id="innodb行锁锁定的是什么"><a class="markdownIt-Anchor" href="#innodb行锁锁定的是什么"></a> Innodb行锁锁定的是什么</h3>
-<p>锁定的是index索引，如果表中没有索引，那么Innodb会把隐藏列DB_ROW_ID当作聚集索引</p>
-<p>加锁一定要加上条件，不然会锁表</p>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202222250939.png" alt="image-20201202222250939"></p>
-<h3 id="记录锁rcord-lock-锁定记录"><a class="markdownIt-Anchor" href="#记录锁rcord-lock-锁定记录"></a> 记录锁Rcord Lock 锁定记录</h3>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202222823984.png" alt="image-20201202222823984"></p>
-<h3 id="间隙锁gap-lock-锁定范围"><a class="markdownIt-Anchor" href="#间隙锁gap-lock-锁定范围"></a> 间隙锁Gap Lock 锁定范围</h3>
-<p>专门用于阻塞插入，间隙锁如果没有命中的话，会锁定最后一个值到正无穷，那么在最后一个值和正无穷之间的插入都不能成功。</p>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202222914087.png" alt="image-20201202222914087"></p>
-<h3 id="临健锁next-key-lock-锁定范围加记录"><a class="markdownIt-Anchor" href="#临健锁next-key-lock-锁定范围加记录"></a> 临健锁Next-key Lock ：锁定范围加记录</h3>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202223655445.png" alt="image-20201202223655445"></p>
-<p><strong>为了解决幻读的问题</strong></p>
-<h3 id="事务隔离级别的实现"><a class="markdownIt-Anchor" href="#事务隔离级别的实现"></a> 事务隔离级别的实现</h3>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202224136052.png" alt="image-20201202224136052"></p>
-<h3 id="事务隔离级别的选择"><a class="markdownIt-Anchor" href="#事务隔离级别的选择"></a> 事务隔离级别的选择</h3>
-<p><img src="/2021/07/23/mysql-transcation/image-20201202224412832.png" alt="image-20201202224412832"></p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-        <category>mysql</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>mysql知识总结</title>
     <url>/2021/07/23/mysql/</url>
     <content><![CDATA[<h1 id="mysql-初识"><a class="markdownIt-Anchor" href="#mysql-初识"></a> mysql 初识</h1>
@@ -1055,6 +1023,93 @@ ReadView中主要就是有个列表来存储我们系统中当前活跃着的读
 </ul>
 <h2 id="3-总结"><a class="markdownIt-Anchor" href="#3-总结"></a> 3. 总结</h2>
 <p><strong>可以这么理解，一本书，delete是把目录撕了，truncate是把书的内容撕下来烧了，drop是把书烧了</strong></p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql事务</title>
+    <url>/2021/07/23/mysql-transcation/</url>
+    <content><![CDATA[<h2 id="事务的定义"><a class="markdownIt-Anchor" href="#事务的定义"></a> 事务的定义</h2>
+<p>事务是数据管理系统DBMS执行过程中的一个<strong>逻辑单位</strong>，有一个有限的数据库<strong>操作序列</strong>构成</p>
+<h2 id="事务四大特性"><a class="markdownIt-Anchor" href="#事务四大特性"></a> 事务四大特性</h2>
+<ol>
+<li>原子性atomicity：依赖undo log做到全部失败</li>
+<li>隔离性isolation：实现方式LBCC 和 MVCC</li>
+<li>持久性durability ：实现方式redo log和double write</li>
+<li>一致性consistency：通过上面的三种方式实现</li>
+</ol>
+<p>数据恢复：</p>
+<ul>
+<li>redo log 崩溃恢复</li>
+<li>双写缓冲（double write）</li>
+</ul>
+<p>Mysql中insert、delete、update 自带事务</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">show</span> veriables <span class="keyword">like</span> ‘autocommit’;</span><br><span class="line"><span class="keyword">set</span> session autocommit <span class="operator">=</span> <span class="keyword">on</span>;</span><br><span class="line">update xxx <span class="keyword">where</span> <span class="keyword">set</span> xx <span class="operator">=</span><span class="number">1</span> ;</span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
+<p>结束事务两种方式：rollback     commit</p>
+<h2 id="事务并发的三大问题"><a class="markdownIt-Anchor" href="#事务并发的三大问题"></a> 事务并发的三大问题</h2>
+<p>数据并发的三大问题其实都是数据库读一致性问题，必须有数据库提供一定的事务隔离机制来解决。</p>
+<h3 id="脏读"><a class="markdownIt-Anchor" href="#脏读"></a> 脏读</h3>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202210510525.png" alt="image-20200727224117281"></p>
+<h3 id="不可重复读"><a class="markdownIt-Anchor" href="#不可重复读"></a> 不可重复读</h3>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202210235089.png" alt="image-20200727224117281"></p>
+<h3 id="幻读"><a class="markdownIt-Anchor" href="#幻读"></a> 幻读</h3>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202210357906.png" alt="image-20200727224117281"></p>
+<h2 id="事务隔离级别"><a class="markdownIt-Anchor" href="#事务隔离级别"></a> 事务隔离级别</h2>
+<p><a href="http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt">http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt</a><br>
+<img src="/2021/07/23/mysql-transcation/image-20201202210817094.png" alt="image-20200727224117281"><br>
+<img src="/2021/07/23/mysql-transcation/image-20201202211406282.png" alt="image-20200727224117281"></p>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202211752764.png" alt="image-20201202211752764"></p>
+<h3 id="mvcc思想"><a class="markdownIt-Anchor" href="#mvcc思想"></a> MVCC思想</h3>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202212103393.png" alt="image-20201202212103393"></p>
+<h4 id="read-view一致性试图"><a class="markdownIt-Anchor" href="#read-view一致性试图"></a> Read View（一致性试图）</h4>
+<p>存储内容</p>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202213520136.png" alt="image-20201202213520136"></p>
+<h4 id="read-view判断规则"><a class="markdownIt-Anchor" href="#read-view判断规则"></a> Read View判断规则</h4>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202213757692.png" alt="image-20201202213757692"></p>
+<h4 id="rc与rr-read-view-的区别"><a class="markdownIt-Anchor" href="#rc与rr-read-view-的区别"></a> RC与RR read View 的区别</h4>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202214418001.png" alt="image-20201202214418001"></p>
+<p>所以RC解决不了脏读的问题</p>
+<h1 id="mysql-innodb所得基本类型"><a class="markdownIt-Anchor" href="#mysql-innodb所得基本类型"></a> Mysql InnoDb所得基本类型</h1>
+<p>InnoDB支持行锁</p>
+<p>MyiSAM支持行锁</p>
+<p>表锁和行锁的区别</p>
+<ul>
+<li>锁力度：表锁 &gt; 行锁</li>
+<li>加锁效率：表锁 &gt; 行锁</li>
+<li>冲突概率：表锁 &gt; 行锁</li>
+<li>并发性能：表锁 &lt; 行锁</li>
+</ul>
+<h2 id="表锁"><a class="markdownIt-Anchor" href="#表锁"></a> 表锁</h2>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202214957559.png" alt="image-20201202214957559"></p>
+<p>一个事务能够给一张表加上锁的前提是：没有其他任何一个事务锁定了这张表的任意一行数据。如果没有意向锁的话，那么加表锁需要扫描表中的每行数据，大大的浪费时间；</p>
+<p>如果在添加行锁的时候，会在表上添加意向锁，那么在添加表锁的时候就不需要去扫描所有表数据了，只需要看下表上是否由意向锁就可；</p>
+<h2 id="行锁"><a class="markdownIt-Anchor" href="#行锁"></a> 行锁</h2>
+<h3 id="共享锁shared-locks"><a class="markdownIt-Anchor" href="#共享锁shared-locks"></a> 共享锁shared locks</h3>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202215350319.png" alt="image-20201202215350319"></p>
+<h3 id="排它锁exclusive-locks"><a class="markdownIt-Anchor" href="#排它锁exclusive-locks"></a> 排它锁Exclusive locks</h3>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202215717524.png" alt="image-20201202215717524"></p>
+<h3 id="innodb行锁锁定的是什么"><a class="markdownIt-Anchor" href="#innodb行锁锁定的是什么"></a> Innodb行锁锁定的是什么</h3>
+<p>锁定的是index索引，如果表中没有索引，那么Innodb会把隐藏列DB_ROW_ID当作聚集索引</p>
+<p>加锁一定要加上条件，不然会锁表</p>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202222250939.png" alt="image-20201202222250939"></p>
+<h3 id="记录锁rcord-lock-锁定记录"><a class="markdownIt-Anchor" href="#记录锁rcord-lock-锁定记录"></a> 记录锁Rcord Lock 锁定记录</h3>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202222823984.png" alt="image-20201202222823984"></p>
+<h3 id="间隙锁gap-lock-锁定范围"><a class="markdownIt-Anchor" href="#间隙锁gap-lock-锁定范围"></a> 间隙锁Gap Lock 锁定范围</h3>
+<p>专门用于阻塞插入，间隙锁如果没有命中的话，会锁定最后一个值到正无穷，那么在最后一个值和正无穷之间的插入都不能成功。</p>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202222914087.png" alt="image-20201202222914087"></p>
+<h3 id="临健锁next-key-lock-锁定范围加记录"><a class="markdownIt-Anchor" href="#临健锁next-key-lock-锁定范围加记录"></a> 临健锁Next-key Lock ：锁定范围加记录</h3>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202223655445.png" alt="image-20201202223655445"></p>
+<p><strong>为了解决幻读的问题</strong></p>
+<h3 id="事务隔离级别的实现"><a class="markdownIt-Anchor" href="#事务隔离级别的实现"></a> 事务隔离级别的实现</h3>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202224136052.png" alt="image-20201202224136052"></p>
+<h3 id="事务隔离级别的选择"><a class="markdownIt-Anchor" href="#事务隔离级别的选择"></a> 事务隔离级别的选择</h3>
+<p><img src="/2021/07/23/mysql-transcation/image-20201202224412832.png" alt="image-20201202224412832"></p>
 ]]></content>
       <categories>
         <category>数据库</category>
@@ -1389,6 +1444,19 @@ hash类型是一个String类型的field和value的映射表，每个hash都可�
 <img src="/2021/08/14/redis-usage-scenario/05.png" alt="排行榜"></p>
 <hr>
 <p><img src="/2021/08/14/redis-usage-scenario/06.png" alt></p>
+<h2 id="redis不适用的场景"><a class="markdownIt-Anchor" href="#redis不适用的场景"></a> redis不适用的场景</h2>
+<p>Redis是一种缓存技术，主要用来提高应用的性能，更多的应用场景是对数据库读数据进行缓存，减轻数据库的IO的访问压力，以下场景不太适合使用Redis:</p>
+<ul>
+<li>
+<p>数据规模大小角度</p>
+<p>Redis是将数据放在内存进行缓存的，内存相对于磁盘来锁价格是比较贵的。<strong>如果成本是需要考虑的重要因素，那么大规模的数据就不太适合</strong>；</p>
+</li>
+<li>
+<p>数据冷热程度角度</p>
+<p>很多业务数据可以根据数据读的频繁程度分为热数据和冷数据；<strong>频繁使用的热数据一般适合用redis，冷数据一般不太适合用redis</strong>,如果大量的冷数据进行了缓存，那是对内存资源的浪费，<br>
+所以在应用场景上区分冷热数据，将热数据放在内存中，进而提高性能。</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>中间件</category>
