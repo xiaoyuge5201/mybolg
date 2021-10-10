@@ -15,8 +15,101 @@
     <atom:link href="https://xiaoyuge5201.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     
     <description>小余哥个人博客，致力于分享一些技术教程和有趣的技术实践，以及日常踩坑记录。</description>
-    <pubDate>Wed, 25 Aug 2021 03:18:33 GMT</pubDate>
+    <pubDate>Sun, 10 Oct 2021 09:53:20 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Java中将List列表转换为字符串</title>
+      <link>https://xiaoyuge5201.github.io/2021/10/10/list-to-string/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/10/10/list-to-string/</guid>
+      <pubDate>Sun, 10 Oct 2021 09:48:19 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h3 id=&quot;1-toString-方法&quot;&gt;&lt;a href=&quot;#1-toString-方法&quot; class=&quot;headerlink&quot; title=&quot;1. toString() 方法&quot;&gt;&lt;/a&gt;1. toString() 方法&lt;/h3&gt;&lt;p&gt;List.toString()是最简单的</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/list/">list</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/java/">java</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>linux关机命令</title>
+      <link>https://xiaoyuge5201.github.io/2021/10/02/shutdown/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/10/02/shutdown/</guid>
+      <pubDate>Sat, 02 Oct 2021 03:39:17 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h3 id=&quot;1-shutdown命令&quot;&gt;&lt;a href=&quot;#1-shutdown命令&quot; class=&quot;headerlink&quot; title=&quot;1. shutdown命令&quot;&gt;&lt;/a&gt;1. shutdown命令&lt;/h3&gt;&lt;p&gt;shutdown会给系统计划一个时间关机。它可以被用于停</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/Linux/">Linux</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/shutdown/">shutdown</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>安装Centos系统以及配置IP</title>
+      <link>https://xiaoyuge5201.github.io/2021/10/01/Installing-CentOS-system/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/10/01/Installing-CentOS-system/</guid>
+      <pubDate>Fri, 01 Oct 2021 08:47:11 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;1-系统安装&quot;&gt;&lt;a href=&quot;#1-系统安装&quot; class=&quot;headerlink&quot; title=&quot;1. 系统安装&quot;&gt;&lt;/a&gt;1. 系统安装&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装&lt;br&gt; &lt;img src=&quot;/2021/10/01/Installing-Cen</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/Linux/">Linux</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/centos/">centos</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>LockSupport 一个很灵活的线程工具类</title>
+      <link>https://xiaoyuge5201.github.io/2021/09/25/locksupport/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/09/25/locksupport/</guid>
+      <pubDate>Sat, 25 Sep 2021 04:59:36 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;LockSupport是一个编程工具类， 主要是为了阻塞和唤醒线程用的。所有的方法都是静态方法，可以让线程在任意位置阻塞，也可以在任意位置唤醒&lt;/p&gt;
+&lt;p&gt;主要的方法： park(阻塞线程)  和  unpark(启动唤醒线程)&lt;/p&gt;
+&lt;figure class=&quot;hi</description>
+        
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/">java</category>
+      
+      <category domain="https://xiaoyuge5201.github.io/categories/java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</category>
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/java/">java</category>
+      
+      
+    </item>
     
     <item>
       <title>mysql行列转置</title>
@@ -26,10 +119,8 @@
       
         
         
-      <description>&lt;p&gt;数据表：&lt;br&gt;
-&lt;img src=&quot;/2021/08/25/mysql%E8%A1%8C%E5%88%97%E8%BD%AC%E7%BD%AE/01.png&quot; alt=&quot;原始数据&quot;&gt;&lt;/p&gt;
-&lt;p&gt;行转列结果为：&lt;br&gt;
-&lt;img src=&quot;/2021/08/25/mys</description>
+      <description>&lt;p&gt;数据表：&lt;br&gt;&lt;img src=&quot;/2021/08/25/mysql%E8%A1%8C%E5%88%97%E8%BD%AC%E7%BD%AE/01.png&quot; alt=&quot;原始数据&quot;&gt;&lt;/p&gt;
+&lt;p&gt;行转列结果为：&lt;br&gt;&lt;img src=&quot;/2021/08/25/mysql</description>
         
       
       
@@ -101,10 +192,9 @@
       
         
         
-      <description>&lt;p&gt;拿汉语字典的目录页（索引）打比方，我们可以按拼音、笔画、偏旁部首等排序的目录（索引）快速查找到需要的字。&lt;br&gt;
-索引分单列索引和组合索引。&lt;/p&gt;
+      <description>&lt;p&gt;拿汉语字典的目录页（索引）打比方，我们可以按拼音、笔画、偏旁部首等排序的目录（索引）快速查找到需要的字。&lt;br&gt;索引分单列索引和组合索引。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;单列索引，即一个索引只包含单个列，一个表可以有多个单列索引，但这不是组合索引。&lt;/li&gt;
+&lt;li&gt;单列索引，即一个索引只包含单个列，一个表可以有多个单列索引，但这不是组合索引。 &lt;/li&gt;
 &lt;li&gt;组合索引</description>
         
       
@@ -133,8 +223,7 @@
 &lt;ul&gt;
 &lt;li&gt;如果目标值 = 中间值，则找到目标值&lt;/li&gt;
 &lt;li&gt;如果目标值 &amp;lt; 中间值，则在左侧继续搜索&lt;/li&gt;
-&lt;li&gt;如果目标值 &amp;gt; 中间值，则在右侧继续搜索&lt;br&gt;
-&lt;img src=</description>
+&lt;li&gt;如果目标值 &amp;gt; 中间值，则在右侧继续搜索&lt;br&gt;&lt;img src=&quot;</description>
         
       
       
@@ -157,8 +246,7 @@
         
         
       <description>&lt;p&gt;springboot项目中默认的配置文件是application.properties；&lt;/p&gt;
-&lt;h3 id=&quot;1yml文件规则&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1yml文件规则&quot;&gt;&lt;/a&gt; 1.yml文件规则&lt;/h3&gt;
-&lt;ul&gt;</description>
+&lt;h3 id=&quot;1-yml文件规则&quot;&gt;&lt;a href=&quot;#1-yml文件规则&quot; class=&quot;headerlink&quot; title=&quot;1.yml文件规则&quot;&gt;&lt;/a&gt;1.yml文件</description>
         
       
       
@@ -170,6 +258,27 @@
       
       
       <category domain="https://xiaoyuge5201.github.io/tags/springboot/">springboot</category>
+      
+      
+    </item>
+    
+    <item>
+      <title>Hexo部署出现错误Error Spawn failed解决方式</title>
+      <link>https://xiaoyuge5201.github.io/2021/08/15/hexo-spawn-failed/</link>
+      <guid>https://xiaoyuge5201.github.io/2021/08/15/hexo-spawn-failed/</guid>
+      <pubDate>Sun, 15 Aug 2021 10:28:42 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;部署过程中可能会出现错误:&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line</description>
+        
+      
+      
+      
+      
+      
+      <category domain="https://xiaoyuge5201.github.io/tags/hexo/">hexo</category>
       
       
     </item>
@@ -208,10 +317,8 @@
       
         
         
-      <description>&lt;h2 id=&quot;1-缓存&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-缓存&quot;&gt;&lt;/a&gt; 1. 缓存&lt;/h2&gt;
-&lt;p&gt;String类型&lt;br&gt;
-例如：热点数据缓存、对象缓存、全页缓存可以提升热点数据的访问效率&lt;/p&gt;
-&lt;h2 id=&quot;2-数据共享分</description>
+      <description>&lt;h2 id=&quot;1-缓存&quot;&gt;&lt;a href=&quot;#1-缓存&quot; class=&quot;headerlink&quot; title=&quot;1. 缓存&quot;&gt;&lt;/a&gt;1. 缓存&lt;/h2&gt;&lt;p&gt;String类型&lt;br&gt;例如：热点数据缓存、对象缓存、全页缓存可以提升热点数据的访问效率&lt;/p&gt;
+&lt;h2 id=&quot;2-数</description>
         
       
       
@@ -235,8 +342,7 @@
       
         
         
-      <description>&lt;h3 id=&quot;1-mvcc&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-mvcc&quot;&gt;&lt;/a&gt; 1. MVCC&lt;/h3&gt;
-&lt;p&gt;全称Multi-Version Concurrency Control即多版本并发控制。MVCC是一种并发控制的方法，</description>
+      <description>&lt;h3 id=&quot;1-MVCC&quot;&gt;&lt;a href=&quot;#1-MVCC&quot; class=&quot;headerlink&quot; title=&quot;1. MVCC&quot;&gt;&lt;/a&gt;1. MVCC&lt;/h3&gt;&lt;p&gt;全称Multi-Version Concurrency Control即多版本并发控制。MVCC是一种并</description>
         
       
       
@@ -279,10 +385,7 @@
       
         
         
-      <description>&lt;h2 id=&quot;1volatile作用&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1volatile作用&quot;&gt;&lt;/a&gt; 1.volatile作用&lt;/h2&gt;
-&lt;p&gt;volatile保证有序性，可见性，不能保证原子性&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;禁止指令重</description>
+      <description>&lt;h2 id=&quot;1-volatile作用&quot;&gt;&lt;a href=&quot;#1-volatile作用&quot; class=&quot;headerlink&quot; title=&quot;1.volatile作用&quot;&gt;&lt;/a&gt;1.volatile作用&lt;/h2&gt;&lt;p&gt;  volatile保证有序性，可见性，不能保证原子性&lt;/p</description>
         
       
       
@@ -306,8 +409,7 @@
       
         
         
-      <description>&lt;h2 id=&quot;1内存溢出&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1内存溢出&quot;&gt;&lt;/a&gt; 1.内存溢出&lt;/h2&gt;
-&lt;p&gt;java.lang.OutOfMemoryError：是指程序在申请内存是，没有足够的内存克难攻坚供其使用，出现OutOfM</description>
+      <description>&lt;h2 id=&quot;1-内存溢出&quot;&gt;&lt;a href=&quot;#1-内存溢出&quot; class=&quot;headerlink&quot; title=&quot;1.内存溢出&quot;&gt;&lt;/a&gt;1.内存溢出&lt;/h2&gt;&lt;p&gt;java.lang.OutOfMemoryError：是指程序在申请内存是，没有足够的内存克难攻坚供其使用，</description>
         
       
       
@@ -331,8 +433,7 @@
       
         
         
-      <description>&lt;h2 id=&quot;1类加载机制&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1类加载机制&quot;&gt;&lt;/a&gt; 1.类加载机制&lt;/h2&gt;
-&lt;p&gt;JVM将类描述数据从.class文件中加载到内存，并对数据进行解析、初始化，最终形成被JVM直接使用的Java类型；类</description>
+      <description>&lt;h2 id=&quot;1-类加载机制&quot;&gt;&lt;a href=&quot;#1-类加载机制&quot; class=&quot;headerlink&quot; title=&quot;1.类加载机制&quot;&gt;&lt;/a&gt;1.类加载机制&lt;/h2&gt;&lt;p&gt;JVM将类描述数据从.class文件中加载到内存，并对数据进行解析、初始化，最终形成被JVM直接使用</description>
         
       
       
@@ -354,10 +455,7 @@
       
         
         
-      <description>&lt;p&gt;当数据库有事物的时候，可能会产生数据的不一致，这时就需要一些机制来保证访问的次序，这就是锁的机制；&lt;br&gt;
-&lt;strong&gt;锁的作用&lt;/strong&gt;：用于挂你对共享资源的并发访问，保证数据库的完整性和一致性。&lt;br&gt;
-##1. 不同引擎的锁以及锁分类&lt;br&gt;
-&lt;stron</description>
+      <description>&lt;p&gt;当数据库有事物的时候，可能会产生数据的不一致，这时就需要一些机制来保证访问的次序，这就是锁的机制；&lt;br&gt;&lt;strong&gt;锁的作用&lt;/strong&gt;：用于挂你对共享资源的并发访问，保证数据库的完整性和一致性。&lt;br&gt;##1. 不同引擎的锁以及锁分类&lt;br&gt;&lt;strong&gt;M</description>
         
       
       
@@ -381,8 +479,7 @@
       
         
         
-      <description>&lt;h1 id=&quot;mycat分库分表中间件&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#mycat分库分表中间件&quot;&gt;&lt;/a&gt; Mycat(分库分表中间件)&lt;/h1&gt;
-&lt;h2 id=&quot;1-数据库优化策略&quot;&gt;&lt;a class=&quot;markdownIt-Anc</description>
+      <description>&lt;h1 id=&quot;Mycat-分库分表中间件&quot;&gt;&lt;a href=&quot;#Mycat-分库分表中间件&quot; class=&quot;headerlink&quot; title=&quot;Mycat(分库分表中间件)&quot;&gt;&lt;/a&gt;Mycat(分库分表中间件)&lt;/h1&gt;&lt;h2 id=&quot;1-数据库优化策略&quot;&gt;&lt;a href=</description>
         
       
       
@@ -404,8 +501,7 @@
       
         
         
-      <description>&lt;h2 id=&quot;事务的定义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#事务的定义&quot;&gt;&lt;/a&gt; 事务的定义&lt;/h2&gt;
-&lt;p&gt;事务是数据管理系统DBMS执行过程中的一个&lt;strong&gt;逻辑单位&lt;/strong&gt;，有一个有限的数据库&lt;strong&gt;操作序</description>
+      <description>&lt;h2 id=&quot;事务的定义&quot;&gt;&lt;a href=&quot;#事务的定义&quot; class=&quot;headerlink&quot; title=&quot;事务的定义&quot;&gt;&lt;/a&gt;事务的定义&lt;/h2&gt;&lt;p&gt;事务是数据管理系统DBMS执行过程中的一个&lt;strong&gt;逻辑单位&lt;/strong&gt;，有一个有限的数据库&lt;stron</description>
         
       
       
@@ -429,8 +525,7 @@
       
         
         
-      <description>&lt;h1 id=&quot;mysql-初识&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#mysql-初识&quot;&gt;&lt;/a&gt; mysql 初识&lt;/h1&gt;
-&lt;h2 id=&quot;1-版本历史&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-版本历</description>
+      <description>&lt;h1 id=&quot;mysql-初识&quot;&gt;&lt;a href=&quot;#mysql-初识&quot; class=&quot;headerlink&quot; title=&quot;mysql 初识&quot;&gt;&lt;/a&gt;mysql 初识&lt;/h1&gt;&lt;h2 id=&quot;1-版本历史&quot;&gt;&lt;a href=&quot;#1-版本历史&quot; class=&quot;headerli</description>
         
       
       
@@ -454,12 +549,10 @@
       
         
         
-      <description>&lt;h2 id=&quot;1-优化思路以及方法&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-优化思路以及方法&quot;&gt;&lt;/a&gt; 1. 优化思路以及方法&lt;/h2&gt;
-&lt;ul&gt;
+      <description>&lt;h2 id=&quot;1-优化思路以及方法&quot;&gt;&lt;a href=&quot;#1-优化思路以及方法&quot; class=&quot;headerlink&quot; title=&quot;1. 优化思路以及方法&quot;&gt;&lt;/a&gt;1. 优化思路以及方法&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;减少锁持有时间&lt;/li&gt;
 &lt;li&gt;减小锁粒度&lt;/li&gt;
-&lt;li&gt;锁分离&lt;/li&gt;
-</description>
+&lt;l</description>
         
       
       
@@ -479,10 +572,8 @@
       
         
         
-      <description>&lt;h2 id=&quot;1-jdk14安装&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-jdk14安装&quot;&gt;&lt;/a&gt; 1. JDK14安装&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;下载jdk14：  &lt;a href=&quot;https://jdk.java.net/</description>
+      <description>&lt;h2 id=&quot;1-JDK14安装&quot;&gt;&lt;a href=&quot;#1-JDK14安装&quot; class=&quot;headerlink&quot; title=&quot;1. JDK14安装&quot;&gt;&lt;/a&gt;1. JDK14安装&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载jdk14：  &lt;a href=&quot;https://jdk.</description>
         
       
       
@@ -502,11 +593,10 @@
       
         
         
-      <description>&lt;h1 id=&quot;nginx简介&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#nginx简介&quot;&gt;&lt;/a&gt; Nginx简介&lt;/h1&gt;
-&lt;ul&gt;
+      <description>&lt;h1 id=&quot;Nginx简介&quot;&gt;&lt;a href=&quot;#Nginx简介&quot; class=&quot;headerlink&quot; title=&quot;Nginx简介&quot;&gt;&lt;/a&gt;Nginx简介&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;2000年地洞，c语言编写&lt;/li&gt;
 &lt;li&gt;2004年开源&lt;/li&gt;
-&lt;li&gt;2011年成立商业公司</description>
+&lt;li&gt;2011</description>
         
       
       
@@ -531,7 +621,7 @@
         
         
       <description>&lt;p&gt;Object.freeze()，这会阻止修改现有的 property，也意味着响应系统无法再追踪变化。&lt;/p&gt;
-&lt;h3 id=&quot;1-export&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-export&quot;&gt;&lt;/a&gt; 1. export&lt;/h</description>
+&lt;h3 id=&quot;1-export&quot;&gt;&lt;a href=&quot;#1-export&quot; class=&quot;headerlink&quot; title=&quot;1. export&quot;&gt;&lt;/a&gt;1.</description>
         
       
       
@@ -555,9 +645,7 @@
       
         
         
-      <description>&lt;h3 id=&quot;问题描述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#问题描述&quot;&gt;&lt;/a&gt; 问题描述&lt;/h3&gt;
-&lt;p&gt;逻辑是A服务调用B服务(AB在同一个局域网内)。 经过反复测试，有一个访问缓慢的现象，具体表现为：&lt;br&gt;
-程序启动第一次访问初始化</description>
+      <description>&lt;h3 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h3&gt;&lt;p&gt;逻辑是A服务调用B服务(AB在同一个局域网内)。 经过反复测试，有一个访问缓慢的现象，具体表现为：&lt;br&gt;程序启动第一次访问</description>
         
       
       
@@ -581,9 +669,7 @@
       
         
         
-      <description>&lt;p&gt;##1. jdk1.7 ConcurrentHashMap&lt;br&gt;
-jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成&lt;br&gt;
-&lt;img src=&quot;/2021/07/02/ConcurrentHashMap/01.pn</description>
+      <description>&lt;p&gt;##1. jdk1.7 ConcurrentHashMap&lt;br&gt;jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成&lt;br&gt;&lt;img src=&quot;/2021/07/02/ConcurrentHashMap/01.png&quot;</description>
         
       
       
@@ -608,11 +694,9 @@ jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成&
         
         
       <description>&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：&lt;/</description>
+&lt;li&gt;&lt;p&gt;应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如：    </description>
         
       
       
@@ -636,8 +720,7 @@ jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成&
       
         
         
-      <description>&lt;h3 id=&quot;8升-5升-3升水桶各一个如何分成两个4升&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#8升-5升-3升水桶各一个如何分成两个4升&quot;&gt;&lt;/a&gt; 8升、5升、3升水桶各一个,如何分成两个4升&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/202</description>
+      <description>&lt;h3 id=&quot;8升、5升、3升水桶各一个-如何分成两个4升&quot;&gt;&lt;a href=&quot;#8升、5升、3升水桶各一个-如何分成两个4升&quot; class=&quot;headerlink&quot; title=&quot;8升、5升、3升水桶各一个,如何分成两个4升&quot;&gt;&lt;/a&gt;8升、5升、3升水桶各一个,如何分成两个</description>
         
       
       
@@ -657,8 +740,7 @@ jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成&
       
         
         
-      <description>&lt;h3 id=&quot;1-在同个java文件中但不是内部类&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-在同个java文件中但不是内部类&quot;&gt;&lt;/a&gt; 1. 在同个java文件中，但不是内部类&lt;/h3&gt;
-&lt;figure class=&quot;highlight </description>
+      <description>&lt;h3 id=&quot;1-在同个java文件中，但不是内部类&quot;&gt;&lt;a href=&quot;#1-在同个java文件中，但不是内部类&quot; class=&quot;headerlink&quot; title=&quot;1. 在同个java文件中，但不是内部类&quot;&gt;&lt;/a&gt;1. 在同个java文件中，但不是内部类&lt;/h3&gt;&lt;fi</description>
         
       
       
@@ -680,8 +762,7 @@ jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成&
       
         
         
-      <description>&lt;h5 id=&quot;1-安装gcc&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-安装gcc&quot;&gt;&lt;/a&gt; 1. 安装gcc&lt;/h5&gt;
-   &lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gu</description>
+      <description>&lt;h5 id=&quot;1-安装gcc&quot;&gt;&lt;a href=&quot;#1-安装gcc&quot; class=&quot;headerlink&quot; title=&quot;1. 安装gcc&quot;&gt;&lt;/a&gt;1. 安装gcc&lt;/h5&gt;   &lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td c</description>
         
       
       
@@ -706,7 +787,7 @@ jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成&
         
         
       <description>&lt;p&gt;项目运行时，如果需要修改某个css、js、html等文件的时候，需要自己连接到服务器然后修改，更有甚者需要连接vpn、堡垒机等等，特别烦！！！！于是弄了一个在线修改静态文件的工具，在此记录一下。&lt;/p&gt;
-&lt;h4 id=&quot;1-引入pom&quot;&gt;&lt;a class=&quot;markdown</description>
+&lt;h4 id=&quot;1-引入pom&quot;&gt;&lt;a href=&quot;#1-引入pom&quot;</description>
         
       
       
@@ -730,11 +811,9 @@ jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成&
         
       <description>&lt;p&gt;&lt;img src=&quot;/2020/06/02/thread-status/01.jpg&quot; alt=&quot;线程的状态&quot;&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;新建(NEW)&lt;/strong&gt;：新创建了一个线程对象。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;**新建(NEW)**：新创建了一个线程对象。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;</description>
+&lt;li&gt;&lt;p&gt;**可运行(RUNNABLE)**：线程对象创</description>
         
       
       
@@ -758,8 +837,7 @@ jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成&
       
         
         
-      <description>&lt;h2 id=&quot;1-optional&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-optional&quot;&gt;&lt;/a&gt; 1. Optional&lt;/h2&gt;
-&lt;p&gt;Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerExcepti</description>
+      <description>&lt;h2 id=&quot;1-Optional&quot;&gt;&lt;a href=&quot;#1-Optional&quot; class=&quot;headerlink&quot; title=&quot;1. Optional&quot;&gt;&lt;/a&gt;1. Optional&lt;/h2&gt;&lt;p&gt;Optional 类主要解决的问题是臭名昭著的空指针异常（NullPoi</description>
         
       
       

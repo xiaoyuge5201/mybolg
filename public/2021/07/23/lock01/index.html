@@ -18,16 +18,16 @@
   
   
   <title>锁优化 | 小余哥</title>
-  <meta name="description" content="1. 优化思路以及方法  减少锁持有时间 减小锁粒度 锁分离 锁粗化 锁消除   1.1 减少锁持有时间 12345public synchronized void syncMethod()&amp;#123;    othercode1();    mutextMethod();    othercode2();&amp;#125; 像上述代码，在进入方法前就要得到锁，其他线程就要在外面等待。 分析：锁里面的">
+  <meta name="description" content="1. 优化思路以及方法 减少锁持有时间 减小锁粒度 锁分离 锁粗化 锁消除  1.1 减少锁持有时间12345public synchronized void syncMethod()&amp;#123;    othercode1();    mutextMethod();    othercode2();&amp;#125;  像上述代码，在进入方法前就要得到锁，其他线程就要在外面等待。 分析：锁里面的资源在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="锁优化">
 <meta property="og:url" content="https://xiaoyuge5201.github.io/2021/07/23/lock01/index.html">
 <meta property="og:site_name" content="小余哥">
-<meta property="og:description" content="1. 优化思路以及方法  减少锁持有时间 减小锁粒度 锁分离 锁粗化 锁消除   1.1 减少锁持有时间 12345public synchronized void syncMethod()&amp;#123;    othercode1();    mutextMethod();    othercode2();&amp;#125; 像上述代码，在进入方法前就要得到锁，其他线程就要在外面等待。 分析：锁里面的">
+<meta property="og:description" content="1. 优化思路以及方法 减少锁持有时间 减小锁粒度 锁分离 锁粗化 锁消除  1.1 减少锁持有时间12345public synchronized void syncMethod()&amp;#123;    othercode1();    mutextMethod();    othercode2();&amp;#125;  像上述代码，在进入方法前就要得到锁，其他线程就要在外面等待。 分析：锁里面的资源在">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xiaoyuge5201.github.io/2021/07/23/images/read_writer_Lock1.png">
 <meta property="article:published_time" content="2021-07-23T06:04:02.000Z">
-<meta property="article:modified_time" content="2021-08-15T07:41:26.084Z">
+<meta property="article:modified_time" content="2021-10-10T08:14:05.065Z">
 <meta property="article:author" content="小余哥">
 <meta property="article:tag" content="lock">
 <meta name="twitter:card" content="summary">
@@ -217,7 +217,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/Thread/">Thread</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/nginx/">nginx</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/">redis</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/springboot/">springboot</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mvcc/">mvcc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/">自定义工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B6%A3%E5%91%B3/">趣味</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98%E7%82%B9/">问题点</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98%E7%82%B9/sprigCloud/">sprigCloud</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/Thread/">Thread</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/nginx/">nginx</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/list/">list</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/">redis</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/springboot/">springboot</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mvcc/">mvcc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/">自定义工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B6%A3%E5%91%B3/">趣味</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98%E7%82%B9/">问题点</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98%E7%82%B9/sprigCloud/">sprigCloud</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -227,7 +227,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ClassLoader/" rel="tag">ClassLoader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lock/" rel="tag">lock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mycat/" rel="tag">mycat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" rel="tag">内存溢出</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E7%82%B9/" rel="tag">问题点</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ClassLoader/" rel="tag">ClassLoader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lock/" rel="tag">lock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mycat/" rel="tag">mycat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shutdown/" rel="tag">shutdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" rel="tag">内存溢出</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E7%82%B9/" rel="tag">问题点</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -237,7 +237,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/ClassLoader/" style="font-size: 13px;">ClassLoader</a> <a href="/tags/ELK/" style="font-size: 13px;">ELK</a> <a href="/tags/algorithm/" style="font-size: 13.25px;">algorithm</a> <a href="/tags/java/" style="font-size: 13.75px;">java</a> <a href="/tags/lock/" style="font-size: 13px;">lock</a> <a href="/tags/mycat/" style="font-size: 13px;">mycat</a> <a href="/tags/mysql/" style="font-size: 14px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/redis/" style="font-size: 13.5px;">redis</a> <a href="/tags/springboot/" style="font-size: 13px;">springboot</a> <a href="/tags/vue/" style="font-size: 13px;">vue</a> <a href="/tags/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" style="font-size: 13px;">内存溢出</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E9%97%AE%E9%A2%98%E7%82%B9/" style="font-size: 13px;">问题点</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.25px;">面试</a>
+      <a href="/tags/ClassLoader/" style="font-size: 13px;">ClassLoader</a> <a href="/tags/ELK/" style="font-size: 13px;">ELK</a> <a href="/tags/algorithm/" style="font-size: 13.25px;">algorithm</a> <a href="/tags/centos/" style="font-size: 13px;">centos</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/java/" style="font-size: 13.75px;">java</a> <a href="/tags/lock/" style="font-size: 13px;">lock</a> <a href="/tags/mycat/" style="font-size: 13px;">mycat</a> <a href="/tags/mysql/" style="font-size: 14px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/redis/" style="font-size: 13.5px;">redis</a> <a href="/tags/shutdown/" style="font-size: 13px;">shutdown</a> <a href="/tags/springboot/" style="font-size: 13px;">springboot</a> <a href="/tags/vue/" style="font-size: 13px;">vue</a> <a href="/tags/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" style="font-size: 13px;">内存溢出</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E9%97%AE%E9%A2%98%E7%82%B9/" style="font-size: 13px;">问题点</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.25px;">面试</a>
     </div>
   </div>
 
@@ -246,7 +246,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -262,6 +262,66 @@
             
             <div class="item-inner">
               <p class="item-category">
+                <a class="category-link" href="/categories/list/">list</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/10/list-to-string/" class="title">Java中将List列表转换为字符串</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-10T09:48:19.000Z" itemprop="datePublished">2021-10-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Linux/">Linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/02/shutdown/" class="title">linux关机命令</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-02T03:39:17.000Z" itemprop="datePublished">2021-10-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Linux/">Linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/01/Installing-CentOS-system/" class="title">安装Centos系统以及配置IP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-01T08:47:11.000Z" itemprop="datePublished">2021-10-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/java/">java</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/09/25/locksupport/" class="title">LockSupport 一个很灵活的线程工具类</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-09-25T04:59:36.000Z" itemprop="datePublished">2021-09-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
                 <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a>
               </p>
               <p class="item-title">
@@ -269,66 +329,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2021-08-25T02:36:37.000Z" itemprop="datePublished">2021-08-25</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/08/22/algoright-2/" class="title">转换成小写字母</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-08-22T05:15:12.000Z" itemprop="datePublished">2021-08-22</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/08/21/mysqldumpslow%E5%88%86%E6%9E%90%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97/" class="title">mysqldumpslow分析慢查询日志</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-08-21T08:16:02.000Z" itemprop="datePublished">2021-08-21</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/08/20/mysql-index/" class="title">mysql索引</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-08-20T07:12:00.000Z" itemprop="datePublished">2021-08-20</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/08/19/algorithm/" class="title">二分查找</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-08-19T14:54:43.000Z" itemprop="datePublished">2021-08-19</time>
               </p>
             </div>
           </li>
@@ -381,59 +381,61 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="1-优化思路以及方法"><a class="markdownIt-Anchor" href="#1-优化思路以及方法"></a> 1. 优化思路以及方法</h2>
-<ul>
+        <h2 id="1-优化思路以及方法"><a href="#1-优化思路以及方法" class="headerlink" title="1. 优化思路以及方法"></a>1. 优化思路以及方法</h2><ul>
 <li>减少锁持有时间</li>
 <li>减小锁粒度</li>
 <li>锁分离</li>
 <li>锁粗化</li>
 <li>锁消除</li>
 </ul>
-<h3 id="11-减少锁持有时间"><a class="markdownIt-Anchor" href="#11-减少锁持有时间"></a> 1.1 减少锁持有时间</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">syncMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    othercode1();</span><br><span class="line">    mutextMethod();</span><br><span class="line">    othercode2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-减少锁持有时间"><a href="#1-1-减少锁持有时间" class="headerlink" title="1.1 减少锁持有时间"></a>1.1 减少锁持有时间</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">syncMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    othercode1();</span><br><span class="line">    mutextMethod();</span><br><span class="line">    othercode2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>像上述代码，在进入方法前就要得到锁，其他线程就要在外面等待。</p>
 <p>分析：锁里面的资源在同一时间只允许一个线程执行，我们不仅要减少其他线程等待的时间，也要尽力减少线程在锁里面的执行时间，所以，尽量只有在有线程安全要求的程序代码上加锁。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">syncMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    othercode1();</span><br><span class="line">    <span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123;</span><br><span class="line">        metextMethod();</span><br><span class="line">    &#125;</span><br><span class="line">    othercode2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="12-减小锁粒度"><a class="markdownIt-Anchor" href="#12-减小锁粒度"></a> 1.2 减小锁粒度</h3>
-<p>将大对象（这个对象可能会被很多线程访问）拆成小对象，大大增加并行度。</p>
+
+<h3 id="1-2-减小锁粒度"><a href="#1-2-减小锁粒度" class="headerlink" title="1.2 减小锁粒度"></a>1.2 减小锁粒度</h3><p>将大对象（这个对象可能会被很多线程访问）拆成小对象，大大增加并行度。</p>
 <p>降低锁竞争，那么偏向锁、轻量级锁成功率才会提高。</p>
 <p>最最典型的减小锁粒度的案例就是ConcurrentHashMap。在HashMap的基础上进行优化，使用了cas与synchronized来确保安全性，在保证安全性的基础上为了充分利用线程资源，更是巧妙的设计了多线程同扩容的模式。</p>
-<h3 id="13-锁分离"><a class="markdownIt-Anchor" href="#13-锁分离"></a> 1.3 锁分离</h3>
-<p>最常见的锁分离就是读写锁ReadWriteLock，根据功能进行分离成读锁和写锁。这样读读不互斥，读写互斥，写写互斥。既保证了线程安全，又提高了性能。</p>
+<h3 id="1-3-锁分离"><a href="#1-3-锁分离" class="headerlink" title="1.3 锁分离"></a>1.3 锁分离</h3><p>最常见的锁分离就是读写锁ReadWriteLock，根据功能进行分离成读锁和写锁。这样读读不互斥，读写互斥，写写互斥。既保证了线程安全，又提高了性能。</p>
 <p>分析：读写分离这种思想可以延伸到我们其他的设计中，只要操作上互不影响，那锁就可以进行分离，比如：LinkedBlockingQueue</p>
 <img src="..\images/read_writer_Lock1.png" alt="read_writer_Lock1" style="zoom: 67%;">
+
 <p>从头部获取数据，从尾部放入数据，使用两把锁。</p>
-<h3 id="14-锁粗化"><a class="markdownIt-Anchor" href="#14-锁粗化"></a> 1.4 锁粗化</h3>
-<p>通常情况下，为了保证多线程间的有效并发，会要求每个线程持有锁的时间尽量短，即在使用完公共资源后，应该立即释放锁，只有这样，等待在这个锁上的其他线程才能尽早的获取资源执行任务；但是凡事都有一个度，如果对同一个锁不停的进行请求、同步和释放，其本身也会消耗系统宝贵的资源，反而不利于性能的优化。</p>
+<h3 id="1-4-锁粗化"><a href="#1-4-锁粗化" class="headerlink" title="1.4 锁粗化"></a>1.4 锁粗化</h3><p>通常情况下，为了保证多线程间的有效并发，会要求每个线程持有锁的时间尽量短，即在使用完公共资源后，应该立即释放锁，只有这样，等待在这个锁上的其他线程才能尽早的获取资源执行任务；但是凡事都有一个度，如果对同一个锁不停的进行请求、同步和释放，其本身也会消耗系统宝贵的资源，反而不利于性能的优化。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demoMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>&#123;</span><br><span class="line">    	<span class="comment">//dow sth.</span></span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//....做其他不需要同步的工作，但能很快执行完毕</span></span><br><span class="line">    <span class="keyword">synchronized</span>&#123;</span><br><span class="line">        <span class="comment">//do sth.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这种情况，根据锁粗化的思想，应该合并：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demoMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//整合成一次锁请求,前提时中间哪些不需要同步的工作很快就执行完成</span></span><br><span class="line">    <span class="keyword">synchronized</span>(lock)&#123;</span><br><span class="line">        <span class="comment">//do sth.</span></span><br><span class="line">        <span class="comment">//....做其他不需要同步的工作，但能很快执行完毕</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>再举一个极端的例子：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i &lt; circle; i++)&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(lock)&#123;</span><br><span class="line">        <span class="comment">//.....</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>在一个循环内不同得获得锁。虽然JDK内部会对这个代码做些优化，但是还不如直接写成：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(lock)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i &lt; circle; i++)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当然如果有需求说，这样的循环太久，需要给其他线程不要等待太久，那只能写成上面那种。如果没有这样类似的需求，还是直接写成后者那种比较好。<br>
-<strong>分析</strong>: 锁粗化是JVM默认启动的一种机制，锁粗化针对的是对连续的区域进行分段加锁这种场景，JVM会自发进行优化。但作为开发者而言在满足业务的情况下，应该减少锁的使用。</p>
-<h3 id="15-锁消除"><a class="markdownIt-Anchor" href="#15-锁消除"></a> 1.5 锁消除</h3>
-<p>锁消除是在编译器级别的事情。在即时编译器(JIT)时，如果发现不可能被共享的对象，则可以消除这些对象的锁操作。也许你会觉得奇怪，既然有些对象不可能被多线程访问，那为什么要加锁呢？写代码时直接不加锁不就好了。<br>
-但是有时，这些锁并不是程序员所写的，有的是JDK实现中就有锁的，比如Vector和StringBuffer这样的类，它们中的很多方法都是有锁的。当我们在一些不会有线程安全的情况下使用这些类的方法时，达到某些条件时，编译器会将锁消除来提高性能。</p>
+
+<p>当然如果有需求说，这样的循环太久，需要给其他线程不要等待太久，那只能写成上面那种。如果没有这样类似的需求，还是直接写成后者那种比较好。<br><strong>分析</strong>: 锁粗化是JVM默认启动的一种机制，锁粗化针对的是对连续的区域进行分段加锁这种场景，JVM会自发进行优化。但作为开发者而言在满足业务的情况下，应该减少锁的使用。</p>
+<h3 id="1-5-锁消除"><a href="#1-5-锁消除" class="headerlink" title="1.5 锁消除"></a>1.5 锁消除</h3><p>锁消除是在编译器级别的事情。在即时编译器(JIT)时，如果发现不可能被共享的对象，则可以消除这些对象的锁操作。也许你会觉得奇怪，既然有些对象不可能被多线程访问，那为什么要加锁呢？写代码时直接不加锁不就好了。<br>但是有时，这些锁并不是程序员所写的，有的是JDK实现中就有锁的，比如Vector和StringBuffer这样的类，它们中的很多方法都是有锁的。当我们在一些不会有线程安全的情况下使用这些类的方法时，达到某些条件时，编译器会将锁消除来提高性能。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> InterrruptedException</span>&#123;</span><br><span class="line">    <span class="keyword">long</span> start = System.currentTimeTimeMillis();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">20000</span>; i++)&#123;</span><br><span class="line">        createStringBuffer(<span class="string">&quot;JVM&quot;</span>,<span class="string">&quot;asdfasdfasdf&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> bufferCost = System.currentTimeTimeMillis() - start;</span><br><span class="line">    System.out.println(<span class="string">&quot;createStringBuffer:&quot;</span>+bufferCost+<span class="string">&quot;ms&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">createStringBuffer</span><span class="params">(String s1, String s2)</span></span>&#123;</span><br><span class="line">    StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">    sb.append(s1);</span><br><span class="line">    sb.append(s2);</span><br><span class="line">    <span class="keyword">return</span> sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述代码中的StringBuffer.append是一个同步操作，但是StringBuffer却是一个局部变量，并且方法也并没有把StringBuffer返回，所以不可能会有多线程去访问它。那么此时StringBuffer中的同步操作就是没有意义的。<br>
-开启锁消除是在JVM参数上设置的，当然需要在server模式下：</p>
+
+<p>上述代码中的StringBuffer.append是一个同步操作，但是StringBuffer却是一个局部变量，并且方法也并没有把StringBuffer返回，所以不可能会有多线程去访问它。那么此时StringBuffer中的同步操作就是没有意义的。<br>开启锁消除是在JVM参数上设置的，当然需要在server模式下：</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-server -XX:+DoEscapeAnalysis -XX:+EliminateLocks</span><br></pre></td></tr></table></figure>
-<p>并且要开启逃逸分析。 逃逸分析的作用呢，就是看看变量是否有可能逃出作用域的范围。<br>
-比如上述的StringBuffer，上述代码中craeteStringBuffer的返回是一个String，所以这个局部变量StringBuffer在其他地方都不会被使用。如果将craeteStringBuffer改成</p>
+
+<p>并且要开启逃逸分析。 逃逸分析的作用呢，就是看看变量是否有可能逃出作用域的范围。<br>比如上述的StringBuffer，上述代码中craeteStringBuffer的返回是一个String，所以这个局部变量StringBuffer在其他地方都不会被使用。如果将craeteStringBuffer改成</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> StringBuffer <span class="title">createStringBuffer</span><span class="params">(String s1, String s2)</span></span>&#123;</span><br><span class="line">    StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">    sb.append(s1);</span><br><span class="line">    sb.append(s2);</span><br><span class="line">    <span class="keyword">return</span> sb;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>那么这个 StringBuffer被返回后，是有可能被任何其他地方所使用的（譬如被主函数将返回结果put进map啊等等）。那么JVM的逃逸分析可以分析出，这个局部变量 StringBuffer逃出了它的作用域。<br>
-所以基于逃逸分析，JVM可以判断，如果这个局部变量StringBuffer并没有逃出它的作用域，那么可以确定这个StringBuffer并不会被多线程所访问，那么就可以把这些多余的锁给去掉来提高性能。<br>
-当JVM参数为：</p>
+
+<p>那么这个 StringBuffer被返回后，是有可能被任何其他地方所使用的（譬如被主函数将返回结果put进map啊等等）。那么JVM的逃逸分析可以分析出，这个局部变量 StringBuffer逃出了它的作用域。<br>所以基于逃逸分析，JVM可以判断，如果这个局部变量StringBuffer并没有逃出它的作用域，那么可以确定这个StringBuffer并不会被多线程所访问，那么就可以把这些多余的锁给去掉来提高性能。<br>当JVM参数为：</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-server -XX:+DoEscapeAnalysis -XX:+EliminateLocks</span><br></pre></td></tr></table></figure>
+
 <p>输出：</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createStringBuffer: 302ms</span><br></pre></td></tr></table></figure>
+
 <p>JVM参数为：</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-server -XX:+DoEscapeAnalysis -XX:-EliminateLocks</span><br></pre></td></tr></table></figure>
+
 <p>输出：</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createStringBuffer: 660ms</span><br></pre></td></tr></table></figure>
+
 <p>显然，锁消除的效果还是很明显的。</p>
 
       

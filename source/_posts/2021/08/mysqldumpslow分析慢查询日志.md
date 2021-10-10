@@ -13,7 +13,7 @@ categories:
 mysqldumpslow -s at -t 5 /phpstudy/data/slowquery.log
 ```
 - -s   排序方式，可选值有c（记录次数）、t（查询时间）、l（锁定时间）、r（返回记录）、a（平均）
-- -t    显示的记录数
+- -t    显示的记录数Spawn failed解决方式
 - -g   后面跟正则表达式（如 left join），不区分大小写。
 - -r   正序排序，即从小到大排序。
 - -d  调试 debug

@@ -1,5 +1,5 @@
 ---
-title: Hexo部署出现错误Error: Spawn failed解决方式
+title: Hexo部署出现错误Error Spawn failed解决方式
 date: 2021-08-15 18:28:42
 tags: hexo
 comments: false

@@ -18,15 +18,15 @@
   
   
   <title>Java 8学习 | 小余哥</title>
-  <meta name="description" content="1. Optional Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException)。 本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空  1.1. optional构造方式   Optional.of(T) 该方式的入参不能为null，否则会有NPE，在确定入参不为空时使用该方式。   Optional.ofN">
+  <meta name="description" content="1. OptionalOptional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException)。本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空 1.1. optional构造方式 Optional.of(T)   该方式的入参不能为null，否则会有NPE，在确定入参不为空时使用该方式。  Optional.ofNullab">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 8学习">
 <meta property="og:url" content="https://xiaoyuge5201.github.io/2020/04/23/java8%E7%89%B9%E6%80%A7/index.html">
 <meta property="og:site_name" content="小余哥">
-<meta property="og:description" content="1. Optional Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException)。 本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空  1.1. optional构造方式   Optional.of(T) 该方式的入参不能为null，否则会有NPE，在确定入参不为空时使用该方式。   Optional.ofN">
+<meta property="og:description" content="1. OptionalOptional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException)。本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空 1.1. optional构造方式 Optional.of(T)   该方式的入参不能为null，否则会有NPE，在确定入参不为空时使用该方式。  Optional.ofNullab">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-23T06:04:02.000Z">
-<meta property="article:modified_time" content="2021-08-15T07:41:26.084Z">
+<meta property="article:modified_time" content="2021-10-10T08:14:05.064Z">
 <meta property="article:author" content="小余哥">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -215,7 +215,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/Thread/">Thread</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/nginx/">nginx</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/">redis</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/springboot/">springboot</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mvcc/">mvcc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/">自定义工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B6%A3%E5%91%B3/">趣味</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98%E7%82%B9/">问题点</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98%E7%82%B9/sprigCloud/">sprigCloud</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/Thread/">Thread</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/nginx/">nginx</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/list/">list</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/">redis</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/Vue/">Vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/springboot/">springboot</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mvcc/">mvcc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/">自定义工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B6%A3%E5%91%B3/">趣味</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98%E7%82%B9/">问题点</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%97%AE%E9%A2%98%E7%82%B9/sprigCloud/">sprigCloud</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -225,7 +225,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ClassLoader/" rel="tag">ClassLoader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lock/" rel="tag">lock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mycat/" rel="tag">mycat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" rel="tag">内存溢出</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E7%82%B9/" rel="tag">问题点</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ClassLoader/" rel="tag">ClassLoader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lock/" rel="tag">lock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mycat/" rel="tag">mycat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shutdown/" rel="tag">shutdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" rel="tag">内存溢出</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E7%82%B9/" rel="tag">问题点</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -235,7 +235,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/ClassLoader/" style="font-size: 13px;">ClassLoader</a> <a href="/tags/ELK/" style="font-size: 13px;">ELK</a> <a href="/tags/algorithm/" style="font-size: 13.25px;">algorithm</a> <a href="/tags/java/" style="font-size: 13.75px;">java</a> <a href="/tags/lock/" style="font-size: 13px;">lock</a> <a href="/tags/mycat/" style="font-size: 13px;">mycat</a> <a href="/tags/mysql/" style="font-size: 14px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/redis/" style="font-size: 13.5px;">redis</a> <a href="/tags/springboot/" style="font-size: 13px;">springboot</a> <a href="/tags/vue/" style="font-size: 13px;">vue</a> <a href="/tags/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" style="font-size: 13px;">内存溢出</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E9%97%AE%E9%A2%98%E7%82%B9/" style="font-size: 13px;">问题点</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.25px;">面试</a>
+      <a href="/tags/ClassLoader/" style="font-size: 13px;">ClassLoader</a> <a href="/tags/ELK/" style="font-size: 13px;">ELK</a> <a href="/tags/algorithm/" style="font-size: 13.25px;">algorithm</a> <a href="/tags/centos/" style="font-size: 13px;">centos</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/java/" style="font-size: 13.75px;">java</a> <a href="/tags/lock/" style="font-size: 13px;">lock</a> <a href="/tags/mycat/" style="font-size: 13px;">mycat</a> <a href="/tags/mysql/" style="font-size: 14px;">mysql</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/redis/" style="font-size: 13.5px;">redis</a> <a href="/tags/shutdown/" style="font-size: 13px;">shutdown</a> <a href="/tags/springboot/" style="font-size: 13px;">springboot</a> <a href="/tags/vue/" style="font-size: 13px;">vue</a> <a href="/tags/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" style="font-size: 13px;">内存溢出</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13px;">工具</a> <a href="/tags/%E9%97%AE%E9%A2%98%E7%82%B9/" style="font-size: 13px;">问题点</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.25px;">面试</a>
     </div>
   </div>
 
@@ -244,7 +244,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -260,6 +260,66 @@
             
             <div class="item-inner">
               <p class="item-category">
+                <a class="category-link" href="/categories/list/">list</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/10/list-to-string/" class="title">Java中将List列表转换为字符串</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-10T09:48:19.000Z" itemprop="datePublished">2021-10-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Linux/">Linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/02/shutdown/" class="title">linux关机命令</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-02T03:39:17.000Z" itemprop="datePublished">2021-10-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Linux/">Linux</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/10/01/Installing-CentOS-system/" class="title">安装Centos系统以及配置IP</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-10-01T08:47:11.000Z" itemprop="datePublished">2021-10-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/java/">java</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/09/25/locksupport/" class="title">LockSupport 一个很灵活的线程工具类</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-09-25T04:59:36.000Z" itemprop="datePublished">2021-09-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
                 <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a>
               </p>
               <p class="item-title">
@@ -267,66 +327,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2021-08-25T02:36:37.000Z" itemprop="datePublished">2021-08-25</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/08/22/algoright-2/" class="title">转换成小写字母</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-08-22T05:15:12.000Z" itemprop="datePublished">2021-08-22</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/08/21/mysqldumpslow%E5%88%86%E6%9E%90%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97/" class="title">mysqldumpslow分析慢查询日志</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-08-21T08:16:02.000Z" itemprop="datePublished">2021-08-21</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/08/20/mysql-index/" class="title">mysql索引</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-08-20T07:12:00.000Z" itemprop="datePublished">2021-08-20</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-              </p>
-              <p class="item-title">
-                <a href="/2021/08/19/algorithm/" class="title">二分查找</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2021-08-19T14:54:43.000Z" itemprop="datePublished">2021-08-19</time>
               </p>
             </div>
           </li>
@@ -384,76 +384,59 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="1-optional"><a class="markdownIt-Anchor" href="#1-optional"></a> 1. Optional</h2>
-<p>Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException)。<br>
-本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空</p>
-<h3 id="11-optional构造方式"><a class="markdownIt-Anchor" href="#11-optional构造方式"></a> 1.1. optional构造方式</h3>
-<ul>
-<li>
-<p>Optional.of(T)</p>
-<p>该方式的入参不能为null，否则会有NPE，在确定入参不为空时使用该方式。</p>
+        <h2 id="1-Optional"><a href="#1-Optional" class="headerlink" title="1. Optional"></a>1. Optional</h2><p>Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException)。<br>本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空</p>
+<h3 id="1-1-optional构造方式"><a href="#1-1-optional构造方式" class="headerlink" title="1.1. optional构造方式"></a>1.1. optional构造方式</h3><ul>
+<li><p>Optional.of(T)</p>
+<p>  该方式的入参不能为null，否则会有NPE，在确定入参不为空时使用该方式。</p>
 </li>
-<li>
-<p>Optional.ofNullable(T)</p>
-<p>该方式的入参可以为null，当入参不确定为非null时使用。</p>
+<li><p>Optional.ofNullable(T)</p>
+<p>  该方式的入参可以为null，当入参不确定为非null时使用。</p>
 </li>
-<li>
-<p>Optional.empty()</p>
-<p>这种方式是返回一个空Optional，等效Optional.ofNullable(null)</p>
+<li><p>Optional.empty()</p>
+<p>  这种方式是返回一个空Optional，等效Optional.ofNullable(null)</p>
 </li>
 </ul>
-<h3 id="12-如何正确的使用optional"><a class="markdownIt-Anchor" href="#12-如何正确的使用optional"></a> 1.2. 如何正确的使用Optional</h3>
-<ul>
-<li>
-<p>尽量避免使用的地方</p>
+<h3 id="1-2-如何正确的使用Optional"><a href="#1-2-如何正确的使用Optional" class="headerlink" title="1.2. 如何正确的使用Optional"></a>1.2. 如何正确的使用Optional</h3><ul>
+<li><p>尽量避免使用的地方</p>
 <ol>
-<li>
-<p>避免使用Optional.isPresent()来检查实例是否存在，因为这种方式和null != obj没有区别，这样用就没什么意义了。</p>
+<li><p>避免使用Optional.isPresent()来检查实例是否存在，因为这种方式和null != obj没有区别，这样用就没什么意义了。</p>
 </li>
-<li>
-<p>避免使用Optional.get()方式来获取实例对象，因为使用前需要使用Optional.isPresent()来检查实例是否存在，否则会出现NPE问题。</p>
+<li><p>避免使用Optional.get()方式来获取实例对象，因为使用前需要使用Optional.isPresent()来检查实例是否存在，否则会出现NPE问题。</p>
 </li>
-<li>
-<p>避免使用Optional作为类或者实例的属性，而应该在返回值中用来包装返回实例对象。</p>
+<li><p>避免使用Optional作为类或者实例的属性，而应该在返回值中用来包装返回实例对象。</p>
 </li>
-<li>
-<p>避免使用Optional作为方法的参数，原因同3。</p>
+<li><p>避免使用Optional作为方法的参数，原因同3。</p>
 </li>
 </ol>
 </li>
-<li>
-<p>正确使用方式</p>
+<li><p>正确使用方式</p>
 <ol>
-<li>
-<p>实例对象存在则返回，否则提供默认值或者通过方法来设置返回值，即使用orElse/orElseGet方式：</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存在则返回</span></span><br><span class="line">User king = <span class="keyword">new</span> User(<span class="number">1</span>, <span class="string">&quot;king&quot;</span>);</span><br><span class="line">Optional&lt;User&gt; userOpt = Optional.of(king);</span><br><span class="line">User user =  userOpt.orElse(<span class="keyword">null</span>);</span><br><span class="line">System.out.println(user.getName());</span><br><span class="line"></span><br><span class="line"><span class="comment">//不存在提供默认值</span></span><br><span class="line">User user2 = <span class="keyword">null</span>;</span><br><span class="line">Optional&lt;User&gt; userOpt2 = Optional.ofNullable(user2);</span><br><span class="line">User user3 = userOpt2.orElse(unknown);</span><br><span class="line">System.out.println(user3.getName());</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过方法提供值</span></span><br><span class="line">User user4 = userOpt2.orElseGet(() -&gt; <span class="keyword">new</span> User(<span class="number">0</span>, <span class="string">&quot;DEFAULT&quot;</span>)); </span><br><span class="line">System.out.println(user4.getName())</span><br><span class="line">    </span><br><span class="line"> <span class="comment">//不建议下面这种使用</span></span><br><span class="line"><span class="keyword">if</span>(userOpt.isPresent()) &#123;</span><br><span class="line">    System.out.println(userOpt.get().getName());</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//。。。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>使用ifPresent()来进行对象操作，存在则操作，否则不操作。</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例存在则操作，否则不操作</span></span><br><span class="line">userOpt.ifPresent(u -&gt; System.out.println(u.getName()));</span><br><span class="line">userOpt2.ifPresent(u -&gt; System.out.println(u.getName()));</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>使用map/flatMap来获取关联数据</p>
+<li><p>实例对象存在则返回，否则提供默认值或者通过方法来设置返回值，即使用orElse/orElseGet方式：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存在则返回</span></span><br><span class="line">User king = <span class="keyword">new</span> User(<span class="number">1</span>, <span class="string">&quot;king&quot;</span>);</span><br><span class="line">Optional&lt;User&gt; userOpt = Optional.of(king);</span><br><span class="line">User user =  userOpt.orElse(<span class="keyword">null</span>);</span><br><span class="line">System.out.println(user.getName());</span><br><span class="line"></span><br><span class="line"><span class="comment">//不存在提供默认值</span></span><br><span class="line">User user2 = <span class="keyword">null</span>;</span><br><span class="line">Optional&lt;User&gt; userOpt2 = Optional.ofNullable(user2);</span><br><span class="line">User user3 = userOpt2.orElse(unknown);</span><br><span class="line">System.out.println(user3.getName());</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过方法提供值</span></span><br><span class="line">User user4 = userOpt2.orElseGet(() -&gt; <span class="keyword">new</span> User(<span class="number">0</span>, <span class="string">&quot;DEFAULT&quot;</span>)); </span><br><span class="line">System.out.println(user4.getName())</span><br><span class="line">    </span><br><span class="line"> <span class="comment">//不建议下面这种使用</span></span><br><span class="line"><span class="keyword">if</span>(userOpt.isPresent()) &#123;</span><br><span class="line">    System.out.println(userOpt.get().getName());</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//。。。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用ifPresent()来进行对象操作，存在则操作，否则不操作。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例存在则操作，否则不操作</span></span><br><span class="line">userOpt.ifPresent(u -&gt; System.out.println(u.getName()));</span><br><span class="line">userOpt2.ifPresent(u -&gt; System.out.println(u.getName()));</span><br></pre></td></tr></table></figure></li>
+<li><p>使用map/flatMap来获取关联数据</p>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用map方法获取关联数据</span></span><br><span class="line">System.out.println(userOpt.map(u -&gt; u.getName()).orElse(<span class="string">&quot;Unknown&quot;</span>));</span><br><span class="line">System.out.println(userOpt2.map(u -&gt; u.getName()).orElse(<span class="string">&quot;Default&quot;</span>));</span><br><span class="line"><span class="comment">//使用flatMap方法获取关联数据</span></span><br><span class="line">List&lt;String&gt; interests = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">interests.add(<span class="string">&quot;a&quot;</span>);interests.add(<span class="string">&quot;b&quot;</span>);interests.add(<span class="string">&quot;c&quot;</span>);</span><br><span class="line">user.setInterests(interests);</span><br><span class="line">List&lt;String&gt; interests2 = Optional.of(user)</span><br><span class="line">    .flatMap(u -&gt; Optional.ofNullable(u.getInterests()))</span><br><span class="line">    .orElse(Collections.emptyList());</span><br><span class="line">System.out.println(interests2.isEmpty());</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 </li>
 </ul>
-<h3 id="13optional判断第三方接口"><a class="markdownIt-Anchor" href="#13optional判断第三方接口"></a> 1.3.Optional判断第三方接口</h3>
-<p>使用java8的optional可以减少很多的NPE，再也不用当心别人的接口返回值问题了，也不用满屏的if（a != null）这种判断，下面是使用过程中遇到的问题以及如何使用Optional解决。</p>
-<h4 id="131-接口返回参数问题"><a class="markdownIt-Anchor" href="#131-接口返回参数问题"></a> 1.3.1. 接口返回参数问题</h4>
-<ol>
+<h3 id="1-3-Optional判断第三方接口"><a href="#1-3-Optional判断第三方接口" class="headerlink" title="1.3.Optional判断第三方接口"></a>1.3.Optional判断第三方接口</h3><p>使用java8的optional可以减少很多的NPE，再也不用当心别人的接口返回值问题了，也不用满屏的if（a != null）这种判断，下面是使用过程中遇到的问题以及如何使用Optional解决。</p>
+<h4 id="1-3-1-接口返回参数问题"><a href="#1-3-1-接口返回参数问题" class="headerlink" title="1.3.1. 接口返回参数问题"></a>1.3.1. 接口返回参数问题</h4><ol>
 <li>在微服务中使用feign调用其他接口，总担心别人返回的参数是否符合标准</li>
 <li>参数符合标准后，然后再进行数据判断，先判断是否code为200，然后判断数据存不存在，这样冗余的代码就很多</li>
 </ol>
 <p>这是我们期望的返回格式</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;code&quot;</span>: <span class="string">&quot;200&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;msg&quot;</span>: <span class="string">&quot;调用成功!&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;data&quot;</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模拟接口调用方法</span></span><br><span class="line">Map&lt;String,Object&gt; map = serviceImpl.queryList();</span><br><span class="line"><span class="comment">//即使map为空也能正常返回，配合map直接映射数据值</span></span><br><span class="line"><span class="keyword">return</span> Optional.ofNullable(map).map(r-&gt; r.get(<span class="string">&quot;data&quot;</span>)).orElseGet(ArrayList:: <span class="keyword">new</span>)</span><br><span class="line">    </span><br><span class="line"> <span class="comment">//JSONObject 判断是否返回成功，如果成功返回200， 不成功返回400   </span></span><br><span class="line">JSONObject jsonObject = service.updateDate();</span><br><span class="line">Optional.ofNullable(jsonObject).map(r-&gt;r.getInteger(<span class="string">&quot;code&quot;</span>)).orElse(<span class="number">400</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="132-避免判断风暴"><a class="markdownIt-Anchor" href="#132-避免判断风暴"></a> 1.3.2. 避免判断风暴</h4>
-<p>对象层层嵌套，为了逻辑严谨必须要进行空判断</p>
+
+<h4 id="1-3-2-避免判断风暴"><a href="#1-3-2-避免判断风暴" class="headerlink" title="1.3.2. 避免判断风暴"></a>1.3.2. 避免判断风暴</h4><p>对象层层嵌套，为了逻辑严谨必须要进行空判断</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对于一个对象里面嵌套对象，那么需要层层去判断非空</span></span><br><span class="line">School school = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span>(school != <span class="keyword">null</span>)&#123;</span><br><span class="line">    Clazz clazz = school.getClazz();</span><br><span class="line">    <span class="keyword">if</span>(clazz != <span class="keyword">null</span>)&#123;</span><br><span class="line">        Student student = clazz.getStudent();</span><br><span class="line">        <span class="keyword">if</span>(student != <span class="keyword">null</span>)&#123;</span><br><span class="line">            String name = student.getName();</span><br><span class="line">            <span class="keyword">if</span>(name == <span class="keyword">null</span> || <span class="string">&quot;&quot;</span>.equals(name))&#123;</span><br><span class="line">                name = <span class="string">&quot;学生的姓名为空&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用Optional后</span></span><br><span class="line"> String name = Optional.ofNullable(school)</span><br><span class="line">                .map(School::getClazz)</span><br><span class="line">                .map(Clazz::getStudent)</span><br><span class="line">                .map(Student::getName)</span><br><span class="line">                .orElse(<span class="string">&quot;学生的姓名为空&quot;</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="2-stream"><a class="markdownIt-Anchor" href="#2-stream"></a> 2. Stream</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//找出某一个字段等于某个值的那一条数据</span></span><br><span class="line">JaponicaRiceCheck1 streamCheck = listItemRice.stream()</span><br><span class="line">.filter(o -&gt; o.getSYS_PARENTID().equals(check.getSYS_ID())).findAny().orElse(<span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Stream"><a href="#2-Stream" class="headerlink" title="2. Stream"></a>2. Stream</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//找出某一个字段等于某个值的那一条数据</span></span><br><span class="line">JaponicaRiceCheck1 streamCheck = listItemRice.stream()</span><br><span class="line">.filter(o -&gt; o.getSYS_PARENTID().equals(check.getSYS_ID())).findAny().orElse(<span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
 
       
     </div>

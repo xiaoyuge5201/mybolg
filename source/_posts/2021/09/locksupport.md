@@ -1,6 +1,5 @@
 ---
-title: LockSupport：一个很灵活的线程工具类
-permalink: LockSupport
+title: LockSupport 一个很灵活的线程工具类
 comments: false
 date: 2021-09-25 12:59:36
 tags: java
