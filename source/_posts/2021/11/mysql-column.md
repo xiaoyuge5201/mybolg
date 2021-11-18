@@ -4,8 +4,9 @@ date: 2021-11-15 21:13:42
 tags: mysql
 comments: false
 categories:
- - 数据库
- - mysql
+- 数据库
+- mysql
+translate_title: mysql_add_modify_drop_column
 ---
 ### 1. 添加字段
 #### 1.1 在末尾添加字段

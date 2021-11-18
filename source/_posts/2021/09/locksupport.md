@@ -1,11 +1,12 @@
 ---
-title: LockSupport 一个很灵活的线程工具类
+title: LockSupport一个很灵活的线程工具类
 comments: false
 date: 2021-09-25 12:59:36
 tags: java
 categories: 
- - java
- - 多线程
+ -java
+ -多线程
+translate_title: lockSupport-threading-tool-class
 ---
 LockSupport是一个编程工具类， 主要是为了阻塞和唤醒线程用的。所有的方法都是静态方法，可以让线程在任意位置阻塞，也可以在任意位置唤醒
 
