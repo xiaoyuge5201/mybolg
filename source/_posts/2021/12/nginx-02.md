@@ -1,9 +1,7 @@
 ---
 title: Nginx基础篇（二）安装
 tags: nginx
-categories:
-  - linux
-  - nginx
+categories: nginx
 comments: false
 translate_title: nginx-installation
 date: 2021-12-05 16:10:44

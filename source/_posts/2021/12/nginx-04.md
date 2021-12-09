@@ -1,5 +1,5 @@
 ---
-title: Nginx基础篇（三）Nginx实现反向代理
+title: Nginx基础篇（四）Nginx实现反向代理
 comments: false
 date: 2021-12-05 16:52:42
 tags: nginx
@@ -49,8 +49,9 @@ server {
     location / {
         proxy_pass http://192.168.44.1:9096;      ###最重要的配置，转发到目标地址， 也可以配置服务器组，然后upstream一个服务器组
         proxy_method POST;   #设置转发请求的格式
+        #Nginx在header里面增加一个自定义字段 Host， 用于存放当前客户端IP地址
         proxy_set_header  Host $host;
-        #获取客户端的IP地址设置到header中
+        #获取客户端的真实IP地址设置到header中的字段名为X-Real-IP里面
         proxy_set_header X-Real-IP  $remote_addr;
         #获取所有转发请求的IP信息列表
         proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
