@@ -5,7 +5,7 @@ tags: nginx
 categories: Nginx
 abbrlink: 58927
 date: 2021-12-05 14:56:36
-translate_title: nginx-base-01
+translate_title: Nginx-Basics-I-literacy
 ---
 ### 1.Nginx发展史
 作者：logo Sysoev

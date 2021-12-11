@@ -7,6 +7,7 @@ abbrlink: 50454
 date: 2021-07-23 11:40:44
 translate_title: vue-learning
 ---
+
 Object.freeze()，这会阻止修改现有的 property，也意味着响应系统无法再追踪变化。
 ### 1. export
 ---

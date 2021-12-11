@@ -5,7 +5,7 @@ tags: shutdown
 categories: Linux
 abbrlink: 2292
 date: 2021-10-02 11:39:17
-translate_title: linux-shutdown
+translate_title: Linux-shutdown-command
 ---
 ### 1. shutdown命令
 

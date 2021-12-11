@@ -1,5 +1,5 @@
 ---
-title: 分类
+title: classification
 layout: categories
 comments: false
 translate_title: classification
