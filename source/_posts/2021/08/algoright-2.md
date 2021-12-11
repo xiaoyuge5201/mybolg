@@ -1,10 +1,11 @@
 ---
 title: 转换成小写字母
-translate_title: convert-to-lowercase-letters
 tags: algorithm
 categories: 算法
 comments: false
+abbrlink: 4638
 date: 2021-08-22 13:15:12
+translate_title: algorithm-02
 ---
 实现函数 ToLowerCase()，该函数接收一个字符串参数 str，并将该字符串中的大写字母转换成小写字母，之后返回新的字符串。
 ```text

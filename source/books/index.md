@@ -1,7 +1,6 @@
 ---
-title: 书单
+title: books
 layout: books
 comments: false
 sidebar: none
-translate_title: book-list
 ---

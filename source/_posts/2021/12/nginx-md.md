@@ -1,9 +1,11 @@
 ---
 title: Nginx基础篇（一）扫盲
 comments: false
-date: 2021-12-05 14:56:36
 tags: nginx
-categories: nginx
+categories: Nginx
+abbrlink: 58927
+date: 2021-12-05 14:56:36
+translate_title: nginx-base-01
 ---
 ### 1.Nginx发展史
 作者：logo Sysoev

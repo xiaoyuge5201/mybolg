@@ -1,9 +1,11 @@
 ---
 title: Java中将List列表转换为字符串
 comments: false
+tags: 集合
+abbrlink: 28733
 date: 2021-10-10 17:48:19
-tags: java
-categories: list
+categories: Java
+translate_title: list_to_string
 ---
 ### 1. toString() 方法
 List.toString()是最简单的，但它在开头和结尾添加方括号，每个字符串用逗号分隔符分隔。

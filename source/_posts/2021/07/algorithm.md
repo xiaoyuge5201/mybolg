@@ -3,8 +3,9 @@ title: 二分查找
 tags: algorithm
 categories: 算法
 comments: false
-translate_title: binary-search
+abbrlink: 42877
 date: 2021-08-19 22:54:43
+translate_title: binary-search
 ---
 二分法查找是一种基于比较目标值和数组中间元素的算法
 - 如果目标值 = 中间值，则找到目标值

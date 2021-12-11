@@ -1,12 +1,11 @@
 ---
 title: Java守护线程和非守护线程
-translate_title: java-daemon-thread-and-nondaemon
-tags: java
-categories:
-  - java
-  - Thread
+tags: 守护线程
+categories: Java
 comments: false
+abbrlink: 46320
 date: 2021-08-15 14:14:56
+translate_title: thread-01
 ---
 用户线程：我们平常创建的普通线程。
 

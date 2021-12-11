@@ -1,12 +1,11 @@
 ---
 title: ConcurrentHashMap线程安全
-translate_title: concurrenthashmap-thread-safety
-tags: 面试
-categories:
-  - java
-  - 面试
+tags: Java
+categories: 知识整理
 comments: false
+abbrlink: 26925
 date: 2021-07-02 16:17:29
+translate_title: ConcurrentHashMap-thread-safety
 ---
 ##1. jdk1.7 ConcurrentHashMap
 jdk1.7 ConcurrentHashMap是由一个Segment数组和多个HashEntry数组组成

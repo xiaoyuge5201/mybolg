@@ -1,12 +1,11 @@
 ---
 title: 常见sql优化方式
 tags: mysql
-categories:
-  - 数据库
-  - mysql
+categories: 数据库
 comments: false
-translate_title: common-sql-optimization-methods
+abbrlink: 9311
 date: 2021-07-01 16:00:57
+translate_title: common-SQL-optimization-methods
 ---
 1. 对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。
 

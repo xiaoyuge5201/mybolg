@@ -2,8 +2,10 @@
 title: ElasticSearch安装
 tags: ELK
 comments: false
-translate_title: elasticsearch-installation
+categories: Linux
+abbrlink: 1479
 date: 2021-07-23 13:41:24
+translate_title: elastic-search-install
 ---
 ## 1. JDK14安装
 

@@ -1,9 +1,11 @@
 ---
 title: docker安装mysql
 comments: false
+tags: mysql
+categories: Docker
+abbrlink: 12467
 date: 2021-12-09 21:32:36
-tags: docker
-categories: 技术分享
+translate_title: docker-02
 ---
 ##### 1.查看所有的镜像
 ```shell

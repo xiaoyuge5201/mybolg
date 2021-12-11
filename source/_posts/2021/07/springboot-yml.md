@@ -1,12 +1,11 @@
 ---
 title: springboot读取yml配置的方式
 tags: springboot
-categories:
-  - 微服务
-  - springboot
+categories: Java
 comments: false
-translate_title: how-springboot-reads-yml-configuration
+abbrlink: 58807
 date: 2021-08-18 21:41:24
+translate_title: springboot-yaml
 ---
 springboot项目中默认的配置文件是application.properties；
 ### 1.yml文件规则

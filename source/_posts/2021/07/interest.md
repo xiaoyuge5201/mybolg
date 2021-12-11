@@ -1,9 +1,11 @@
 ---
 title: 面试常见的趣味题
-categories: 趣味
+tags: algorithm
 comments: false
-translate_title: common-interesting-questions-in-interviews
+categories: 算法
+abbrlink: 16635
 date: 2021-06-14 10:09:15
+translate_title: interesting-questions-in-interview
 ---
 ### 8升、5升、3升水桶各一个,如何分成两个4升
 ![分成两个4升](./interest/3_5_8.png)

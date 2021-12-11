@@ -1,12 +1,11 @@
 ---
 title: Linux环境下安装Redis
 tags: redis
-categories:
-  - 中间件
-  - redis
+categories: Linux
 comments: false
-translate_title: install-redis-in-linux
+abbrlink: 52569
 date: 2021-05-13 13:40:44
+translate_title: redis-install
 ---
 #####  1. 安装gcc
    ```shell

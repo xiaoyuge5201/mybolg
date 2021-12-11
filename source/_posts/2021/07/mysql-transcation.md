@@ -1,12 +1,11 @@
 ---
 title: mysql事务
 tags: mysql
-categories:
-  - 数据库
-  - mysql
+categories: 数据库
 comments: false
-translate_title: mysql-transaction
+abbrlink: 33118
 date: 2021-07-23 16:00:57
+translate_title: mysql_03
 ---
 ## 事务的定义
 

@@ -1,12 +1,11 @@
 ---
 title: mysqldumpslow分析慢查询日志
 comments: false
-translate_title: mysqldumpslow-analyzes-slow-query-logs
-date: 2021-08-21 16:16:02
 tags: mysql
-categories:
-    - 数据库
-    - mysql
+categories: 数据库
+abbrlink: 19102
+date: 2021-08-21 16:16:02
+translate_title: mysqldumpslow-query-log
 ---
 按照平均查询输出5行慢查询记录
 ```shell

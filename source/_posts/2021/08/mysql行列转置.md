@@ -2,11 +2,10 @@
 title: mysql行列转置
 comments: false
 tags: mysql
-categories:
-  - 数据库
-  - mysql
-translate_title: mysql-transpose
+categories: 数据库
+abbrlink: 11308
 date: 2021-08-25 10:36:37
+translate_title: MySQL-row-column-transpose
 ---
 数据表：
 ![原始数据](./mysql行列转置/01.png)

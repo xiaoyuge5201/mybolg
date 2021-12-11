@@ -1,10 +1,14 @@
 ---
+abbrlink: 1
+---
+---
 title: Hexo部署出现错误Error Spawn failed解决方式
 date: 2021-08-15 18:28:42
 tags: hexo
 comments: false
-translate_title: spawn-failed
----
+categories: 踩坑记录
+translate_title: error-spawn-failed
+--
 部署过程中可能会出现错误:
 ```text
 remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.

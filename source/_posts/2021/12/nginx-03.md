@@ -1,9 +1,11 @@
 ---
 title: Nginx基础篇（三）实现虚拟主机
 comments: false
-date: 2021-12-05 16:31:25
 tags: nginx
-categories: nginx
+categories: Nginx
+abbrlink: 59090
+date: 2021-12-05 16:31:25
+translate_title: nginx-install
 ---
 ### 1. 虚拟主机Virtual Host
 一种在单一主机或主机群上，实现多网域服务的方法，可以运行多个网站或服务的技术，虚拟主机之间完全独立，并可由用户自行管理虚拟并非指不存在，而是指空间是由实体的服务器延伸而来，其硬件系统可以是基于服务器群，或者单个服务器

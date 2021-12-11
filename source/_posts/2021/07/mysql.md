@@ -1,12 +1,11 @@
 ---
 title: mysql知识总结
 tags: mysql
-categories:
-- 数据库
-- mysql
+categories: 数据库
 comments: false
-translate_title: mysql-knowledge-summary
+abbrlink: 54419
 date: 2021-07-23 16:00:57
+translate_title: mysql_01
 ---
 # mysql 初识
 ## 1. 版本历史

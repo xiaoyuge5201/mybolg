@@ -3,8 +3,9 @@ title: mycat学习
 tags: mycat
 categories: 中间件
 comments: false
-translate_title: mycat-learning
+abbrlink: 754
 date: 2021-07-23 16:16:49
+translate_title: mycat_learning
 ---
 # Mycat(分库分表中间件)
 

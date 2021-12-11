@@ -1,9 +1,11 @@
 ---
 title: Nginx基础篇（四）Nginx实现反向代理
 comments: false
-date: 2021-12-05 16:52:42
 tags: nginx
-categories: nginx
+categories: Nginx
+abbrlink: 29976
+date: 2021-12-05 16:52:42
+translate_title: nginx-04
 ---
 ### 1. 正向代理和反向代理
 1. 正向代理：

@@ -1,12 +1,11 @@
 ---
 title: TIDB设置sql_mode
 comments: false
-date: 2021-11-15 20:57:46
 tags: tidb
-categories:
-- 数据库
-- tidb
-translate_title: tidb_set_sql_mode
+categories: 数据库
+abbrlink: 47745
+date: 2021-11-15 20:57:46
+translate_title: tidb-set-sql-mode
 ---
 ### 1. 使用命令查询当前sql_mode
 ```sql

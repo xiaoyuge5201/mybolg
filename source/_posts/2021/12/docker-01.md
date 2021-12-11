@@ -1,9 +1,11 @@
 ---
 title: docker安装
 comments: false
-date: 2021-12-09 21:20:57
 tags: docker
-categories: 技术分享
+categories: Docker
+abbrlink: 8175
+date: 2021-12-09 21:20:57
+translate_title: docker-01
 ---
 新的服务器没有安装docker，使用docker命令时提示：docker: command not found错误信息
 ##### 1. 更新yum包

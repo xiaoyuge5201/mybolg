@@ -1,12 +1,11 @@
 ---
 title: springCloud之FeignClient访问微服务接口缓慢
-translate_title: feignclient-of-springcloud-is-slow-to-access-the-microservice-interface
-tags: 问题点
-categories:
-  - 问题点
-  - sprigCloud
+tags: SpringCloud
+categories: 踩坑记录
 comments: false
+abbrlink: 54514
 date: 2021-07-03 17:08:10
+translate_title: feignclient-of-springcloud-accesses-microservice-interface-slowly
 ---
 ### 问题描述
 逻辑是A服务调用B服务(AB在同一个局域网内)。 经过反复测试，有一个访问缓慢的现象，具体表现为：

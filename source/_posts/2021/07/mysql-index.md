@@ -1,12 +1,11 @@
 ---
 title: mysql索引
 tags: mysql
-categories:
-  - 数据库
-  - mysql
+categories: 数据库
 comments: false
-translate_title: mysql-index
+abbrlink: 22569
 date: 2021-08-20 15:12:00
+translate_title: mysql_02
 ---
 拿汉语字典的目录页（索引）打比方，我们可以按拼音、笔画、偏旁部首等排序的目录（索引）快速查找到需要的字。
 索引分单列索引和组合索引。

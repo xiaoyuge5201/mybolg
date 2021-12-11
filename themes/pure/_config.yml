@@ -192,7 +192,7 @@ profile:
   avatar: images/avatar.png
   gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
   author: 小余哥
-  author_title: Never Give Up
+  author_title: xiaoyouge
   author_description: 致力于分享一些技术教程和有趣的技术实践，以及日常踩坑记录。
   location: Shanghai, China
   follow: https://github.com/xiaoyuge5201

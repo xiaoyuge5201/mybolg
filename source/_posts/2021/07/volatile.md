@@ -1,12 +1,11 @@
 ---
 title: volatile关键字
-tags: 面试
-categories:
-  - java
-  - 面试
+tags: 线程
+categories: Java
 comments: false
-translate_title: volatile-keyword
+abbrlink: 63695
 date: 2021-08-02 18:20:38
+translate_title: volatile1
 ---
 ## 1.volatile作用
   volatile保证有序性，可见性，不能保证原子性

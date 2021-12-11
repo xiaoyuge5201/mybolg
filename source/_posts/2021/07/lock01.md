@@ -2,11 +2,11 @@
 title: 锁优化
 tags: lock
 comments: false
-translate_title: lock-optimization
+categories: Java
+abbrlink: 1446
 date: 2021-07-23 14:04:02
+translate_title: lock-optimization
 ---
- 
-
 ## 1. 优化思路以及方法
 
 - 减少锁持有时间

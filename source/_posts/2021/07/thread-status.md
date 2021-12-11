@@ -1,12 +1,11 @@
 ---
 title: Java线程的声明周期状态
-tags: java
-categories:
-  - java
-  - Thread
+tags: 线程
+categories: Java
 comments: false
-translate_title: the-life-cycle-status-of-a-java-thread
+abbrlink: 62212
 date: 2020-06-02 16:04:02
+translate_title: thread-status
 ---
 ![线程的状态](./thread-status/01.jpg)
 1. **新建(NEW)**：新创建了一个线程对象。

@@ -1,12 +1,11 @@
 ---
 title: mysql数据库锁
-translate_title: mysql-database-lock
 tags: mysql
-categories:
-  - 数据库
-  - mysql
+categories: 数据库
 comments: false
+abbrlink: 33045
 date: 2021-07-24 16:57:10
+translate_title: mysql_04
 ---
 当数据库有事物的时候，可能会产生数据的不一致，这时就需要一些机制来保证访问的次序，这就是锁的机制；
 **锁的作用**：用于挂你对共享资源的并发访问，保证数据库的完整性和一致性。

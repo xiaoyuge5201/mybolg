@@ -1,9 +1,11 @@
 ---
 title: linux关机命令
 comments: false
-date: 2021-10-02 11:39:17
 tags: shutdown
 categories: Linux
+abbrlink: 2292
+date: 2021-10-02 11:39:17
+translate_title: linux-shutdown
 ---
 ### 1. shutdown命令
 

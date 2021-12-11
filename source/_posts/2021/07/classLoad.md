@@ -1,10 +1,14 @@
 ---
+abbrlink: 6
+---
+
+---
 title: JAVA类加载过程
 tags: ClassLoader
-categories: java
+categories: Java
 comments: false
-translate_title: java-class-loading-process
 date: 2021-07-31 11:04:02
+translate_title: java-class-loading-process
 ---
 ## 1.类加载机制
 JVM将类描述数据从.class文件中加载到内存，并对数据进行解析、初始化，最终形成被JVM直接使用的Java类型；类从被加载到JVM中开始，到卸载为止，
@@ -47,7 +51,6 @@ JVM将类描述数据从.class文件中加载到内存，并对数据进行解�
     - 虚拟机会保证一个类的<clinit>()方法在多线程环境被正确加锁和同步
       ![完整的类加载过程2](./classLoad/02.png)
 
----
 ## 2.类加载器
 类加载器的主要任务：对类加载过程中的加载操作（根据一个类的全限定名读取该类的二进制字节流到JVM内部，然后转换为一个对应的java.lang.Class对象实例）
 
