@@ -7,6 +7,7 @@ abbrlink: 2292
 date: 2021-10-02 11:39:17
 translate_title: Linux-shutdown-command
 ---
+
 ### 1. shutdown命令
 
 shutdown会给系统计划一个时间关机。它可以被用于停止、关机、重启机器。
