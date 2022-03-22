@@ -2,7 +2,7 @@
 title: Linux系统下查找文件命令总结
 comments: false
 tags: Linux
-categories: Linux
+categories: linux
 abbrlink: 32250
 translate_title: linux-find-file
 date: 2022-03-19 13:52:39

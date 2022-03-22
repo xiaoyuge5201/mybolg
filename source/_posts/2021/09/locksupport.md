@@ -2,7 +2,7 @@
 title: LockSupport一个很灵活的线程工具类
 comments: false
 tags: 线程
-categories: Java
+categories: java
 translate_title: locksupport-learning
 abbrlink: 41846
 date: 2021-09-25 12:59:36

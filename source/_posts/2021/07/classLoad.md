@@ -1,7 +1,7 @@
 ---
 title: JAVA类加载过程
 tags: ClassLoader
-categories: Java
+categories: java
 comments: false
 translate_title: java-class-loading-process
 abbrlink: 61691

@@ -1,7 +1,7 @@
 ---
 title: Java守护线程和非守护线程
 tags: 守护线程
-categories: Java
+categories: java
 comments: false
 translate_title: thread-01
 abbrlink: 46320

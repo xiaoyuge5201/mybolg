@@ -2,7 +2,7 @@
 title: MinIO简介以及Linux安装MinIO
 comments: false
 tags: Linux
-categories: Linux
+categories: linux
 translate_title: linux_minio
 abbrlink: 63839
 date: 2022-03-21 13:39:15
@@ -106,7 +106,7 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
    #或者指定账号密码启动
    MINIO_ACCESS_KEY=minioadmin MINIO_SECRET_KEY=minioadmin nohup ./minio server --config-dir /usr/software/minio/config /usr/software/minio/data>  /usr/software/minio/minio.log 2>&1 &#
    ```
-   
+   ![](./linux-minio/8.png)
 3. 设置启动脚本
     ```shell
      touch minio.sh
@@ -119,8 +119,8 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
     export MINIO_ACCESS_KEY=username
    #指定登录密码
     export MINIO_SECRET_KEY=password
-   #指定端口以及存储文件夹，并启动服务
-    nohup sudo /usr/local/minio/minio server --address=0.0.0.0:9000 --config-dir /etc/minio /data/minioData > /usr/local/minio/minio.log 2>&1&
+    #指定端口以及存储文件夹，并启动服务 9000访问端口， 9001 控制台界面访问端口, 这里0.0.0.0可以设置为具体的服务器IP
+    nohup ./minio server --address '0.0.0.0:9000' --console-address '0.0.0.0:9001' ./miniodata > ./miniodata/minio.log 2>&1&
     ```
    给当前用户加上执行权限
     ```shell
@@ -179,12 +179,31 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
 
     使用AccessKey 和 SecretKey 登录后台。
 
-2. 进入系统后，我们先要点击右下角的“+”按钮，创建一个文件桶（输入名称后，回车即可），在上传文件到这个文件桶中。Create bucket（创建文件桶）、Upload file（上传文件）。
-   ![](./linux-minio/3.png)![](./linux-minio/4.png)
+2. 进入系统后，我们先要点击右上角的“+”按钮，创建一个文件桶（输入名称后，回车即可），在上传文件到这个文件桶中。Create bucket（创建文件桶），然后输入bucket名称为 **test**, 创建成功后再Upload file（上传文件）。
+   ![](./linux-minio/3.png)![](./linux-minio/3_1.png)![](./linux-minio/3_2.png)![](./linux-minio/4.png)
    
-    上传成功
-    ![](./linux-minio/5.png)
-   现在我们去服务器，我们启动时指定的目录去看看，文件桶相当于文件目录，这里没有使用纠删码的模式，所以直接就是源文件了。当我们线上运行的项目已经有源文件了，在使用minio的时候，可以直接指定该目录为minio的文件目录就行了。
-   ![](./linux-minio/7.png)
+
+   现在我们去服务器，我们启动时指定的目录去看看，可以看到一个新疆的test文件目录（文件桶相当于文件目录），这里没有使用纠删码的模式，所以直接就是源文件了。当我们线上运行的项目已经有源文件了，在使用minio的时候，可以直接指定该目录为minio的文件目录就行了。
+   ![](./linux-minio/5.png)![](./linux-minio/7.png)
+
+3. 分享文件，也可以设置文件分享有效日期
+    ![](./linux-minio/11.png)![img_1.png](./linux-minio/12.png)
+   访问连接会出现如下界面：
+   ![img_1.png](./linux-minio/13.png)
+   
+
+### 3.4 mioIO常见启动问题
+1. 启动报错“WARNING: Console endpoint is listening on a dynamic port...”
+    ![img_1.png](./linux-minio/9.png)
+   错误提示很明显，需要to choose a static port。
+   写了一个shell启动MinIO，在shell中使用--console-address '部署minio的ip:希望通过什么端口打开minio console页面'
+    ```shell
+    export MINIO_ACCESS_KEY=username
+   #指定登录密码
+    export MINIO_SECRET_KEY=password
+    nohup ./minio server --address '0.0.0.0:9000' --console-address '0.0.0.0:9001' ./miniodata > ./miniodata/minio.log 2>&1&
+   ```
+
+
 
     

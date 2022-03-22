@@ -3,7 +3,7 @@
 title: 安装Centos系统以及配置IP
 comments: false
 tags: Centos
-categories: Linux
+categories: linux
 abbrlink: 23533
 date: 2021-10-01 16:47:11
 translate_title: installing-centOS-system-and-configuring-IP

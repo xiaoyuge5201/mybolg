@@ -2,7 +2,7 @@
 title: linux关机命令
 comments: false
 tags: shutdown
-categories: Linux
+categories: linux
 abbrlink: 2292
 date: 2021-10-02 11:39:17
 translate_title: Linux-shutdown-command

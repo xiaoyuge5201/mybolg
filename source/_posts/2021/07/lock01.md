@@ -2,7 +2,7 @@
 title: 锁优化
 tags: lock
 comments: false
-categories: Java
+categories: java
 translate_title: lock-optimization
 abbrlink: 1446
 date: 2021-07-23 14:04:02

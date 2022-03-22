@@ -2,7 +2,7 @@
 title: ElasticSearch安装
 tags: ELK
 comments: false
-categories: Linux
+categories: linux
 abbrlink: 1479
 date: 2021-07-23 13:41:24
 translate_title: elastic-search-install

@@ -4,7 +4,7 @@ comments: false
 tags: 集合
 abbrlink: 28733
 date: 2021-10-10 17:48:19
-categories: Java
+categories: java
 translate_title: list_to_string
 ---
 
