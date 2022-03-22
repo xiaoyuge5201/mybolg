@@ -1,9 +1,11 @@
 ---
 title: Linux系统下查找文件命令总结
 comments: false
-date: 2022-03-19 13:52:39
 tags: Linux
 categories: Linux
+abbrlink: 32250
+translate_title: linux-find-file
+date: 2022-03-19 13:52:39
 ---
 
 ### 1. which查命令绝对路径

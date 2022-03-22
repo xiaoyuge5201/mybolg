@@ -1,15 +1,13 @@
 ---
-abbrlink: 6
----
-
----
 title: JAVA类加载过程
 tags: ClassLoader
 categories: Java
 comments: false
-date: 2021-07-31 11:04:02
 translate_title: java-class-loading-process
+abbrlink: 61691
+date: 2021-07-31 11:04:02
 ---
+
 ## 1.类加载机制
 JVM将类描述数据从.class文件中加载到内存，并对数据进行解析、初始化，最终形成被JVM直接使用的Java类型；类从被加载到JVM中开始，到卸载为止，
 整个生命周期包括：**加载、验证、准备、解析、初始化、使用和卸载**7个阶段

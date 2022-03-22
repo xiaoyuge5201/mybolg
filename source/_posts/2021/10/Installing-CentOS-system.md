@@ -1,7 +1,8 @@
+
 ---
 title: 安装Centos系统以及配置IP
 comments: false
-tags: centos
+tags: Centos
 categories: Linux
 abbrlink: 23533
 date: 2021-10-01 16:47:11
