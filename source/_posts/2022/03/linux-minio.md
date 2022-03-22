@@ -124,7 +124,10 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
     ```
    给当前用户加上执行权限
     ```shell
-     chmod u+x  *.sh
+   chmod u+x  *.sh
+     
+     #启动
+   sh minio.sh
    ```
 
 
