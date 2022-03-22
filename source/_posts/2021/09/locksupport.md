@@ -3,9 +3,9 @@ title: LockSupport一个很灵活的线程工具类
 comments: false
 tags: 线程
 categories: Java
+translate_title: locksupport-learning
 abbrlink: 41846
 date: 2021-09-25 12:59:36
-translate_title: locksupport-learning
 ---
 LockSupport是一个编程工具类， 主要是为了阻塞和唤醒线程用的。所有的方法都是静态方法，可以让线程在任意位置阻塞，也可以在任意位置唤醒
 

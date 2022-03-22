@@ -2,7 +2,7 @@
 title: Nginx基础篇（四）Nginx实现反向代理
 comments: false
 tags: nginx
-categories: Nginx
+categories: nginx
 translate_title: nginx-04
 abbrlink: 29976
 date: 2021-12-05 16:52:42

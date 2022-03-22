@@ -2,7 +2,7 @@
 title: Nginx基础篇（三）实现虚拟主机
 comments: false
 tags: nginx
-categories: Nginx
+categories: nginx
 abbrlink: 59090
 date: 2021-12-05 16:31:25
 translate_title: nginx-install

@@ -3,9 +3,9 @@ title: Java内部类初始化
 tags: 内部类
 categories: Java
 comments: false
+translate_title: java-internal-class-initialization
 abbrlink: 50009
 date: 2021-06-01 00:00:00
-translate_title: java-internal-class-initialization
 ---
 ### 1. 在同个java文件中，但不是内部类
 ```java

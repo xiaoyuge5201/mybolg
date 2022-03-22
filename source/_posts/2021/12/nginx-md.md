@@ -2,7 +2,7 @@
 title: Nginx基础篇（一）扫盲
 comments: false
 tags: nginx
-categories: Nginx
+categories: nginx
 abbrlink: 58927
 date: 2021-12-05 14:56:36
 translate_title: Nginx-Basics-I-literacy
