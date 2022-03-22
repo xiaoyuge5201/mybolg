@@ -207,6 +207,13 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
     nohup ./minio server --address '0.0.0.0:9000' --console-address '0.0.0.0:9001' ./miniodata > ./miniodata/minio.log 2>&1&
    ```
 
+## 4. SpringBoot 集成minIO
+项目源代码地址：https://gitee.com/xiaoyuge520/minio-demo
+![img14.png](./linux-minio/14.png)
+在minIO的控制台界面选择对应的bucket可以查看到刚提交的内容
+![img14.png](./linux-minio/15.png)
 
+同理，删除也是一样！！！
+![img14.png](./linux-minio/16.png)
 
     
