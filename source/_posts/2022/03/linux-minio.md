@@ -107,7 +107,7 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
    MINIO_ACCESS_KEY=minioadmin MINIO_SECRET_KEY=minioadmin nohup ./minio server --config-dir /usr/software/minio/config /usr/software/minio/data>  /usr/software/minio/minio.log 2>&1 &#
    ```
    ![](./linux-minio/8.png)
-3. 设置启动脚本
+3. 设置启动脚本（建议）
     ```shell
      touch minio.sh
    
@@ -117,7 +117,7 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
     ```shell
     #指定登录用户名
     export MINIO_ACCESS_KEY=username
-   #指定登录密码
+    #指定登录密码
     export MINIO_SECRET_KEY=password
     #指定端口以及存储文件夹，并启动服务 9000访问端口， 9001 控制台界面访问端口, 这里0.0.0.0可以设置为具体的服务器IP
     nohup ./minio server --address '0.0.0.0:9000' --console-address '0.0.0.0:9001' ./miniodata > ./miniodata/minio.log 2>&1&
@@ -126,12 +126,11 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
     ```shell
    chmod u+x  *.sh
      
-     #启动
+    #启动
    sh minio.sh
    ```
 
-
-### 3.2 安装客户端
+### 3.2 安装客户端(可选)
 1. 安装
     ```shell
     wget https://dl.min.io/client/mc/release/linux-amd64/mc
@@ -146,12 +145,12 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
  
 3. 创建bucket，并查询所有bucket
     ```shell
-    [root@ww minio]# ./mc ls minio
-    [root@ww minio]# ./mc mb minio/mybucket
+    [root@ww xiaoyuge]# ./mc ls minio
+    [root@ww xiaoyuge]# ./mc mb minio/mybucket
     Bucket created successfully `minio/mybucket`
-    [root@ww minio]# ./mc ls minio
+    [root@ww xiaoyuge]# ./mc ls minio
     [2020-09-02 03:02:36 CST]      0B mybucket/
-    [root@ww minio]# 
+    [root@ww xiaoyuge]# 
    ```
    
 4. 页面查询bucket
@@ -178,7 +177,7 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
    
     **AccessKey:** minioadmin
    
-    **SecretKey:** minioadmin
+    **SecretKey（默认）:** minioadmin
 
     使用AccessKey 和 SecretKey 登录后台。
 
@@ -186,7 +185,7 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
    ![](./linux-minio/3.png)![](./linux-minio/3_1.png)![](./linux-minio/3_2.png)![](./linux-minio/4.png)
    
 
-   现在我们去服务器，我们启动时指定的目录去看看，可以看到一个新疆的test文件目录（文件桶相当于文件目录），这里没有使用纠删码的模式，所以直接就是源文件了。当我们线上运行的项目已经有源文件了，在使用minio的时候，可以直接指定该目录为minio的文件目录就行了。
+   现在我们去服务器，我们启动时指定的目录去看看，可以看到一个新建的test文件目录（文件桶相当于文件目录），这里没有使用纠删码的模式，所以直接就是源文件了。当我们线上运行的项目已经有源文件了，在使用minio的时候，可以直接指定该目录为minio的文件目录就行了。
    ![](./linux-minio/5.png)![](./linux-minio/7.png)
 
 3. 分享文件，也可以设置文件分享有效日期
@@ -208,7 +207,7 @@ MinIO 使用纠删码erasure code、校验和checksum。 即使丢一半数据�
    ```
 
 ## 4. SpringBoot 集成minIO
-项目源代码地址：https://gitee.com/xiaoyuge520/minio-demo
+项目源代码地址：https://gitee.com/xiaoyuge520/minio-demo， 下面是应用主要功能截图展示：
 ![img14.png](./linux-minio/14.png)
 在minIO的控制台界面选择对应的bucket可以查看到刚提交的内容
 ![img14.png](./linux-minio/15.png)
