@@ -2,7 +2,7 @@
 title: Java内部类初始化
 tags: 内部类
 categories: java
-comments: false
+comments: true
 translate_title: java-internal-class-initialization
 abbrlink: 50009
 date: 2021-06-01 00:00:00

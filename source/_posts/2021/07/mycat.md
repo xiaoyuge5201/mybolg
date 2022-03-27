@@ -2,7 +2,7 @@
 title: mycat学习
 tags: mycat
 categories: 中间件
-comments: false
+comments: true
 abbrlink: 754
 date: 2021-07-23 16:16:49
 translate_title: mycat_learning

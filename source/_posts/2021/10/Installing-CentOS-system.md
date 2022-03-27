@@ -1,7 +1,7 @@
 
 ---
 title: 安装Centos系统以及配置IP
-comments: false
+comments: true
 tags: Centos
 categories: linux
 abbrlink: 23533

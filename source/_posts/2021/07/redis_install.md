@@ -2,7 +2,7 @@
 title: Linux环境下安装Redis
 tags: redis
 categories: linux
-comments: false
+comments: true
 abbrlink: 52569
 date: 2021-05-13 13:40:44
 translate_title: redis-install

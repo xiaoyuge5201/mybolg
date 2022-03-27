@@ -1,6 +1,6 @@
 ---
 title: Linux系统下查找文件命令总结
-comments: false
+comments: true
 tags: Linux
 categories: linux
 abbrlink: 32250

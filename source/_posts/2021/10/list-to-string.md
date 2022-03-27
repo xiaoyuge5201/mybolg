@@ -1,6 +1,6 @@
 ---
 title: Java中将List列表转换为字符串
-comments: false
+comments: true
 tags: 集合
 abbrlink: 28733
 date: 2021-10-10 17:48:19

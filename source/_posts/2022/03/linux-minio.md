@@ -1,6 +1,6 @@
 ---
 title: MinIO简介以及Linux安装MinIO
-comments: false
+comments: true
 tags: Linux
 categories: linux
 translate_title: linux_minio

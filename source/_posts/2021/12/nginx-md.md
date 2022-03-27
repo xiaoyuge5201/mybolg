@@ -1,6 +1,6 @@
 ---
 title: Nginx基础篇（一）扫盲
-comments: false
+comments: true
 tags: nginx
 categories: nginx
 translate_title: Nginx-Basics-I-literacy

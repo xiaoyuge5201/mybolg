@@ -1,6 +1,6 @@
 ---
 title: docker安装
-comments: false
+comments: true
 tags: docker
 categories: Docker
 abbrlink: 8175

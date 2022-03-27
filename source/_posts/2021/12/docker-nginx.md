@@ -1,6 +1,6 @@
 ---
 title: docker安装nginx
-comments: false
+comments: true
 tags: nginx
 categories: Docker
 abbrlink: 57560

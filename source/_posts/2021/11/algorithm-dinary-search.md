@@ -1,6 +1,6 @@
 ---
 title: 二分法查找题
-comments: false
+comments: true
 abbrlink: 47921
 date: 2021-11-26 21:57:32
 tags: algorithm

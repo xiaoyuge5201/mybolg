@@ -1,7 +1,7 @@
 ---
 title: Mysql添加/修改/删除字段
 tags: mysql
-comments: false
+comments: true
 categories: 数据库
 abbrlink: 11250
 date: 2021-11-15 21:13:42

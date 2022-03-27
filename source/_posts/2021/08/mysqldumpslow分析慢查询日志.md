@@ -1,6 +1,6 @@
 ---
 title: mysqldumpslow分析慢查询日志
-comments: false
+comments: true
 tags: mysql
 categories: 数据库
 abbrlink: 19102

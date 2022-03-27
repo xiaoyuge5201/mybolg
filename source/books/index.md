@@ -1,7 +1,7 @@
 ---
 title: books
 layout: books
-comments: false
+comments: true
 sidebar: none
 translate_title: books
 ---

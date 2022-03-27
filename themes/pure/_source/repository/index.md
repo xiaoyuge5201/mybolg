@@ -1,6 +1,6 @@
 ---
 title: Repositories
 layout: repository
-comments: false
+comments: true
 sidebar: none
 ---

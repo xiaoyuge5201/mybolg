@@ -1,6 +1,6 @@
 ---
 title: 分布式消息中间件设计
-comments: false
+comments: true
 tags: 消息中间件
 categories: 中间件
 translate_title: message-oriented-middleware

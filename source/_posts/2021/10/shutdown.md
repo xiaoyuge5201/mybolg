@@ -1,6 +1,6 @@
 ---
 title: linux关机命令
-comments: false
+comments: true
 tags: shutdown
 categories: linux
 abbrlink: 2292

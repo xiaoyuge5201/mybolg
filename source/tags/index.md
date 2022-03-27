@@ -1,6 +1,6 @@
 ---
 title: 标签
 layout: tags
-comments: false
+comments: true
 translate_title: label
 ---

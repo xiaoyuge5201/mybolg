@@ -2,7 +2,7 @@
 title: Java 8学习
 tags: java
 categories: 知识整理
-comments: false
+comments: true
 abbrlink: 7605
 date: 2020-04-23 14:04:02
 translate_title: java8-learning

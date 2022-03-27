@@ -2,7 +2,7 @@
 title: Java线程的声明周期状态
 tags: 线程
 categories: java
-comments: false
+comments: true
 translate_title: thread-status
 abbrlink: 62212
 date: 2020-06-02 16:04:02

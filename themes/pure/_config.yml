@@ -22,7 +22,7 @@ menu_icons:
   about: icon-cup-fill
 
 # rss
-rss: /atom.xml
+#rss: /atom.xml
 
 # Site
 site:
@@ -79,7 +79,7 @@ fancybox: false
 # Search
 search:
   insight: true # you need to install `hexo-generator-json-content` before using Insight Search
-  baidu: false # you need to disable other search engines to use Baidu search
+  baidu: true # you need to disable other search engines to use Baidu search
 
 # Donate
 donate:
@@ -97,19 +97,19 @@ donate:
 # weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin
 share:
   enable: true  # 是否启用分享
-  sites: weibo,qq,wechat,facebook,twitter  # PC端显示的分享图标
+  sites: weibo,qq,wechat #,facebook,twitter  # PC端显示的分享图标
   mobile_sites: weibo,qq,qzone  # 移动端显示的分享图标
 
 # Github
 github: 
-  username: cofess  # github username
+  username: xiaoyuge5201  # github username
 
 # Comment
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
 comment:
   type: valine  # 启用哪种评论系统
-  disqus:  # enter disqus shortname here
+  disqus:  enter # enter disqus shortname here
   youyan: 
     uid: 1783844 # enter youyan uid 
   livere:
@@ -131,15 +131,15 @@ comment:
     ClientID:  176d68b548fb04040019 #必须. GitHub Application Client ID.
     ClientSecret:  55793f35290d24b82c891de463cbac50aa41ea19 #必须. GitHub Application Client Secret.
   valine: # Valine. https://valine.js.org
-    appid:  # your leancloud application appid
-    appkey:  # your leancloud application appkey
+    appid: xFplHSjJmKwRjEGsbOR06sEO-gzGzoHsz # your leancloud application appid
+    appkey: yc4h9va7ydDYXdHbtAYAGUHX # your leancloud application appkey
     notify: false # mail notifier , https://github.com/xCss/Valine/wiki
     verify: false # Verification code
     placeholder: Just go go # comment box placeholder
     avatar: mm # gravatar style
-    meta: nick,mail,link # custom comment header
+    meta: nick,mail #,link      #   custom comment header
     pageSize: 10 # pagination size
-    visitor: false # Article reading statistic https://valine.js.org/visitor.html
+    visitor: true # Article reading statistic https://valine.js.org/visitor.html
 
 # douban 豆瓣书单
   #Api：
@@ -204,8 +204,8 @@ profile:
       #twitter: https://twitter.com/iwebued
       # facebook: /
       # dribbble: /
-      #behance: https://www.behance.net/cofess
-      rss: atom.xml
+      #behance: https://www.behance.net/xiaoyuge
+      #rss: atom.xml
     link_tooltip: true # enable the social link tooltip, options: true, false
   # My Skills 
   skills:
@@ -220,7 +220,7 @@ profile:
     Github: https://github.com/xiaoyuge5201
     Blog: https://www.cnblogs.com/yugb/
     微博: https://weibo.com/u/6391798158/home
-    #  花瓣: http://huaban.com/cofess
+    #  花瓣: http://huaban.com/xiaoyuge
   # My Personal Labels
   labels:
     - 前端

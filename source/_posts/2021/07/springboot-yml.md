@@ -2,7 +2,7 @@
 title: springboot读取yml配置的方式
 tags: springboot
 categories: java
-comments: false
+comments: true
 translate_title: springboot-yaml
 abbrlink: 58807
 date: 2021-08-18 21:41:24

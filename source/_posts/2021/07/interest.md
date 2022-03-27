@@ -1,7 +1,7 @@
 ---
 title: 面试常见的趣味题
 tags: algorithm
-comments: false
+comments: true
 categories: 算法
 abbrlink: 16635
 date: 2021-06-14 10:09:15

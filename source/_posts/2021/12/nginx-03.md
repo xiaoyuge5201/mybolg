@@ -1,6 +1,6 @@
 ---
 title: Nginx基础篇（三）实现虚拟主机
-comments: false
+comments: true
 tags: nginx
 categories: nginx
 abbrlink: 59090

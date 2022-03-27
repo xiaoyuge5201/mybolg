@@ -2,7 +2,7 @@
 title: volatile关键字
 tags: 线程
 categories: java
-comments: false
+comments: true
 translate_title: volatile1
 abbrlink: 63695
 date: 2021-08-02 18:20:38

@@ -2,7 +2,7 @@
 title: mysql数据库锁
 tags: mysql
 categories: 数据库
-comments: false
+comments: true
 abbrlink: 33045
 date: 2021-07-24 16:57:10
 translate_title: mysql_04

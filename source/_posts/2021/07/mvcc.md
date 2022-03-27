@@ -2,7 +2,7 @@
 title: MVCC多版本并发控制
 tags: mysql
 categories: 数据库
-comments: false
+comments: true
 abbrlink: 39578
 date: 2021-08-14 11:03:40
 translate_title: mvcc

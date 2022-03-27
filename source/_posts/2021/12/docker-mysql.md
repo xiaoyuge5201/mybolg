@@ -1,6 +1,6 @@
 ---
 title: docker安装mysql
-comments: false
+comments: true
 tags: mysql
 categories: Docker
 abbrlink: 12467

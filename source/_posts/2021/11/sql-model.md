@@ -1,6 +1,6 @@
 ---
 title: TIDB设置sql_mode
-comments: false
+comments: true
 tags: tidb
 categories: 数据库
 abbrlink: 47745

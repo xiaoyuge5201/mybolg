@@ -2,7 +2,7 @@
 title: redis常见使用场景
 tags: redis
 categories: 中间件
-comments: false
+comments: true
 abbrlink: 58805
 date: 2021-08-14 17:51:30
 translate_title: redis-usage-scenario

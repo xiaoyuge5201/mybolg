@@ -2,7 +2,7 @@
 title: Java内存泄漏排查
 tags: 内存溢出
 categories: java
-comments: false
+comments: true
 translate_title: java-memory-leak-troubleshooting
 abbrlink: 13887
 date: 2021-08-01 19:25:57

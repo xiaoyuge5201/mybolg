@@ -1,6 +1,6 @@
 ---
 title: mysql行列转置
-comments: false
+comments: true
 tags: mysql
 categories: 数据库
 abbrlink: 11308

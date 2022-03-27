@@ -188,7 +188,7 @@ baidusitemap:
 
 #开启评论
 comment:
-  type: gitalk  # 启用哪种评论系统
+  type: valine  # 启用哪种评论系统
 
 # PV 开启文章字数，阅读时长，浏览量统计:
 pv: # 浏览量统计

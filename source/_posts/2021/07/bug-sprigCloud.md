@@ -2,7 +2,7 @@
 title: springCloud之FeignClient访问微服务接口缓慢
 tags: SpringCloud
 categories: 踩坑记录
-comments: false
+comments: true
 abbrlink: 54514
 date: 2021-07-03 17:08:10
 translate_title: feignclient-of-springcloud-accesses-microservice-interface-slowly

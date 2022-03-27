@@ -1,7 +1,7 @@
 ---
 title: 锁优化
 tags: lock
-comments: false
+comments: true
 categories: java
 translate_title: lock-optimization
 abbrlink: 1446

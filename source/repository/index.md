@@ -1,7 +1,7 @@
 ---
 title: repositories
 layout: repository
-comments: false
+comments: true
 sidebar: none
 translate_title: repositories
 ---

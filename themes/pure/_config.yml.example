@@ -190,16 +190,16 @@ profile:
   author_title: Web Developer & Designer
   author_description: 个人简介。
   location: Shenzhen, China
-  follow: https://github.com/cofess
+  follow: https://github.com/xiaoyuge5201
   # Social Links
   social:
     links:
-      github: https://github.com/cofess
-      weibo: http://weibo.com/cofess
+      github: https://github.com/xiaoyuge5201
+      weibo: http://weibo.com/xiaoyuge5201
       twitter: https://twitter.com/iwebued
       # facebook: /
       # dribbble: /
-      behance: https://www.behance.net/cofess
+      behance: https://www.behance.net/xiaoyuge5201
       rss: atom.xml
     link_tooltip: true # enable the social link tooltip, options: true, false
   # My Skills 
@@ -213,11 +213,11 @@ profile:
     UI: ★★★☆☆
   # My Personal Links
   links:
-    Github: https://github.com/cofess
-    Blog: http://blog.cofess.com
-    微博: http://weibo.com/cofess
-    花瓣: http://huaban.com/cofess
-    Behance: https://www.behance.net/cofess
+    Github: https://github.com/xiaoyuge5201
+    Blog: http://blog.xiaoyuge5201.com
+    微博: http://weibo.com/xiaoyuge5201
+    花瓣: http://huaban.com/xiaoyuge5201
+    Behance: https://www.behance.net/xiaoyuge5201
   # My Personal Labels
   labels:
     - 前端

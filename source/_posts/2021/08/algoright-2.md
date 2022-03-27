@@ -2,7 +2,7 @@
 title: 转换成小写字母
 tags: algorithm
 categories: 算法
-comments: false
+comments: true
 abbrlink: 4638
 date: 2021-08-22 13:15:12
 translate_title: algorithm-02

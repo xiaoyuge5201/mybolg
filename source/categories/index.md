@@ -1,6 +1,6 @@
 ---
 title: classification
 layout: categories
-comments: false
+comments: true
 translate_title: classification
 ---

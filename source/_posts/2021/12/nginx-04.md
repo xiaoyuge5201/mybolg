@@ -1,6 +1,6 @@
 ---
 title: Nginx基础篇（四）Nginx实现反向代理
-comments: false
+comments: true
 tags: nginx
 categories: nginx
 translate_title: nginx-04

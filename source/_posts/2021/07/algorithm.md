@@ -2,7 +2,7 @@
 title: 二分查找
 tags: algorithm
 categories: 算法
-comments: false
+comments: true
 abbrlink: 42877
 date: 2021-08-19 22:54:43
 translate_title: binary-search

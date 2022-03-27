@@ -2,7 +2,7 @@
 title: ConcurrentHashMap线程安全
 tags: Java
 categories: 知识整理
-comments: false
+comments: true
 abbrlink: 26925
 date: 2021-07-02 16:17:29
 translate_title: ConcurrentHashMap-thread-safety
