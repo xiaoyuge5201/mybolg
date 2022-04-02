@@ -76,6 +76,8 @@ docker ps -a
 ![启动创建容器](./docker-mysql/4.png)
 
 ##### 常见问题
+
+###### 1.远程无法链接
 上述虽然安装好了mysql，但是使用远程的Navicat连接时提示错误，不能正确连接mysql，此时需要修改按照下面说的步骤修改一下mysql的密码模式以及主机等内容才可以。
 修改mysql密码以及可访问主机
 1. 进入容器内部
@@ -104,3 +106,15 @@ docker ps -a
     ```
 6. 远程使用Navicat连接数据库
 ![连接](./docker-mysql/5.png)
+
+###### 2.docker启动mysql容器报错
+```shell
+docker run --restart=unless-stopped -d --name mysql -v /usr/mysql/conf/my.cnf:/etc/mysql/my.cnf -v /usr/mysql/data:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=xiaoyuge mysql
+```
+启动时提示：Error response from daemon: OCI runtime create failed: container_linux.go:380: starting container process caused: process_linux.go:545: container init caused: Running hook #0:: error running hook: signal: segmentation fault (core dumped), stdout: , stderr:: unknown
+
+![](./docker-mysql/6.png)
+解决方式：
+```shell
+sudo yum upgrade
+```
