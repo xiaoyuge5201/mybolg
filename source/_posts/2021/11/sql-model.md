@@ -2,7 +2,7 @@
 title: TIDB设置sql_mode
 comments: true
 tags: tidb
-categories: 数据库
+categories: mysql
 abbrlink: 47745
 date: 2021-11-15 20:57:46
 translate_title: tidb-set-sql-mode

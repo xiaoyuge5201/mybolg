@@ -87,45 +87,46 @@ rpm -qa | grep mariadb
     ```
    在配置中键入如下内容：
     ```properties
-    [mysqld]
-    basedir = /usr/local/mysql8.0
-    datadir = /usr/local/mysql8.0/data
-    socket = /usr/local/mysql8.0/mysql.sock
-    #character-set-server=utf8
-    port = 3306
-    default_authentication_plugin=mysql_native_password
-    sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
-    #数据库默认字符集,主流字符集支持一些特殊表情符号（特殊表情符占用4个字节）
-    character-set-server=utf8mb4
-    ##数据库字符集对应一些排序等规则，注意要和character-set-server对应
-    collation-server=utf8mb4_general_ci
-    ##设置client连接mysql时的字符集,防止乱码
-    ##init_connect='SET NAMES utf8mb4'
-    ##是否对sql语句大小写敏感，1表示不敏感
-    #lower_case_table_names=1
-    # Disabling symbolic-links is recommended to prevent assorted security risks
-    symbolic-links=0
-
-    [client]
-    socket=/usr/local/mysql8.0/mysql.sock
-    #character-set-server=utf8
-
-    [mysqld_safe]
-    #自定义日志输出
-    log-error=/usr/local/mysql8.0/log/error.log
-    # include all files from the config directory
-    !includedir /etc/my.cnf.d
+       [mysqld]
+      port=3306
+      # 设置mysql的安装目录
+      basedir=/usr/local/mysql8
+      # 设置mysql数据库的数据的存放目录
+      datadir=/usr/local/mysql8/mysqldb
+      # 允许最大连接数
+      max_connections=1000
+      # 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统
+      max_connect_errors=100
+      # 服务端使用的字符集默认为UTF8
+      character-set-server=utf8mb4
+      # 创建新表时将使用的默认存储引擎
+      default-storage-engine=INNODB
+      # 默认使用“mysql_native_password”插件认证
+      default_authentication_plugin=mysql_native_password
+      #是否对sql语句大小写敏感，1表示不敏感
+      lower_case_table_names = 1
+      #MySQL连接闲置超过一定时间后(单位：秒)将会被强行关闭
+      #MySQL默认的wait_timeout  值为8个小时, interactive_timeout参数需要同时配置才能生效
+      interactive_timeout = 1800
+      wait_timeout = 1800
+      #Metadata Lock最大时长（秒）， 一般用于控制 alter操作的最大时长sine mysql5.6
+      #执行 DML操作时除了增加innodb事务锁外还增加Metadata Lock，其他alter（DDL）session将阻塞
+      lock_wait_timeout = 3600
+      #内部内存临时表的最大值。
+      #比如大数据量的group by ,order by时可能用到临时表，
+      #超过了这个值将写入磁盘，系统IO压力增大
+      tmp_table_size = 64M
+      max_heap_table_size = 64M
+      [mysql]
+      # 设置mysql客户端默认字符集
+      default-character-set=utf8mb4
+      [client]
+      # 设置mysql客户端连接服务端时默认使用的端口
+      port=3306
+      default-character-set=utf8mb4
     ```
-   
-6. 创建日志文件夹
-   ```shell
-    /usr/local/mysql8.0/
-    mkdir log
-    chmod 777 ./log/
-    touch /usr/local/mysql8.0/log/error.log
-    chown mysql /usr/local/mysql8.0/log/error.log 
-   ```
-7. 建立Mysql服务
+
+6. 建立Mysql服务
     ```shell
     cp -a ./support-files/mysql.server /etc/init.d/mysql
     chmod +x /etc/init.d/mysql
@@ -134,7 +135,7 @@ rpm -qa | grep mariadb
     ```
    ![](./mysql-install/4.png)
 
-8. 启动Mysql服务
+7. 启动Mysql服务
     ```shell
     # 启动
     service mysql start;
@@ -146,7 +147,7 @@ rpm -qa | grep mariadb
     ln -s /usr/local/mysql8.0/bin/mysql /usr/bin
    ```
    
-9. 登录Mysql
+8. 登录Mysql
     ```shell
     mysql -uroot -p
     # 输入"初始化数据库"操作时的"临时密码"
@@ -158,7 +159,7 @@ rpm -qa | grep mariadb
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';
     ```
    
-10. 远程连接
+9. 远程连接
     1. 在my.cnf的mysqld下增加
         ```properties
         default_authentication_plugin=mysql_native_password
@@ -172,7 +173,7 @@ rpm -qa | grep mariadb
         ```
        ![](./mysql-install/7.png)
    
-11. 检查端口
+10. 检查端口
     ```shell
     #检查3306端口是否开放
     netstat -nupl|grep 3306
@@ -183,16 +184,6 @@ rpm -qa | grep mariadb
     #重启防火墙
     firewall -cmd --reload
     ```
-
-
-
-
-
-
-
-
-
-
 
 ### 4. 常见问题
 1. The server quit without updating PID file
@@ -246,3 +237,17 @@ rpm -qa | grep mariadb
     yum -y install  numactl
     yum install libaio1 libaio-dev
     ```
+   
+5. mysqld启动报错Failed to find valid data directory
+
+   ```shell
+   vim /etc/my.cnf #查看datadir配置项的路径，然后一般是/var/lib/mysql，将这个文件夹删掉，然后重新初始化
+   
+   /usr/local/mysql8/bin/mysqld --initialize --user=mysql
+   
+   #如果mysqld启动服务时提示不能用root启动，则在/var/lib/mysql中加入这行 user=mysql
+   
+   
+   #重启
+  service mysql restart
+   ```

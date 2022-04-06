@@ -1,7 +1,7 @@
 ---
 title: 常见sql优化方式
 tags: mysql
-categories: 数据库
+categories: mysql
 comments: true
 abbrlink: 9311
 date: 2021-07-01 16:00:57

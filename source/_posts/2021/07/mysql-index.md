@@ -1,7 +1,7 @@
 ---
 title: mysql索引
 tags: mysql
-categories: 数据库
+categories: mysql
 comments: true
 abbrlink: 22569
 date: 2021-08-20 15:12:00

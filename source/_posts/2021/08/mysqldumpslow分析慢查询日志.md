@@ -2,7 +2,7 @@
 title: mysqldumpslow分析慢查询日志
 comments: true
 tags: mysql
-categories: 数据库
+categories: mysql
 abbrlink: 19102
 date: 2021-08-21 16:16:02
 translate_title: mysqldumpslow-query-log

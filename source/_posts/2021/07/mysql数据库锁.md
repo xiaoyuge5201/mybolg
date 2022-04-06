@@ -1,7 +1,7 @@
 ---
 title: mysql数据库锁
 tags: mysql
-categories: 数据库
+categories: mysql
 comments: true
 abbrlink: 33045
 date: 2021-07-24 16:57:10

@@ -2,7 +2,7 @@
 title: mysql行列转置
 comments: true
 tags: mysql
-categories: 数据库
+categories: mysql
 abbrlink: 11308
 date: 2021-08-25 10:36:37
 translate_title: MySQL-row-column-transpose
