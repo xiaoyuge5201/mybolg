@@ -41,3 +41,8 @@ docker version
 ```
 ![查看docker版本](./docker-01/1.png)
 至此，解决。
+
+##### 8. 停止所有容器
+```shell
+docker stop $(docker ps -a | awk '{ print $1}' | tail -n +2)
+```

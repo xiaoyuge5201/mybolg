@@ -34,8 +34,8 @@ rpm -qa | grep mariadb
     # 进入下载目录
     cd /usr/local/src/
    
-   #解压， 如果是.tar则用 tar -zxvf解压， 我下载的是.tar.xz包，使用的是tar -xcJf
-    tar -xvJf node-v8.11.1-linux-x64.tar.xz
+   #解压， 如果是.tar则用 tar -zxvf解压， 我下载的是.tar.xz包，使用的是tar -xvJf
+    tar -xvJf mysql-8.0.28-linux-glibc2.17-x86_64-minimal.tar.xz
    
    # 移动解压后的文件夹至/usr/local
     mv /usr/local/src/mysql-8.0.28-linux-glibc2.17-x86_64-minimal /usr/local/

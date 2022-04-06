@@ -118,3 +118,11 @@ docker run --restart=unless-stopped -d --name mysql -v /usr/mysql/conf/my.cnf:/e
 ```shell
 sudo yum upgrade
 ```
+或者可以试下
+```shell
+rm -rf /usr/mysql/conf/my.cnf
+touch /usr/mysql/conf/my.cnf
+vim my.cnf
+
+#然后重新配置一下
+```
