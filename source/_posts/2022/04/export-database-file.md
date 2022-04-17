@@ -20,6 +20,7 @@ date: 2022-04-15 11:46:03
 
 ### 2. 编写Java代码
 1. 通过MyDataSourceProperties类所有本项目的数据库连接信息，导出当前连接库的数据库结构
+- 数据库配置 yml
     ```yaml
     spring:
       datasource:
@@ -30,6 +31,8 @@ date: 2022-04-15 11:46:03
         driver-class-name: com.mysql.jdbc.Driver
         database: dbname    ##需要配置数据库名称
     ```
+  
+- 导出方法
     ```java
     import com.github.xiaoyuge5201.config.MyDataSourceProperties;
     import com.github.xiaoyuge5201.util.ExportDatabaseDocument;
