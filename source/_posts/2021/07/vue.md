@@ -1,7 +1,7 @@
 ---
 title: vue学习
 tags: vue
-categories: 学习笔记
+categories: 架构师笔记
 comments: true
 abbrlink: 50454
 date: 2021-07-23 11:40:44
