@@ -5,6 +5,8 @@ abbrlink: 58929
 date: 2022-05-05 09:28:20
 tags: hexo
 categories: hexo
+theme: xray
+password: 12333
 ---
 ### 1.概述
 Hexo编写Markdown文章后生成的静态页面默认是公开不加密的，所有人都可以访问，如果希望某些文章需要访问者只有输入正确的密码后才能继续访问，则需要使用插件hexo-blog-encrypt
@@ -91,5 +93,42 @@ wrong_pass_message: 抱歉，这个密码看着不太对，请再试试。
 wrong_hash_message: 抱歉，这个文章不能被纠正，不过您还是能看看解密后的内容。
 ---
 ```
-至此，完毕！
+
+### 6.设置Hexo博客加密主题
+目前已有的加密主题如下，可以选择一个
+- default
+- blink
+- shrink
+- flip 
+- up
+- surge
+- wave
+- xray
+
+编辑根路径下的_config.yml，如下
+```yaml
+# Security
+encrypt: # hexo-blog-encrypt
+  abstract: Here's something encrypted, password is required to continue reading.
+  message: Hey, password is required here.
+  tags:
+    - {name: encryptAsDiary, password: passwordA}
+    - {name: encryptAsTips, password: passwordB}
+  theme: xray   #增加主题属性
+  wrong_pass_message: Oh, this is an invalid password. Check and try again, please.
+  wrong_hash_message: Oh, these decrypted content cannot be verified, but you can still have a look.
+```
+
+在博客中增加
+```yaml
+---
+title: Theme test
+date: 2019-12-21 11:54:07
+tags:
+    - A Tag should be encrypted
+theme: xray   #主题名称
+password: "hello"
+---
+```
+至此，完毕！可以参考：https://github.com/D0n9X1n/hexo-blog-encrypt#encrypt-theme
 
