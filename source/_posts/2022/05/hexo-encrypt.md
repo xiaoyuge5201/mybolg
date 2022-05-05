@@ -6,7 +6,7 @@ date: 2022-05-05 09:28:20
 tags: hexo
 categories: hexo
 theme: xray
-password: 12333
+password: 1234
 ---
 ### 1.概述
 Hexo编写Markdown文章后生成的静态页面默认是公开不加密的，所有人都可以访问，如果希望某些文章需要访问者只有输入正确的密码后才能继续访问，则需要使用插件hexo-blog-encrypt
@@ -51,18 +51,18 @@ categories:
  
 
 ### 5.高级设置
-####5.1 博客根目录 _config.yml
+#### 5.1 博客根目录 _config.yml
 ```yaml
 # Security
 encrypt: # hexo-blog-encrypt
-abstract: 文章已被加密, 请输入密码查看.
-message: 您好, 这里需要密码.
-tags:
-- {name: tagName, password: 密码A}
-- {name: tagName, password: 密码B}
-  template: <div id="hexo-blog-encrypt" data-wpm="{{hbeWrongPassMessage}}" data-whm="{{hbeWrongHashMessage}}"><div class="hbe-input-container"><input type="password" id="hbePass" placeholder="{{hbeMessage}}" /><label>{{hbeMessage}}</label><div class="bottom-line"></div></div><script id="hbeData" type="hbeData" data-hmacdigest="{{hbeHmacDigest}}">{{hbeEncryptedData}}</script></div>
-  wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试.
-  wrong_hash_message: 抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.
+  abstract: Here's something encrypted, password is required to continue reading.
+  message: Hey, password is required here.
+  tags:
+    - {name: encryptAsDiary, password: passwordA}
+    - {name: encryptAsTips, password: passwordB}
+  theme: xray   #增加主题属性
+  wrong_pass_message: Oh, this is an invalid password. Check and try again, please.
+  wrong_hash_message: Oh, these decrypted content cannot be verified, but you can still have a look.
 ```
 
 #### 5.2 修改文章信息头如下
