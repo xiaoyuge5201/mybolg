@@ -5,6 +5,11 @@ tags: UML
 categories: 架构师笔记
 abbrlink: 20156
 date: 2022-04-25 14:58:59
+password: 1234
+abstract: 文章已被加密，需要输入密码查看，如需查看请联系博主！
+message: 您好，这里需要密码。
+wrong_pass_message: 抱歉，这个密码看着不太对，请再试试。
+wrong_hash_message: 抱歉，这个文章不能被纠正，不过您还是能看看解密后的内容。
 ---
 ## 1. 什么是UML
     统一建模语言（Unified Modeling Language）是一种面向对象系统的产品说明、可视化和编制文档的一种标准语言，是非专利的第三代建模和规约语言。

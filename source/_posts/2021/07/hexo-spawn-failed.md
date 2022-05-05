@@ -2,7 +2,7 @@
 title: Hexo部署出现错误Error Spawn failed解决方式
 tags: hexo
 comments: true
-categories: 踩坑记录
+categories: hexo
 translate_title: error-spawn-failed
 abbrlink: 12688
 date: 2021-08-15 18:28:42

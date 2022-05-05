@@ -4,7 +4,7 @@ comments: true
 abbrlink: 39319
 date: 2021-07-27 21:49:57
 tags: hexo
-categories: 踩坑记录
+categories: hexo
 translate_title: valine
 ---
  
