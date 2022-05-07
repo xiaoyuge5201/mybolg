@@ -57,7 +57,7 @@ xiaoyuge@xiaoyuge ~ % jstack 2602
 ```
 可以看到控制台打印出了线程的信息以及线程对应的堆栈信息。下面我们对打印结果进行逐行分析：
 #### 1. java.lang.Thread.State: RUNNABLE 线程状态
-    首先分析的是线程状态，在Java中线程分别对应这不同的状态，从创建线程的 NEW 到销毁时的 TERMINATED状态。
+    首先分析的是线程状态，在Java中线程分别对应不同的状态，从创建线程的 NEW 到销毁时的 TERMINATED状态。
     
 ```java
 //这是java.lang.Thread.State源码
