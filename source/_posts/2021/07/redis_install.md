@@ -19,14 +19,24 @@ translate_title: redis-install
 
    ```shell
    tar xvzf redis-stable.tar.gz
+   
+   #移动redis目录，一般都会将redis目录放置到 /usr/local/redis目录
+   mv redis-6.2.6 /usr/local/redis
    ```
 #####    4. 编译
 
    ```shell
-   //如果使用make失败，那么就加上参数，因为jemalloc重载了Linux下的ANSI C的malloc和free函数
-   make MALLOC=libc
+   cd /usr/local/redis
+   make
+   # 如果执行make命令报错：cc 未找到命令，原因是虚拟机系统中缺少gcc，执行下面命令安装gcc：yum -y install gcc automake autoconf libtool make
+   
+   #如果使用make失败，致命错误:jemalloc/jemalloc.h: 没有那个文件或目录，则需要在make指定分配器为libc make MALLOC=libc
    //make之后如果出现Hint: To run 'make test' is a good idea ;
    //运行make test, 会提示需要安装tcl,执行yum install tcl
+   
+   
+   #执行下面命令安装redis，并指定安装目录
+   make install PREFIX=/usr/local/redis
    ```
 
 ##### 5. 配置密码以及允许外网ip访问
