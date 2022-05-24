@@ -42,7 +42,12 @@ Swagger 的目标是对 REST API 定义一个标准且和语言无关的接口�
         <groupId>io.springfox</groupId>
         <artifactId>springfox-swagger-ui</artifactId>
         <version>2.9.2</version>
-    </dependency>
+   </dependency>
+   <dependency>
+        <groupId>com.github.xiaoymin</groupId>
+        <artifactId>knife4j-spring-boot-starter</artifactId>
+        <version>2.0.8</version>
+   </dependency>
    ```
    
 2. 编写配置类

@@ -72,5 +72,5 @@ date: 2022-03-19 13:52:39
 **适用场合：** 能用which、whereis和locate的时候尽量不要用find.
 
 
-### 4中命令对比
+### 5. 4种命令对比
 ![对比](./linux-search-file/7.png)
