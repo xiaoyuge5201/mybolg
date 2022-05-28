@@ -108,23 +108,12 @@ github:
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
 comment:
-  type: valine  # 启用哪种评论系统
-  disqus:  enter # enter disqus shortname here
-  youyan: 
-    uid: 1783844 # enter youyan uid 
-  livere:
-    uid: # enter youyan uid 
-  gitment:
-    githubID: 
-    repo: 
-    ClientID: 
-    ClientSecret: 
-    lazy: false
-
+  type: #valine  # 启用哪种评论系统
+  disqus:  shortname # enter disqus shortname here
   #评论插件
   #npm i --save gitalk
   gitalk: # gitalk. https://gitalk.github.io/
-    enable: true
+    enable: false   #2022-05-29 关闭掉
     owner:  xiaoyuge5201 #必须. GitHub repository 所有者，可以是个人或者组织。
     admin:  xiaoyuge5201 #必须. GitHub repository 的所有者和合作者 (对这个 repository 有写权限的用户)。
     repo:  xiaoyuge5201.github.io #必须. GitHub repository.
