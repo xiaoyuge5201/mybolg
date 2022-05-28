@@ -1,5 +1,5 @@
 ---
-title: repositories
+title: 个人项目
 layout: repository
 comments: true
 sidebar: none

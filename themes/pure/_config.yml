@@ -33,7 +33,7 @@ site:
     url: /images/logo.png
   title: 小余哥 # 页面title
   favicon: /favicon.ico
-  board: <p>每天学习一点，每天进步一点，总有一天会成为优秀的架构师！!</p> # 站点公告
+  board: <p>喜欢就争取，得到就珍惜，错过就忘记</p> # 站点公告
   copyright: true # 底部版权信息
 
 # config
@@ -238,3 +238,12 @@ local_search:
   trigger: auto
   # show top n results per article, show all results by setting to -1
   top_n_per_article: 1
+
+
+codeblock:
+  copy_button:
+    enable: true
+    result: true
+  copyright:
+    enable: true
+    #content: 感谢您复制代码，使用代码请注明引用出处

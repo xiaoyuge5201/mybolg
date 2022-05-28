@@ -4558,7 +4558,7 @@ input[type="search"] {
 .list-circle-num > li,
 .list-square-num > li {
   list-style: none outside none;
-  margin-bottom: 13px;
+  margin-bottom: 14px;
 }
 
 .list-circle-num > li:before {
@@ -4598,7 +4598,7 @@ input[type="search"] {
 
 .list-circle-num > li > ol > li,
 .list-square-num > li > ol > li {
-  margin-bottom: 13px;
+  margin-bottom: 14px;
 }
 
 .list-circle-num > li > ol > li:before {
@@ -5037,7 +5037,7 @@ table > tbody > tr > th,
 table > tbody > tr > td,
 table > tfoot > tr > th,
 table > tfoot > tr > td {
-  padding: 6px 13px;
+  padding: 6px 14px;
 }
 
 table > tbody + tbody {
@@ -5531,7 +5531,7 @@ pre,
   margin: 10px 0;
   padding: 15px 10px;
   overflow: auto;
-  font-size: 13px;
+  font-size: 14px;
   color: #4d4d4c;
   line-height: 1.5;
 }
@@ -5779,7 +5779,7 @@ body.no-sidebar .sidebar {
 }
 
 #title {
-  font-size: 13px;
+  font-size: 14px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -5920,7 +5920,7 @@ body.no-sidebar .sidebar {
 }
 
 .main .article-meta {
-  font-size: 13px;
+  font-size: 14px;
   color: #999;
 }
 
@@ -6871,7 +6871,7 @@ body.okayNav-loaded {
   position: absolute;
   left: 50%;
   margin-left: -6px;
-  bottom: -13px;
+  bottom: -14px;
   width: 0;
   height: 0;
   border-width: 8px 6px 6px 6px;

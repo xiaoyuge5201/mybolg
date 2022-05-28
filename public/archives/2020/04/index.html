@@ -199,7 +199,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p>每天学习一点，每天进步一点，总有一天会成为优秀的架构师！!</p>
+                <p>喜欢就争取，得到就珍惜，错过就忘记</p>
             </div>
         </div>
     </div>
@@ -502,6 +502,86 @@ window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')
 
 
 
+
+
+<div id="go-top"></div><style type="text/css">#go-top {width:40px;height:36px;background-color:#2196f3;position:relative;border-radius:10px;position:fixed;right:10px;bottom:80px;cursor:pointer;display:none;z-index:100;} #go-top:after {content:" ";position:absolute;left:14px;top:14px;border-top:2px solid #fff;border-right:2px solid #fff;width:12px;height:12px;transform:rotate(-45deg)}#go-top:hover {background-color:#8a2be2}</style><script>$(function() { var o = $("#go-top");$(window).scroll(function() { 300 < $(window).scrollTop() ? o.show(300) : o.hide(200), $("#go-top").click(function() { return $("body,html").animate({ scrollTop: 0 }) }) }) })</script>
+
+
+   
+  <style>
+    .copy-btn {
+          display: inline-block;
+          padding: 6px 12px;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 20px;
+          color: #333;
+          white-space: nowrap;
+          vertical-align: middle;
+          cursor: pointer;
+          background-color: #eee;
+          background-image: linear-gradient(#fcfcfc, #eee);
+          border: 1px solid #d5d5d5;
+          border-radius: 3px;
+          user-select: none;
+          outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+          transition: opacity .3s ease-in-out;
+          opacity: 0;
+          padding: 2px 10px;
+          position: absolute;
+          right: 4px;
+          color: #4a4886;
+          top: 3px;
+          z-index: 10;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+        .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+
+  <script>
+    addLoadEvent(()=>{
+      $('.highlight').each(function (i, e) {
+        var $wrap = $('<div>').addClass('highlight-wrap')
+        $(e).after($wrap)
+        $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function (e) {
+          var code = $(this).parent().find(".code")[0].innerText
+          
+              code += ""
+          
+          var ta = document.createElement('textarea')
+          document.body.appendChild(ta)
+          ta.style.position = 'absolute'
+          ta.style.top = '0px'
+          ta.style.left = '0px'
+          ta.value = code
+          ta.select()
+          ta.focus()
+          var result = document.execCommand('copy')
+          document.body.removeChild(ta)
+          
+            if(result)$(this).text('复制成功')
+            else $(this).text('复制失败')
+          
+          $(this).blur()
+        })).on('mouseleave', function (e) {
+          var $b = $(this).find('.copy-btn')
+          setTimeout(function () {
+            $b.text('Copy')
+          }, 300)
+        }).append(e)
+      })
+    })
+  </script>
 
 </body>
 </html>

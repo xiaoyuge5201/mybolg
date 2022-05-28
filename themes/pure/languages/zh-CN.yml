@@ -92,3 +92,8 @@ copyright:
   theme_by: Theme by
   base_on: base on
   powered_by: Powered by
+
+codeblock:
+  copy_button: Copy
+  copy_success: 复制成功
+  copy_failure: 复制失败
