@@ -3,7 +3,7 @@ title: {{ title }}
 date: {{ date }}
 tags:
 categories: 
-comments: true
+comments: false
 password: xiaoyuge
 abstract: Here's something encrypted, password is required to continue reading.
 message: Hey, password is required here.
