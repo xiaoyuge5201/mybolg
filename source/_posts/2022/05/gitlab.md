@@ -213,9 +213,9 @@ sudo gitlab-ctl restart
     yum install git
     ```
    
-2. 生成密钥文件：使用ssh-keygen声哼密钥文件
+2. 生成密钥文件：使用ssh-keygen生成密钥文件 .ssh/id_rsa.pub
     ```shell
-    ssh/id_rsa.pub
+    ssh-keygen
     ```
    ![生成密钥](./gitlab/4.png)
    ![密钥](./gitlab/5.png)
