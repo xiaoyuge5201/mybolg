@@ -2106,7 +2106,7 @@ tbody.collapse.in {
 .nav-tabs.nav-justified > .active > a:hover,
 .nav-tabs-justified > .active > a:focus,
 .nav-tabs.nav-justified > .active > a:focus {
-  border: 1px solid #f2f2f2;
+  border: 1px solid #c7c4c4;
 }
 
 .tab-content > .tab-pane {
