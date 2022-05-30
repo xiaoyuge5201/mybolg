@@ -8,7 +8,7 @@ abbrlink: 48216
 date: 2022-05-28 09:56:42
 ---
 ### 1. 前言
- 以前在自己服务器使用的是Gitblit（http://gitblit.github.io/gitblit）,  这个只需要在服务器上启动一个tomcat,然后将下载的Gitblit的war包放置在tomcat容器里面运行即可访问。
+ 以前在自己服务器使用的是Gitblit,官网地址：http://gitblit.github.io/gitblit,  这个只需要在服务器上启动一个tomcat,然后将下载的Gitblit的war包放置在tomcat容器里面运行即可访问。
 
 但是由于gitblit没有CI/CD的功能，于是自己就在网上找了一些博客搭建gitblit，在这里记录一下搭建的过程。
 
