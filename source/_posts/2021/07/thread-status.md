@@ -94,7 +94,7 @@ public class ThreadStateTest {
 ```
 
 ### 1.3 状态3： BLOCKED
-等待监视器锁而被阻塞的线程的状态。当进入synchronized块/方法 或者在调用wait()被唤醒/超时之后重新进入synchronized块/方法，但是锁被其他线程占有，这个时候被操作系统关起，状态为**阻塞状态 BLOCKED**。
+等待监视器锁而被阻塞的线程的状态。当进入synchronized块/方法 或者在调用wait()被唤醒/超时之后重新进入synchronized块/方法，但是锁被其他线程占有，这个时候被操作系统挂起，状态为**阻塞状态 BLOCKED**。
 
 **阻塞状态的线程，即使调用interrupt()方法也不会改变其状态**
 ```text
@@ -244,7 +244,7 @@ public class WaitingState {
     }
 }
 ```
-上面的代码导致主线程处于WAITING状态，下面是主线程堆栈信息，第二行显示主线程处于WAITING状态
+上面的代码导致主线程处于WAITING状态，下面是主线程堆栈信息，第二行显示主线程处于WAITING状态，第五行表示因为调用了Thread.join导致线程WAITING
 ```shell
 "main" #1 prio=5 os_prio=31 tid=0x00007fea7b01b800 nid=0xe03 in Object.wait() [0x0000700008b43000]
    java.lang.Thread.State: WAITING (on object monitor)
