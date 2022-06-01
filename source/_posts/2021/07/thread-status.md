@@ -8,7 +8,7 @@ abbrlink: 62212
 date: 2020-06-02 16:04:02
 ---
 ## 1. Java线程分类
-在Java中线程分别对应不同的状态，从创建线程的 NEW 到销毁时的 TERMINATED状态， 我们从Thread包中的State类中可以看到线程的状态枚举；
+在Java中线程分别对应不同的状态，从创建线程的 NEW 到销毁时的 TERMINATED状态， 我们从Thread类中的State类中可以看到线程的状态枚举；
 ```java
 public enum State {
     /**
@@ -108,6 +108,7 @@ A thread in the blocked state is waiting for a monitor lock to enter a synchroni
 - 等待阻塞：运行(running)的线程执行o.wait()方法，JVM会把该线程放入等待队列(waitting queue)中。
 - 同步阻塞：运行(running)的线程在获取对象的同步锁时，若该同步锁被别的线程占用，则JVM会把该线程放入锁池(lock pool)中。
 - 其他阻塞：运行(running)的线程执行Thread.sleep(long ms)或t.join()方法，或者发出了I/O请求时，JVM会把该线程置为阻塞状态。当sleep()状态超时、join()等待线程终止或者超时、或者I/O处理完毕时，线程重新转入可运行(runnable)状态。
+
 示例代码：
 ```java
 public class BlockedState {
@@ -451,6 +452,8 @@ public class TimeWaitingState {
 官方描述：
 Thread state for a terminated thread. The thread has completed execution.
 ```
+
+示例代码：
 ```java
 public class TerminatedState {
     public static void main(String[] args) throws InterruptedException {
