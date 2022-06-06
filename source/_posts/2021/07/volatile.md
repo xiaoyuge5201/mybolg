@@ -1,6 +1,6 @@
 ---
 title: volatile关键字
-tags: 线程
+tags: thread
 categories: java
 comments: true
 translate_title: volatile1

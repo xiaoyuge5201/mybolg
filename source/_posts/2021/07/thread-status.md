@@ -1,6 +1,6 @@
 ---
-title: Java线程的声明周期状态
-tags: 线程
+title: Java线程的生命周期状态
+tags: thread
 categories: java
 comments: true
 translate_title: thread-status
@@ -8,7 +8,7 @@ abbrlink: 62212
 date: 2020-06-02 16:04:02
 ---
 ## 1. Java线程分类
-在Java中线程分别对应不同的状态，从创建线程的 NEW 到销毁时的 TERMINATED状态， 我们从Thread类中的State类中可以看到线程的状态枚举；
+在Java中线程分别对应不同的状态，从创建线程的 NEW 到销毁时的 TERMINATED状态， 我们从Thread类中的内部枚举类State中可以看到线程的6种状态；
 ```java
 public enum State {
     /**
