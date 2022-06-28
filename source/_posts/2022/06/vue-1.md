@@ -11,7 +11,39 @@ date: 2022-06-11 22:12:58
 vue 官网：https://cn.vuejs.org/
 渐进式框架，
 
-### 2.1 Vue实例
+## 2.安装
+1. 安装 `npm`
+  `npm` 全称为 `Node Package Manager`，是一个基于`Node.js`的包管理器，也是整个`Node.js`社区最流行、支持的第三方模块最多的包管理器。
+   
+    ```
+    npm -v
+    ```
+
+2. 由于网络原因 安装 `cnpm`
+    ```
+    #旧版，cnpm官方公告将在2022年6月30日停止老域名解析
+    npm install -g cnpm --registry=https://registry.npm.taobao.org
+   
+    #新版
+    npm install -g cnpm --registry=https://registry.npmmirror.com
+    ```
+
+3. 安装 `vue-cli`
+    ```
+    cnpm install -g @vue/cli
+    ```
+
+4. 安装 `webpack`
+
+    `webpack` 是  `JavaScript` 打包器(module bundler)
+    ```
+    cnpm install -g webpack
+    ```
+   
+
+## 3  Vue练习
+
+### 3.1 Vue实例
 ```vue
 <div id="app"> {{ message }} {{ name }}</div>
 <script type="text/javascript">
@@ -34,7 +66,7 @@ vue 官网：https://cn.vuejs.org/
     vm.$data.message = "test...."
 </script>
 ```
-### 2.2 数据和方法
+### 3.2 数据和方法
 当一个 Vue 实例被创建时，它将 data 对象中的所有的 property 加入到 Vue 的响应式系统中。当这些 property 的值发生改变时，视图将会产生“响应”，即匹配更新为新的值
 ```javascript
 // 我们的数据对象
@@ -186,7 +218,7 @@ updated <br>
 或 Uncaught TypeError: this.myMethod is not a function 之类的错误。
 ```
 ![](./vue-1/instance.png)
-### 条件与循环
+### 3.3 条件与循环
 - v-if: 控制切换一个元素是否显示
     ```vue
     <div id="vue-app">
@@ -249,7 +281,7 @@ updated <br>
     ![](./vue-1/v-for.png)
   
 
-### 处理用户输入
+### 3.4 处理用户输入
 - v-on: 事件监听器
     ```vue
     <div id="app">
