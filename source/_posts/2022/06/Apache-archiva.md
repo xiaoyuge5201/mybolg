@@ -1,5 +1,5 @@
 ---
-title: Maven 私有仓库搭建 Apache archiva
+title: Apache archiva Maven私有仓库搭建 
 comments: false
 theme: xray
 tags: linux
@@ -125,34 +125,34 @@ date: 2022-06-28 11:49:42
 
 ```xml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-  <localRepository>\Common\my_repository</localRepository>
-	<servers>
-		<server>
-		  <id>archiva-releases</id><!--要和mvn命令中的  -DrepositoryId 一致-->
-		  <username>admin</username>
-		  <password>xiaoyuge0318</password>
-		</server>
-		<server>
-		  <id>archiva-snapshots</id><!--要和mvn命令中的  -DrepositoryId 一致-->
-		  <username>admin</username>
-		  <password>xiaoyuge0318</password>
-		</server>
-	</servers>
-	<mirrors>
-		<!-- 私服地址 start -->
-		<mirror> <!-- 正式版 -->
-		  <id>archiva-releases</id> 
-		  <mirrorOf>internal</mirrorOf> 
-		  <url>http://localhost:8080/repository/internal</url> 
-		</mirror>
-		<mirror> <!-- 快照版 -->
-		  <id>archiva-snapshots</id>
-		  <mirrorOf>snapshots</mirrorOf> 
-		  <url>http://localhost:8080/repository/snapshots</url> 
-		</mirror>
-	</mirrors>
-  <profiles>
-      <profile>
+     <localRepository>\Common\my_repository</localRepository>
+     <servers>
+        <server>
+          <id>archiva-releases</id><!--要和mvn命令中的  -DrepositoryId 一致-->
+          <username>admin</username>
+          <password>xiaoyuge0318</password>
+        </server>
+        <server>
+          <id>archiva-snapshots</id><!--要和mvn命令中的  -DrepositoryId 一致-->
+          <username>admin</username>
+          <password>xiaoyuge0318</password>
+        </server>
+     </servers>
+     <mirrors>
+        <!-- 私服地址 start -->
+        <mirror> <!-- 正式版 -->
+          <id>archiva-releases</id> 
+          <mirrorOf>internal</mirrorOf> 
+          <url>http://localhost:8080/repository/internal</url> 
+        </mirror>
+        <mirror> <!-- 快照版 -->
+          <id>archiva-snapshots</id>
+          <mirrorOf>snapshots</mirrorOf> 
+          <url>http://localhost:8080/repository/snapshots</url> 
+        </mirror>
+	 </mirrors>
+     <profiles>
+        <profile>
           <activation>
             <activeByDefault>true</activeByDefault>
           </activation>
@@ -184,7 +184,7 @@ date: 2022-06-28 11:49:42
               </repository>
           </repositories>
       </profile>
-  </profiles>
+    </profiles>
   <!-- 私服地址END -->
 </settings>
 ```
