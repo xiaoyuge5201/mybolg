@@ -57,13 +57,8 @@ date: 2022-06-28 11:49:42
 	     
      各版本操作系统下详细安装及服务注册参照：http://archiva.apache.org/docs/2.2.8/adminguide/standalone.html
 
-7.   启动成功，访问`maven`服务器地址: http://ip:8080
 
-     ![image-20220628114324543](./Apache-archiva/image-20220628114324543.png)
-
-8.   点击右上角的`Create Admin User`创建管理员账号
-
-9.   将archiva 在Centos中安装成服务(root执行)
+7.   将 `archiva`在Centos中安装成服务(root执行)
 
      ```shell
      ln -sf /Users/xiaoyuge/maven/apache-archiva-2.2.8/bin/archiva /etc/init.d/archiva
@@ -77,10 +72,15 @@ date: 2022-06-28 11:49:42
      ```
 
 
+8.   启动成功后，访问`maven`服务器地址: http://ip:8080
+
+     ![image-20220628114324543](./Apache-archiva/image-20220628114324543.png)
+
+9.   点击右上角的`Create Admin User`创建管理员账号
 
 ## 2. 上传私有jar包
 
-1.   访问：http://localhost:8080/#upload,   上传私有jar包到仓库
+1.   访问：http://localhost:8080/#upload，上传私有jar包到仓库
 
      - `Repository Id` 选择 `Archiva Managed Internal Repository `则是把依赖作为正式版. 查看地址：http://host:port/repository/internal
      - `Repository Id` 选择` Archiva Managed Snapshot `则是把依赖作为快照版.	查看地址：http://host:port/repository/snapshots
@@ -121,9 +121,6 @@ date: 2022-06-28 11:49:42
      ![image-20220628141111292](./Apache-archiva/image-20220628141111292.png)
 
 ## 3. 项目使用
-
-### 3.1 非Springboot项目
-
 <span id='setting'>配置maven中的setting.xml文件，配置如下：</span>
 
 ```xml
@@ -133,33 +130,25 @@ date: 2022-06-28 11:49:42
 		<server>
 		  <id>archiva-releases</id><!--要和mvn命令中的  -DrepositoryId=releases 一致-->
 		  <username>admin</username>
-		  <password>HEALTH456</password>
+		  <password>xiaoyuge0318</password>
 		</server>
 		<server>
 		  <id>archiva-snapshots</id><!--要和mvn命令中的  -DrepositoryId=releases 一致-->
 		  <username>admin</username>
-		  <password>HEALTH456</password>
+		  <password>xiaoyuge0318</password>
 		</server>
 	</servers>
 	<mirrors>
-		<!--阿里云镜像地址-->	
-		<mirror> 
-			 <id>alimaven</id> 
-			 <name>aliyun maven</name> 
-			 <url>http://maven.aliyun.com/nexus/content/groups/public/</url> 
-			 <mirrorOf>central</mirrorOf> 
-		</mirror> 
-
 		<!-- 私服地址 start -->
 		<mirror> <!-- 正式版 -->
 		  <id>archiva-releases</id> 
 		  <mirrorOf>internal</mirrorOf> 
-		  <url>http://ip:8000/repository/internal</url> 
+		  <url>http://localhost:8080/repository/internal</url> 
 		</mirror>
 		<mirror> <!-- 快照版 -->
 		  <id>archiva-snapshots</id>
 		  <mirrorOf>snapshots</mirrorOf> 
-		  <url>http://ip:8000/repository/snapshots</url> 
+		  <url>http://localhost:8080/repository/snapshots</url> 
 		</mirror>
 	</mirrors>
   <profiles>
@@ -172,7 +161,7 @@ date: 2022-06-28 11:49:42
               <repository>
                 <id>internal</id>
                 <name>Archiva Managed Internal Repository</name>
-                <url>http://ip:8000/repository/internal</url>
+                <url>http://localhost:8080/repository/internal</url>
                 <releases>
                   <enabled>true</enabled>
                 </releases>
@@ -181,11 +170,11 @@ date: 2022-06-28 11:49:42
                 </snapshots>
               </repository>
             
-							<!-- 快照版 -->
+              <!-- 快照版 -->
               <repository>
                 <id>snapshots</id>
                 <name>Archiva Managed Snapshots Repository</name>
-                <url>http://ip:8000/repository/snapshots</url>
+                <url>http://localhost:8080/repository/snapshots</url>
                 <releases>
                   <enabled>false</enabled>
                 </releases>
@@ -194,70 +183,9 @@ date: 2022-06-28 11:49:42
                 </snapshots>
               </repository>
           </repositories>
-        </profile>
+      </profile>
   </profiles>
   <!-- 私服地址END -->
-</settings>	
-
+</settings>
 ```
-
-### 3.2 SpringBoot工程pom.xml
-
-```xml
-<mirrors>
-		<!--阿里云镜像地址-->	
-		<mirror> 
-			 <id>alimaven</id> 
-			 <name>aliyun maven</name> 
-			 <url>http://maven.aliyun.com/nexus/content/groups/public/</url> 
-			 <mirrorOf>central</mirrorOf> 
-		</mirror> 
-
-		<!-- 私服地址 start -->
-		<mirror> <!-- 正式版 -->
-		  <id>archiva-releases</id> 
-		  <mirrorOf>internal</mirrorOf> 
-		  <url>http://ip:8000/repository/internal</url> 
-		</mirror>
-		<mirror> <!-- 快照版 -->
-		  <id>archiva-snapshots</id>
-		  <mirrorOf>snapshots</mirrorOf> 
-		  <url>http://ip:8000/repository/snapshots</url> 
-		</mirror>
-	</mirrors>
-  <profiles>
-    <profile>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <repositories>
-        <!-- 正式版 -->
-        <repository>
-          <id>internal</id>
-          <name>Archiva Managed Internal Repository</name>
-          <url>http://ip:8000/repository/internal</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-
-        <!-- 快照版 -->
-        <repository>
-          <id>snapshots</id>
-          <name>Archiva Managed Snapshots Repository</name>
-          <url>http://ip:8000/repository/snapshots</url>
-          <releases>
-            <enabled>false</enabled>
-          </releases>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-        </repository>
-      </repositories>
-</profile>
-```
-
 
