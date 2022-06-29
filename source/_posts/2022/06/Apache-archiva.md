@@ -128,12 +128,12 @@ date: 2022-06-28 11:49:42
   <localRepository>\Common\my_repository</localRepository>
 	<servers>
 		<server>
-		  <id>archiva-releases</id><!--要和mvn命令中的  -DrepositoryId=releases 一致-->
+		  <id>archiva-releases</id><!--要和mvn命令中的  -DrepositoryId 一致-->
 		  <username>admin</username>
 		  <password>xiaoyuge0318</password>
 		</server>
 		<server>
-		  <id>archiva-snapshots</id><!--要和mvn命令中的  -DrepositoryId=releases 一致-->
+		  <id>archiva-snapshots</id><!--要和mvn命令中的  -DrepositoryId 一致-->
 		  <username>admin</username>
 		  <password>xiaoyuge0318</password>
 		</server>
