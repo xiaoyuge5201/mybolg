@@ -3,7 +3,7 @@ title: Docker安装RabbitMQ集群
 comments: false
 theme: xray
 tags: rabbitMQ
-categories: MQ
+categories: 中间件
 abbrlink: 64552
 date: 2022-06-25 16:53:22
 ---

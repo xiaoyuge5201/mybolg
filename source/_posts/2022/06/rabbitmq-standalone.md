@@ -3,7 +3,7 @@ title: CentOS7安装RabbitMQ单机版
 comments: false
 theme: xray
 tags: rabbitMQ
-categories: MQ
+categories: 中间件
 abbrlink: 1404
 date: 2022-06-25 16:12:12
 ---
