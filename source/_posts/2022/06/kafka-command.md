@@ -1,10 +1,11 @@
 ---
-title:  kafka常用命令
+title: kafka常用命令
 comments: false
 theme: xray
-date: 2022-06-23 14:57:03
 tags: kafka
 categories: 中间件
+abbrlink: 49407
+date: 2022-06-23 14:57:03
 ---
 ### 1. 脚本概览
 bin目录下的脚本作用
