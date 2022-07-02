@@ -36,7 +36,7 @@ CentOS是RedHat的分支，所以rpm和yum都可以使用
     cd otp_src_25.0
     ./configure --prefix=/usr/local/erlang
    ```
-   configure的过程如果有err，要解决依赖的问题。
+   `configure`的过程如果有err，要解决依赖的问题。
    如果有APPLICATIONS INFORMATION，DOCUMENTATION INFORMATION，没有影响。
    
 
@@ -116,7 +116,7 @@ CentOS是RedHat的分支，所以rpm和yum都可以使用
    ```
    could not bind to distribution port 25672, it is in use by another node:
    ```
-   可以先停止，在重启
+   可以先停止，再重启
    ```shell
    ./rabbitmqctl stop
    ./rabbitmq-server start
@@ -195,8 +195,11 @@ CentOS是RedHat的分支，所以rpm和yum都可以使用
 4. 添加用户失败
    ![](./rabbitmq-standalone/8.png)
    根据提示，可能有几个原因：
+   
    1）hostname配置有问题
+   
    2）erlang.cookie有问题
+   
    3）服务没启动成功
 
 
