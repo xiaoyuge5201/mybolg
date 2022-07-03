@@ -5,13 +5,7 @@ theme: xray
 tags: rocketmq
 categories: 中间件
 abbrlink: 62117
-date: 2022-07-01 15:53:24
-password: xiaoyuge
-abstract: Here's something encrypted, password is required to continue reading.
-message: Hey, password is required here.
-theme: xray
-wrong_pass_message: Oh, this is an invalid password. Check and try again, please.
-wrong_hash_message: Oh, these decrypted content cannot be verified, but you can still have a look.
+date: 2022-07-02 15:53:24
 ---
 ### 1.前言
 1. nameserver默认端口：9876

@@ -5,9 +5,9 @@ tags:
 categories: 
 comments: false
 password: xiaoyuge
-abstract: Here's something encrypted, password is required to continue reading.
-message: Hey, password is required here.
+abstract: 博客被加密了, 请输入密码查看.
+message: 您好, 这里需要密码.
 theme: xray
-wrong_pass_message: Oh, this is an invalid password. Check and try again, please.
-wrong_hash_message: Oh, these decrypted content cannot be verified, but you can still have a look.
+wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试.
+wrong_hash_message: 抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.
 ---
