@@ -6,6 +6,12 @@ tags: Zookeeper
 categories: 中间件
 abbrlink: 18685
 date: 2022-06-24 15:12:42
+password: xiaoyuge
+abstract: Here's something encrypted, password is required to continue reading.
+message: Hey, password is required here.
+theme: xray
+wrong_pass_message: Oh, this is an invalid password. Check and try again, please.
+wrong_hash_message: Oh, these decrypted content cannot be verified, but you can still have a look.
 ---
 ### 1. JDK依赖
 请参考这篇博客：[Linux安装JDK以及配置](https://xiaoyuge.work/jdk-install/)

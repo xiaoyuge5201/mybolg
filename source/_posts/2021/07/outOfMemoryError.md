@@ -8,7 +8,7 @@ abbrlink: 13887
 date: 2021-08-01 19:25:57
 ---
 ## 1.内存溢出
-java.lang.OutOfMemoryError：是指程序在申请内存是，没有足够的内存克难攻坚供其使用，出现OutOfMemoryError
+java.lang.OutOfMemoryError：是指程序在申请内存是，没有足够的内存空间供其使用，出现OutOfMemoryError
 
 1. 产生原因
     - JMM内存过小

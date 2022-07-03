@@ -6,17 +6,24 @@ tags: rocketmq
 categories: 中间件
 abbrlink: 62117
 date: 2022-07-01 15:53:24
+password: xiaoyuge
+abstract: Here's something encrypted, password is required to continue reading.
+message: Hey, password is required here.
+theme: xray
+wrong_pass_message: Oh, this is an invalid password. Check and try again, please.
+wrong_hash_message: Oh, these decrypted content cannot be verified, but you can still have a look.
 ---
 ### 1.前言
 1. nameserver默认端口：9876
 2. rocketmq默认端口：10911
 3. 服务器IP：172.21.16.253
-4. 路径：/usr/local/tools
+4. 安装路径：/usr/local/tools
 
 ### 2. 下载
-RocketMQ官网链接：http://rocketmq.apache.org/， 然后选择Lastest Release进入下载界面
+RocketMQ官网链接：http://rocketmq.apache.org/ ,然后选择Lastest Release进入下载界面
 ![](./rocketmq-install/1.png)
 ![](./rocketmq-install/2.png)
+![](./rocketmq-install/0.png)
 右键复制链接地址，`wget`下载，或者下载后上传到Centos服务器上。
 ```shell
 cd /usr/local/tools

@@ -6,6 +6,12 @@ tags: redis
 categories: linux
 abbrlink: 35756
 date: 2022-07-02 12:52:41
+password: xiaoyuge
+abstract: Here's something encrypted, password is required to continue reading.
+message: Hey, password is required here.
+theme: xray
+wrong_pass_message: Oh, this is an invalid password. Check and try again, please.
+wrong_hash_message: Oh, these decrypted content cannot be verified, but you can still have a look.
 ---
 ### 1. 概述
 主从切换技术的方法是：当主服务器宕机后，需要手动把一台从服务器切换为主服务器，这就是人工干预，会造成一段时间内服务不可用的情况。更多的时候，我们优先考虑哨兵模式。
