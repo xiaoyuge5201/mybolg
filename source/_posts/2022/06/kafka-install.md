@@ -1,5 +1,5 @@
 ---
-title: CentOS安装kafka 2.5.0单机版
+title: CentOS安装kafka 3.2.0单机版
 comments: false
 theme: xray
 tags: kafka

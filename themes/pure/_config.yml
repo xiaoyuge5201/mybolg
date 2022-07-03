@@ -45,6 +45,16 @@ config:
   thumbnail: true # enable posts thumbnail, options: true, false
   excerpt_link: Read More
 
+# 代码高亮配置文件
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: true
+  tab_replace: true
+  wrap: true
+  hljs: false
+
+
 # Pagination
 pagination:
   number: false
